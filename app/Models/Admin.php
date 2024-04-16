@@ -47,4 +47,9 @@ class Admin extends Authenticatable
     {
         $this->notify(new ResetPasswordNotification($token));
     }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
 }
