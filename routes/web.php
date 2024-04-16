@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProfileController as ProfileOfAdminController;
+use App\Http\Controllers\Admin\CreatedShiftController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('/profile', [ProfileOfAdminController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileOfAdminController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileOfAdminController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/shift', [CreatedShiftController::class, 'create'])->name('shift.create');
+        Route::post('/shift', [CreatedShiftController::class, 'store'])->name('shift.store');
     });
 
     require __DIR__.'/admin.php';

@@ -42,4 +42,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function companyMembership()
+    {
+        return $this->belongsTo(CompanyMembership::class, 'id', 'user_id');
+    }
+
+    // usersテーブルとcompany_membershipsテーブルを結合し、従業員情報を取得するメソッド
+    public function getEmployees($company_id)
+    {
+        $userCompanyMemberships = User::with(['companyMembership' => function ($query) use ($company_id) {
+            $query->where('company_id', $company_id);
+        }])->get();
+        $employees = [];
+        foreach ($userCompanyMemberships as $userCompanyMembership) {
+            if(!empty($userCompanyMembership->companyMembership)) {
+                $employees[] = $userCompanyMembership;
+            }
+        }
+
+        return $employees;
+    }
 }

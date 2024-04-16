@@ -1,0 +1,248 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
+
+class RequestedShiftSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        DB::table('requested_shifts')->insert([
+            [
+                'company_membership_id' => '1',
+                'work_date' => '2024-05-01',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '1',
+                'work_date' => '2024-05-02',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '1',
+                'work_date' => '2024-05-04',
+                'start_time' => '18:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '1',
+                'work_date' => '2024-05-06',
+                'start_time' => '18:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '1',
+                'work_date' => '2024-05-08',
+                'start_time' => '18:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '1',
+                'work_date' => '2024-05-12',
+                'start_time' => '18:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '1',
+                'work_date' => '2024-05-14',
+                'start_time' => '18:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '1',
+                'work_date' => '2024-05-15',
+                'start_time' => '18:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            [
+                'company_membership_id' => '2',
+                'work_date' => '2024-05-01',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '2',
+                'work_date' => '2024-05-02',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '2',
+                'work_date' => '2024-05-03',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '2',
+                'work_date' => '2024-05-07',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '2',
+                'work_date' => '2024-05-09',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '2',
+                'work_date' => '2024-05-14',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            [
+                'company_membership_id' => '3',
+                'work_date' => '2024-05-01',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '3',
+                'work_date' => '2024-05-02',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '3',
+                'work_date' => '2024-05-04',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '3',
+                'work_date' => '2024-05-05',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '3',
+                'work_date' => '2024-05-06',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '3',
+                'work_date' => '2024-05-07',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '3',
+                'work_date' => '2024-05-11',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '3',
+                'work_date' => '2024-05-12',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '3',
+                'work_date' => '2024-05-13',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '3',
+                'work_date' => '2024-05-14',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'company_membership_id' => '3',
+                'work_date' => '2024-05-15',
+                'start_time' => '17:00',
+                'end_time' => '22:00',
+                'notes' => Str::random(30),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
+    }
+}
