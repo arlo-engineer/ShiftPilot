@@ -17,12 +17,8 @@
         </div>
     </div>
 
-    {{-- <form method="POST" action="{{ route('admin.shift.store') }}" class="modal">
-        @csrf
         <div class="py20">
             @include('admin.shift.partials.modal')
         </div>
-        <button type="submit">確定する</button>
-    </form> --}}
 
 </x-admin-layout>

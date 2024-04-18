@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.calendar-cell:hover {
+/* .calendar-cell:hover {
     @apply text-white bg-purple-700;
-}
+} */
 
 .tmp-register {
     @apply text-white bg-blue-700;

@@ -12,19 +12,19 @@
                 @endforeach
             </tr>
         </thead>
-        <tbody>
+        <tbody id="calendar-contents">
             @foreach ($employees as $employee)
             <tr>
                 <td class="border-b-2 border-gray-200 px-4 py-3">{{ $employee->name }}</td>
                 @foreach ($fullRequestedShifts as $fullRequestedShift)
                     @if ($fullRequestedShift['employee_id'] == $employee->id)
-                        <td class="day-{{ $day->format('D') }} border-b-2 border-gray-200 px-4 py-3 cursor-pointer">
+                        <td class="calendar-cell-day day-{{ $day->format('D') }} border-b-2 border-gray-200 px-4 py-3 cursor-pointer">
                             {{-- store_optionのvalueが1のときに保存する --}}
-                            <input type="hidden" name="store_option[]" value="0">
+                            <input type="hidden" name="store_option[]" value="0" class="store_option">
                             <input type="hidden" name="company_membership_id[]" value="{{ $fullRequestedShift['employee_id'] }}">
-                            <input type="hidden" name="work_date[]" value="{{ $fullRequestedShift['work_date'] }}">
-                            <input type="text" name="start_time[]" value="{{ $fullRequestedShift['start_time'] }}" class="w-20 p-0 text-center bg-gray-100 border-none cursor-pointer pointer-events-none">
-                            <input type="text" name="end_time[]" value="{{ $fullRequestedShift['end_time'] }}" class="w-20 p-0 text-center bg-gray-100 border-none cursor-pointer pointer-events-none ">
+                            <input type="hidden" name="work_date[]" value="{{ $fullRequestedShift['work_date'] }}" class="work-date">
+                            <input type="text" name="start_time[]" value="{{ $fullRequestedShift['start_time'] }}" class="start-time w-20 p-0 text-center bg-gray-100 border-none cursor-pointer pointer-events-none">
+                            <input type="text" name="end_time[]" value="{{ $fullRequestedShift['end_time'] }}" class="end-time w-20 p-0 text-center bg-gray-100 border-none cursor-pointer pointer-events-none ">
                         </td>
                     @endif
                 @endforeach
