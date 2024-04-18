@@ -26,16 +26,19 @@ class CreatedShiftController extends Controller
     $user = new User;
     $employees = $user->getEmployees($companyId);
 
+    $requestedShift = new RequestedShift();
+    $fullRequestedShifts = $requestedShift->getFullRequestedShifts($nextMonth);
+
     // Modal
-    $requestedShift = new requestedShift();
-    $shiftsWithMemberships = $requestedShift->joinCompanyMemberships();
     $nextMonthDatesArray = $requestedShift->getNextMonthDatesArray();
 
-    return view('admin.shift.created_shift', compact('calendarTitle', 'days', 'nextMonth', 'employees', 'shiftsWithMemberships', 'nextMonthDatesArray'));
+    return view('admin.shift.created_shift', compact('calendarTitle', 'days', 'employees', 'fullRequestedShifts'));
+    // return view('admin.shift.created_shift', compact('calendarTitle', 'days', 'nextMonth', 'employees', 'fullRequestedShifts', 'nextMonthDatesArray'));
     }
 
     public function store(Request $request)
     {
+        // dd($request);
         $company = new Company;
         $userId = Auth::id();
         $companyId = $company->getCompanyIdByAdminId($userId);
@@ -45,7 +48,8 @@ class CreatedShiftController extends Controller
         $nextMonthDatesArray = $requestedShift->getNextMonthDatesArray();
 
         for($i = 0; $i < count($employees) * count($nextMonthDatesArray); $i++) {
-            if ($request->store_option[$i] == "1") {
+            // if ($request->store_option[$i] == "1") {
+            if (!empty($request->start_time[$i])) {
                 CreatedShift::create([
                     'company_membership_id' => $request->company_membership_id[$i],
                     'work_date' => $request->work_date[$i],

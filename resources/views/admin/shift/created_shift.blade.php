@@ -9,16 +9,20 @@
 
     <div class="py-20">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @include('admin.shift.partials.calendar')
+            <form method="POST" action="{{ route('admin.shift.store') }}" class="modal">
+                @csrf
+                @include('admin.shift.partials.calendar')
+                <button type="submit">確定する</button>
+            </form>
         </div>
     </div>
 
-    <form method="POST" action="{{ route('admin.shift.store') }}" class="modal">
+    {{-- <form method="POST" action="{{ route('admin.shift.store') }}" class="modal">
         @csrf
         <div class="py20">
             @include('admin.shift.partials.modal')
         </div>
         <button type="submit">確定する</button>
-    </form>
+    </form> --}}
 
 </x-admin-layout>

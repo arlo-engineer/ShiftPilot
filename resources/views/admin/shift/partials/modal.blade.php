@@ -18,6 +18,7 @@
                             return $shift->companyMembership->user_id === $employeeId
                                 && substr($shift->work_date, 0, 7) === $nextMonth;
                         });
+                        dd($desireShits);
 
                         // 存在する日付の配列を作成
                         $existingDates = $desiredShifts->pluck('work_date')->toArray();
