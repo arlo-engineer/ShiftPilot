@@ -3,7 +3,7 @@
     <table id="calendar" class="w-full text-left whitespace-no-wrap">
         <thead>
             <tr>
-                <th class="border-b-2 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl" style="width: 200px !import">名前</th>
+                <th class="border-b-2 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">名前</th>
                 @foreach ($days as $day)
                 <th class="day-{{ $day->format("D") }} border-b-2 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 text-center">
                     <p class="date">{{ $day->format("j") }}</p>

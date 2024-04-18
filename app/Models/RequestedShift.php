@@ -24,18 +24,6 @@ class RequestedShift extends Model
         return $this->belongsTo(CompanyMembership::class);
     }
 
-    // requested_shiftsテーブルとcompany_membershipsテーブルを結合し、company_idで絞り込んだデータの取得
-    // public function getPartialRequestedShifts($company_id, $nextMonth)
-    // {
-    //     $partialRequestedShifts = RequestedShift::whereHas('companyMembership', function ($query) use ($company_id) {
-    //             $query->where('company_id', $company_id);
-    //         })
-    //         ->whereRaw("LEFT(work_date, 7) = ?", [$nextMonth])
-    //         ->get();
-
-    //     return $partialRequestedShifts;
-    // }
-
     // requested_shiftsテーブルに存在しない日付を補完したデータを取得
     public function getFullRequestedShifts($nextMonth)
     {

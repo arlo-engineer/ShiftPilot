@@ -15,41 +15,34 @@ class CreatedShiftController extends Controller
 {
     public function create()
     {
-    // Calendar
-    $nextMonth = Carbon::now()->addMonthNoOverflow()->format('Y-m');
-    $calendar = new Calendar($nextMonth);
-    $calendarTitle = $calendar->getCalenderTitle();
-    $days = $calendar->getDays();
-    $company = new Company;
-    $userId = Auth::id();
-    $companyId = $company->getCompanyIdByAdminId($userId);
-    $user = new User;
-    $employees = $user->getEmployees($companyId);
-
-    $requestedShift = new RequestedShift();
-    $fullRequestedShifts = $requestedShift->getFullRequestedShifts($nextMonth);
-
-    // Modal
-    $nextMonthDatesArray = $requestedShift->getNextMonthDatesArray();
-
-    return view('admin.shift.created_shift', compact('calendarTitle', 'days', 'employees', 'fullRequestedShifts'));
-    // return view('admin.shift.created_shift', compact('calendarTitle', 'days', 'nextMonth', 'employees', 'fullRequestedShifts', 'nextMonthDatesArray'));
-    }
-
-    public function store(Request $request)
-    {
-        // dd($request);
+        $nextMonth = Carbon::now()->addMonthNoOverflow()->format('Y-m');
+        $calendar = new Calendar($nextMonth);
+        $calendarTitle = $calendar->getCalenderTitle();
+        $days = $calendar->getDays();
         $company = new Company;
         $userId = Auth::id();
         $companyId = $company->getCompanyIdByAdminId($userId);
         $user = new User;
         $employees = $user->getEmployees($companyId);
-        $requestedShift = new requestedShift();
-        $nextMonthDatesArray = $requestedShift->getNextMonthDatesArray();
+        $requestedShift = new RequestedShift();
+        $fullRequestedShifts = $requestedShift->getFullRequestedShifts($nextMonth);
 
-        for($i = 0; $i < count($employees) * count($nextMonthDatesArray); $i++) {
-            // if ($request->store_option[$i] == "1") {
-            if (!empty($request->start_time[$i])) {
+        return view('admin.shift.created_shift', compact('calendarTitle', 'days', 'employees', 'fullRequestedShifts'));
+    }
+
+    public function store(Request $request)
+    {
+        $company = new Company;
+        $userId = Auth::id();
+        $companyId = $company->getCompanyIdByAdminId($userId);
+        $user = new User;
+        $employees = $user->getEmployees($companyId);
+        $nextMonth = Carbon::now()->addMonthNoOverflow()->format('Y-m');
+        $calendar = new Calendar($nextMonth);
+        $days = $calendar->getDays();
+
+        for($i = 0; $i < count($employees) * count($days); $i++) {
+            if ($request->store_option[$i] == "1") {
                 CreatedShift::create([
                     'company_membership_id' => $request->company_membership_id[$i],
                     'work_date' => $request->work_date[$i],

@@ -14,6 +14,16 @@ document.getElementById('calendar-contents').addEventListener('click', function(
     clickedElement = event.target;
     clickedClass = clickedElement.className;
     if (clickedClass.includes('calendar-cell-day')) {
+        // モーダルの仮登録ボタンとキャンセルボタンの切り替え
+        if (clickedClass.includes('tmp-register')) {
+            // キャンセルボタンの表示
+            document.getElementById('tmpRegister').classList.add('hidden');
+            document.getElementById('modalCancel').classList.remove('hidden');
+        } else {
+            // 仮登録ボタンの表示
+            document.getElementById('tmpRegister').classList.remove('hidden');
+            document.getElementById('modalCancel').classList.add('hidden');
+        }
         // モーダルを表示する＝hiddenを削除
         document.getElementById('modal').classList.remove('hidden');
         // モーダルに勤務日を表示
@@ -35,12 +45,26 @@ document.getElementById('modalClose').addEventListener('click', function() {
 
 // モーダルの仮登録ボタンの実装
 document.getElementById('tmpRegister').addEventListener('click', function() {
-    console.log(clickedElement);
     // モーダルを閉じる
     document.getElementById('modal').classList.add('hidden');
     // store_optionを1に変更する->DBに登録できるようにする
     clickedElement.querySelector('.store_option').value = 1;
     clickedElement.classList.add('tmp-register');
+    // カレンダーに出勤時間を反映
+    var modalStartTime = document.getElementById('modal-start-time').value;
+    clickedElement.querySelector('.start-time').value = modalStartTime;
+    // カレンダーに退勤時間を反映
+    var modalEndTime = document.getElementById('modal-end-time').value;
+    clickedElement.querySelector('.end-time').value = modalEndTime;
+});
+
+// モーダルのキャンセルボタンの実装
+document.getElementById('modalCancel').addEventListener('click', function() {
+    // モーダルを閉じる
+    document.getElementById('modal').classList.add('hidden');
+    // store_optionを1に変更する->DBに登録できるようにする
+    clickedElement.querySelector('.store_option').value = 0;
+    clickedElement.classList.remove('tmp-register');
     // カレンダーに出勤時間を反映
     var modalStartTime = document.getElementById('modal-start-time').value;
     clickedElement.querySelector('.start-time').value = modalStartTime;
