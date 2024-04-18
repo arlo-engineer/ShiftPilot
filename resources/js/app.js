@@ -31,10 +31,12 @@ document.getElementById('calendar-contents').addEventListener('click', function(
         var calendarWorkDate = clickedElement.querySelector('.work-date').value;
         document.getElementById('modal-date').innerHTML = calendarWorkDate;
         // モーダルに出勤時間を表示
-        var calendarStartTime = clickedElement.querySelector('.start-time').value;
+        var calendarStartTime = clickedElement.querySelector('.start-time').innerHTML;
+        console.log(clickedElement);
+        console.log(clickedElement.querySelector('.start-time'));
         document.getElementById('modal-start-time').value = calendarStartTime;
         // モーダルに退勤時間を表示
-        var calendarEndTime = clickedElement.querySelector('.end-time').value;
+        var calendarEndTime = clickedElement.querySelector('.end-time').innerHTML;
         document.getElementById('modal-end-time').value = calendarEndTime;
     }
 });
@@ -55,28 +57,33 @@ document.getElementById('modal').addEventListener('click', function(event) {
 document.getElementById('tmpRegister').addEventListener('click', function() {
     // モーダルを閉じる
     modalClass.add('hidden');
+
     // store_optionを1に変更する->DBに登録できるようにする
     clickedElement.querySelector('.store_option').value = 1;
     clickedElement.classList.add('tmp-register');
+
+    console.log(clickedElement);
+    console.log(clickedElement.querySelector('.input-start-time'));
+
     // カレンダーに出勤時間を反映
     var modalStartTime = document.getElementById('modal-start-time').value;
-    clickedElement.querySelector('.start-time').value = modalStartTime;
+    clickedElement.querySelector('.input-start-time').value = modalStartTime;
+
     // カレンダーに退勤時間を反映
     var modalEndTime = document.getElementById('modal-end-time').value;
-    clickedElement.querySelector('.end-time').value = modalEndTime;
+    clickedElement.querySelector('.input-end-time').value = modalEndTime;
+
+    // 仮登録した出退勤時間をカレンダーに表示
+    clickedElement.querySelector('.input-time').classList.remove('hidden');
 });
 
 // モーダルのキャンセルボタン
 document.getElementById('modalCancel').addEventListener('click', function() {
     // モーダルを閉じる
     modalClass.add('hidden');
-    // store_optionを1に変更する->DBに登録できるようにする
+    // store_optionを0に変更する->DBに登録されないようにする
     clickedElement.querySelector('.store_option').value = 0;
     clickedElement.classList.remove('tmp-register');
-    // カレンダーに出勤時間を反映
-    var modalStartTime = document.getElementById('modal-start-time').value;
-    clickedElement.querySelector('.start-time').value = modalStartTime;
-    // カレンダーに退勤時間を反映
-    var modalEndTime = document.getElementById('modal-end-time').value;
-    clickedElement.querySelector('.end-time').value = modalEndTime;
+    // カレンダーから仮登録時間を削除/隠す
+    clickedElement.querySelector('.input-time').classList.add('hidden');
 });
