@@ -8,6 +8,7 @@ Alpine.start();
 
 let clickedElement;
 let clickedClass;
+let modalClass = document.getElementById('modal').classList;
 
 // カレンダーのセルをクリックしたときにモーダルを表示する
 document.getElementById('calendar-contents').addEventListener('click', function(event) {
@@ -25,7 +26,7 @@ document.getElementById('calendar-contents').addEventListener('click', function(
             document.getElementById('modalCancel').classList.add('hidden');
         }
         // モーダルを表示する＝hiddenを削除
-        document.getElementById('modal').classList.remove('hidden');
+        modalClass.remove('hidden');
         // モーダルに勤務日を表示
         var calendarWorkDate = clickedElement.querySelector('.work-date').value;
         document.getElementById('modal-date').innerHTML = calendarWorkDate;
@@ -38,15 +39,22 @@ document.getElementById('calendar-contents').addEventListener('click', function(
     }
 });
 
-// モーダルの閉じるボタンの実装
+// モーダルの閉じるボタン
 document.getElementById('modalClose').addEventListener('click', function() {
-    document.getElementById('modal').classList.add('hidden');
+    modalClass.add('hidden');
 });
 
-// モーダルの仮登録ボタンの実装
+// モーダル外をクリックした時にモーダルを閉じる
+document.getElementById('modal').addEventListener('click', function(event) {
+    if (event.target.closest('#modal-content') === null) {
+        modalClass.add('hidden');
+    }
+});
+
+// モーダルの仮登録ボタン
 document.getElementById('tmpRegister').addEventListener('click', function() {
     // モーダルを閉じる
-    document.getElementById('modal').classList.add('hidden');
+    modalClass.add('hidden');
     // store_optionを1に変更する->DBに登録できるようにする
     clickedElement.querySelector('.store_option').value = 1;
     clickedElement.classList.add('tmp-register');
@@ -58,10 +66,10 @@ document.getElementById('tmpRegister').addEventListener('click', function() {
     clickedElement.querySelector('.end-time').value = modalEndTime;
 });
 
-// モーダルのキャンセルボタンの実装
+// モーダルのキャンセルボタン
 document.getElementById('modalCancel').addEventListener('click', function() {
     // モーダルを閉じる
-    document.getElementById('modal').classList.add('hidden');
+    modalClass.add('hidden');
     // store_optionを1に変更する->DBに登録できるようにする
     clickedElement.querySelector('.store_option').value = 0;
     clickedElement.classList.remove('tmp-register');

@@ -1,7 +1,7 @@
 <!-- Modal container -->
 <div id="modal" class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
     <!-- Modal content -->
-    <div class="bg-white rounded-lg p-8">
+    <div id="modal-content" class="bg-white rounded-lg p-8">
         <h1 id="modal-date" class="text-2xl font-bold mb-4">日付</h1>
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="mt-2">
