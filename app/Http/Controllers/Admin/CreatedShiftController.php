@@ -15,23 +15,19 @@ class CreatedShiftController extends Controller
 {
     public function create()
     {
-    // Calendar
-    $nextMonth = Carbon::now()->addMonthNoOverflow()->format('Y-m');
-    $calendar = new Calendar($nextMonth);
-    $calendarTitle = $calendar->getCalenderTitle();
-    $days = $calendar->getDays();
-    $company = new Company;
-    $userId = Auth::id();
-    $companyId = $company->getCompanyIdByAdminId($userId);
-    $user = new User;
-    $employees = $user->getEmployees($companyId);
+        $nextMonth = Carbon::now()->addMonthNoOverflow()->format('Y-m');
+        $calendar = new Calendar($nextMonth);
+        $calendarTitle = $calendar->getCalenderTitle();
+        $days = $calendar->getDays();
+        $company = new Company;
+        $userId = Auth::id();
+        $companyId = $company->getCompanyIdByAdminId($userId);
+        $user = new User;
+        $employees = $user->getEmployees($companyId);
+        $requestedShift = new RequestedShift();
+        $fullRequestedShifts = $requestedShift->getFullRequestedShifts($nextMonth);
 
-    // Modal
-    $requestedShift = new requestedShift();
-    $shiftsWithMemberships = $requestedShift->joinCompanyMemberships();
-    $nextMonthDatesArray = $requestedShift->getNextMonthDatesArray();
-
-    return view('admin.shift.created_shift', compact('calendarTitle', 'days', 'nextMonth', 'employees', 'shiftsWithMemberships', 'nextMonthDatesArray'));
+        return view('admin.shift.created_shift', compact('calendarTitle', 'days', 'employees', 'fullRequestedShifts'));
     }
 
     public function store(Request $request)
@@ -41,10 +37,11 @@ class CreatedShiftController extends Controller
         $companyId = $company->getCompanyIdByAdminId($userId);
         $user = new User;
         $employees = $user->getEmployees($companyId);
-        $requestedShift = new requestedShift();
-        $nextMonthDatesArray = $requestedShift->getNextMonthDatesArray();
+        $nextMonth = Carbon::now()->addMonthNoOverflow()->format('Y-m');
+        $calendar = new Calendar($nextMonth);
+        $days = $calendar->getDays();
 
-        for($i = 0; $i < count($employees) * count($nextMonthDatesArray); $i++) {
+        for($i = 0; $i < count($employees) * count($days); $i++) {
             if ($request->store_option[$i] == "1") {
                 CreatedShift::create([
                     'company_membership_id' => $request->company_membership_id[$i],

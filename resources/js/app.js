@@ -6,148 +6,84 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-// モーダルを開く->実装できたが、クリックすると背景は黒くなるが、モーダルは表示されないことがある。(改善予定)
-// idが"calendar"のテーブル要素を取得
-var calendar = document.getElementById('calendar');
+let clickedElement;
+let clickedClass;
+let modalClass = document.getElementById('modal').classList;
 
-// idが"modal"の要素を取得
-var modal = document.getElementById('modal');
-
-// クリックイベントリスナーを追加
-calendar.addEventListener('click', function(event) {
-    // クリックされた要素のクラス名を取得し、スペースで分割
-    var clickedClass = event.target.className.split(' ');
-
-    // クリックされた要素の最初のクラス名を取得
-    var firstClickedClass = clickedClass[0];
-
-    // id="modal"内で、クリックされた要素のクラス名と同じidを持つ要素を取得
-    var modalElement = modal.querySelector('#' + firstClickedClass);
-
-    // クリックされた要素のクラス名と同じidを持つ要素が存在する場合にmodalを表示
-    if (modalElement) {
-        // "hidden"クラスを削除
-        modalElement.classList.remove('hidden');
-        modal.classList.remove('hidden');
-    }
-});
-
-// モーダルを閉じるまたは出退勤時間を仮登録
-// クリックイベントリスナーを追加
-modal.addEventListener('click', function(event) {
-    // クリックされた要素を取得
-    var clickedElement = event.target;
-    if (clickedElement.id == 'modalClose') {
-        // id="modal"の要素にclass="hidden"を付与
-        modal.classList.add('hidden');
-
-        // クリックされた要素の親要素の要素を取得
-        var parentElement = clickedElement.parentNode.parentNode;
-
-        // 親要素にclass="hidden"を付与
-        parentElement.classList.add('hidden');
-
-    } else if (clickedElement.id == 'tmpRegister') {
-        // id="modal"の要素にclass="hidden"を付与
-        modal.classList.add('hidden');
-
-        // クリックされた要素の親要素の要素を取得
-        var parentElement = clickedElement.parentNode.parentNode;
-
-        // 親要素の中からname="store_option[]"を持つinput要素を取得
-        var storeInput = parentElement.querySelector('input[name="store_option[]"]');
-
-        // input要素が存在するかを確認
-        if (storeInput) {
-            // valueを1に変更
-            storeInput.value = 1;
+// カレンダーのセルをクリックしたときにモーダルを表示する
+document.getElementById('calendar-contents').addEventListener('click', function(event) {
+    clickedElement = event.target;
+    clickedClass = clickedElement.className;
+    if (clickedClass.includes('calendar-cell-day')) {
+        // モーダルの仮登録ボタンとキャンセルボタンの切り替え
+        if (clickedClass.includes('tmp-register')) {
+            // キャンセルボタンの表示
+            document.getElementById('tmpRegister').classList.add('hidden');
+            document.getElementById('modalCancel').classList.remove('hidden');
+        } else {
+            // 仮登録ボタンの表示
+            document.getElementById('tmpRegister').classList.remove('hidden');
+            document.getElementById('modalCancel').classList.add('hidden');
         }
-
-        // 親要素にclass="hidden"を付与
-        parentElement.classList.add('hidden');
-
-        // クリックされた要素の親要素のid名を取得
-        var parentElementId = parentElement.id;
-
-        // .calendar-cell クラスを持つ要素を取得
-        var calendarElements = document.querySelectorAll('.calendar-cell');
-
-        // 各要素に対して処理
-        calendarElements.forEach(function(element) {
-            // クラスリストからクラス名の配列を取得
-            var classNames = element.classList;
-
-            if (classNames.contains(parentElementId)) {
-                classNames.add('tmp-register');
-            }
-        });
+        // モーダルを表示する＝hiddenを削除
+        modalClass.remove('hidden');
+        // モーダルに勤務日を表示
+        var calendarWorkDate = clickedElement.querySelector('.work-date').value;
+        document.getElementById('modal-date').innerHTML = calendarWorkDate;
+        // モーダルに出勤時間を表示
+        var calendarStartTime = clickedElement.querySelector('.start-time').innerHTML;
+        console.log(clickedElement);
+        console.log(clickedElement.querySelector('.start-time'));
+        document.getElementById('modal-start-time').value = calendarStartTime;
+        // モーダルに退勤時間を表示
+        var calendarEndTime = clickedElement.querySelector('.end-time').innerHTML;
+        document.getElementById('modal-end-time').value = calendarEndTime;
     }
 });
 
-// calendar表示の変更
-// ページが読み込まれた時のcalendarの表示
-window.addEventListener('DOMContentLoaded', function(){
-    // input-start-timeグループで指定
-    const inputBox = document.querySelectorAll('.input-start-time');
-    // console.log(inputBox[0]);
+// モーダルの閉じるボタン
+document.getElementById('modalClose').addEventListener('click', function() {
+    modalClass.add('hidden');
+});
 
-    // for分で要素数分ループ処理
-    for (let i = 0; i < inputBox.length; i++) {
-        var inputBoxId = inputBox[i].id;
-        var inputBoxElement = modal.querySelector('#' + inputBoxId);
-
-        // id="modal"内で、クリックされた要素のid名とクラス名を持つ要素を取得
-        var calendarElement = calendar.querySelector('.' + inputBoxId);
-        calendarElement.innerHTML = inputBoxElement.value;
-        // console.log(inputBoxElement.value);
+// モーダル外をクリックした時にモーダルを閉じる
+document.getElementById('modal').addEventListener('click', function(event) {
+    if (event.target.closest('#modal-content') === null) {
+        modalClass.add('hidden');
     }
 });
 
-// ページが読み込まれた時のcalendarの表示
-window.addEventListener('DOMContentLoaded', function(){
-    // input-start-timeグループで指定
-    const inputBox = document.querySelectorAll('.input-end-time');
-    // console.log(inputBox[0]);
+// モーダルの仮登録ボタン
+document.getElementById('tmpRegister').addEventListener('click', function() {
+    // モーダルを閉じる
+    modalClass.add('hidden');
 
-    // for分で要素数分ループ処理
-    for (let i = 0; i < inputBox.length; i++) {
-        var inputBoxId = inputBox[i].id;
-        var inputBoxElement = modal.querySelector('#' + inputBoxId);
+    // store_optionを1に変更する->DBに登録できるようにする
+    clickedElement.querySelector('.store_option').value = 1;
+    clickedElement.classList.add('tmp-register');
 
-        // id="modal"内で、クリックされた要素のid名とクラス名を持つ要素を取得
-        var calendarElement = calendar.querySelector('.' + inputBoxId);
-        calendarElement.innerHTML = inputBoxElement.value;
-    }
+    console.log(clickedElement);
+    console.log(clickedElement.querySelector('.input-start-time'));
+
+    // カレンダーに出勤時間を反映
+    var modalStartTime = document.getElementById('modal-start-time').value;
+    clickedElement.querySelector('.input-start-time').value = modalStartTime;
+
+    // カレンダーに退勤時間を反映
+    var modalEndTime = document.getElementById('modal-end-time').value;
+    clickedElement.querySelector('.input-end-time').value = modalEndTime;
+
+    // 仮登録した出退勤時間をカレンダーに表示
+    clickedElement.querySelector('.input-time').classList.remove('hidden');
 });
 
-// start_timeの入力が変更された時のcalendar表示の変更
-modal.addEventListener("input", function() {
-    // input-start-timeグループで指定
-    const inputBox = document.querySelectorAll('.input-start-time');
-
-    // for分で要素数分ループ処理
-    for (let i = 0; i < inputBox.length; i++) {
-        var inputBoxId = inputBox[i].id;
-        var inputBoxElement = modal.querySelector('#' + inputBoxId);
-
-        // id="modal"内で、クリックされた要素のid名とクラス名を持つ要素を取得
-        var calendarElement = calendar.querySelector('.' + inputBoxId);
-        calendarElement.innerHTML = inputBoxElement.value;
-    }
-});
-
-// end_timeの入力が変更された時のcalendar表示の変更
-modal.addEventListener("input", function() {
-    // input-start-timeグループで指定
-    const inputBox = document.querySelectorAll('.input-end-time');
-
-    // for分で要素数分ループ処理
-    for (let i = 0; i < inputBox.length; i++) {
-        var inputBoxId = inputBox[i].id;
-        var inputBoxElement = modal.querySelector('#' + inputBoxId);
-
-        // id="modal"内で、クリックされた要素のid名とクラス名を持つ要素を取得
-        var calendarElement = calendar.querySelector('.' + inputBoxId);
-        calendarElement.innerHTML = inputBoxElement.value;
-    }
+// モーダルのキャンセルボタン
+document.getElementById('modalCancel').addEventListener('click', function() {
+    // モーダルを閉じる
+    modalClass.add('hidden');
+    // store_optionを0に変更する->DBに登録されないようにする
+    clickedElement.querySelector('.store_option').value = 0;
+    clickedElement.classList.remove('tmp-register');
+    // カレンダーから仮登録時間を削除/隠す
+    clickedElement.querySelector('.input-time').classList.add('hidden');
 });

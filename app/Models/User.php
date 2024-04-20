@@ -48,7 +48,7 @@ class User extends Authenticatable
         return $this->belongsTo(CompanyMembership::class, 'id', 'user_id');
     }
 
-    // usersテーブルとcompany_membershipsテーブルを結合し、従業員情報を取得するメソッド
+    // usersテーブルとcompany_membershipsテーブルを結合し、従業員情報を取得するメソッド(結合したときにcompany_idを指定し、companyMembershipがnullでない場合をcollection型の配列として取得)
     public function getEmployees($company_id)
     {
         $userCompanyMemberships = User::with(['companyMembership' => function ($query) use ($company_id) {
