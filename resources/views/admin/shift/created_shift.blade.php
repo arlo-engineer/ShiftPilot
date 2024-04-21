@@ -18,7 +18,7 @@
         </div>
 
         <div class="bg-white flex justify-end w-full fixed -bottom-0 -right-0 py-4 pr-6 border-t font-bold shadow-outline text-sm">
-            <button type="submit" class="bg-my-main-color text-white px-4 py-3 rounded">下書きを確定する</button>
+            <input type="submit" id="shiftDetermine" class="bg-my-main-color text-white px-4 py-3 rounded" value="下書きを確定する">
         </div>
     </form>
 

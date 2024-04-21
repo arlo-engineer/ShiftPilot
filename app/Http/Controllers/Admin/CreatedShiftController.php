@@ -25,9 +25,10 @@ class CreatedShiftController extends Controller
         $user = new User;
         $employees = $user->getEmployees($companyId);
         $requestedShift = new RequestedShift();
-        $fullRequestedShifts = $requestedShift->getFullRequestedShifts($nextMonth);
+        $fullShifts = $requestedShift->getFullShifts($nextMonth);
+        // dd($fullShifts);
 
-        return view('admin.shift.created_shift', compact('calendarTitle', 'days', 'employees', 'fullRequestedShifts'));
+        return view('admin.shift.created_shift', compact('calendarTitle', 'days', 'employees', 'fullShifts'));
     }
 
     public function store(Request $request)

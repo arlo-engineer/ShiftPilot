@@ -25,7 +25,7 @@ class RequestedShift extends Model
     }
 
     // requested_shiftsテーブルに存在しない日付を補完したデータを取得
-    public function getFullRequestedShifts($nextMonth)
+    public function getFullShifts($nextMonth)
     {
         $company = new Company;
         $userId = Auth::id();
@@ -48,19 +48,35 @@ class RequestedShift extends Model
                 $RequestedWorkDays[] = $RequestShiftWithMembership->work_date;
             }
 
+            $CreateShiftWithMemberships = CreatedShift::with('companyMembership')->where('company_membership_id', $employee->id)->get();
+
+            $CreatedWorkDays = [];
+            foreach ($CreateShiftWithMemberships as $CreateShiftWithMembership) {
+                $CreatedWorkDays[] = $CreateShiftWithMembership->work_date;
+            }
+
             foreach ($dateOnlyArray as $date) {
-                if (in_array($date, $RequestedWorkDays)) {
-                    // 従業員が提出するシフト(requested_shifts_table)に入力/保存するときにhh:mmの型に限定すれば、substr関数を使用しなくてよくなる(要確認)
-                    $startTime = $RequestShiftWithMemberships->where('work_date', $date)->first()->start_time;
-                    $endTime = $RequestShiftWithMemberships->where('work_date', $date)->first()->end_time;
-                    $fullRequestedShifts[]=['employee_id'=>$employee->id, 'work_date'=>$date, 'start_time'=>substr($startTime, 0, 5), 'end_time'=>substr($endTime, 0, 5)];
+                if (in_array($date, $RequestedWorkDays) && in_array($date, $CreatedWorkDays)) {
+                    $requestedStartTime = $RequestShiftWithMemberships->where('work_date', $date)->first()->start_time;
+                    $requestedEndTime = $RequestShiftWithMemberships->where('work_date', $date)->first()->end_time;
+                    $createdStartTime = $CreateShiftWithMemberships->where('work_date', $date)->first()->start_time;
+                    $createdEndTime = $CreateShiftWithMemberships->where('work_date', $date)->first()->end_time;
+                    $fullShifts[]=['work_date'=>$date, 'employee_id'=>$employee->id, 'requested'=>['start_time'=>substr($requestedStartTime, 0, 5), 'end_time'=>substr($requestedEndTime, 0, 5)], 'created'=>['start_time'=>substr($createdStartTime, 0, 5), 'end_time'=>substr($createdEndTime, 0, 5)]];
+                } else if (!in_array($date, $RequestedWorkDays) && in_array($date, $CreatedWorkDays)) {
+                    $createdStartTime = $CreateShiftWithMemberships->where('work_date', $date)->first()->start_time;
+                    $createdEndTime = $CreateShiftWithMemberships->where('work_date', $date)->first()->end_time;
+                    $fullShifts[]=['employee_id'=>$employee->id, 'work_date'=>$date, 'requested'=>['start_time'=>'', 'end_time'=>''], 'created'=>['start_time'=>substr($createdStartTime, 0, 5), 'end_time'=>substr($createdEndTime, 0, 5)]];
+                } else if (in_array($date, $RequestedWorkDays) && !in_array($date, $CreatedWorkDays)) {
+                    $requestedStartTime = $RequestShiftWithMemberships->where('work_date', $date)->first()->start_time;
+                    $requestedEndTime = $RequestShiftWithMemberships->where('work_date', $date)->first()->end_time;
+                    $fullShifts[]=['employee_id'=>$employee->id, 'work_date'=>$date, 'requested'=>['start_time'=>substr($requestedStartTime, 0, 5), 'end_time'=>substr($requestedEndTime, 0, 5)], 'created'=>['start_time'=>'', 'end_time'=>'']];
                 } else {
-                    $fullRequestedShifts[]=['employee_id'=>$employee->id, 'work_date'=>$date, 'start_time'=>'', 'end_time'=>''];
+                    $fullShifts[]=['employee_id'=>$employee->id, 'work_date'=>$date, 'requested'=>['start_time'=>'', 'end_time'=>''], 'created'=>['start_time'=>'', 'end_time'=>'']];
                 }
             }
         }
 
-        return $fullRequestedShifts;
+        return $fullShifts;
     }
 
 

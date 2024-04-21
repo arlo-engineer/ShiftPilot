@@ -10,6 +10,14 @@ let clickedElement;
 let clickedClass;
 let modalClass = document.getElementById('modal').classList;
 
+// var is_note_msg=true;
+// window.onbeforeunload = function(event){
+//     if(is_note_msg){
+//         event = event || window.event;
+//         event.returnValue = '入力中のページから移動しますか？';
+//     }
+// }
+
 // カレンダーのセルをクリックしたときにモーダルを表示する
 document.getElementById('calendar-contents').addEventListener('click', function(event) {
     clickedElement = event.target;
@@ -32,8 +40,6 @@ document.getElementById('calendar-contents').addEventListener('click', function(
         document.getElementById('modal-date').innerHTML = calendarWorkDate;
         // モーダルに出勤時間を表示
         var calendarStartTime = clickedElement.querySelector('.start-time').innerHTML;
-        console.log(clickedElement);
-        console.log(clickedElement.querySelector('.start-time'));
         document.getElementById('modal-start-time').value = calendarStartTime;
         // モーダルに退勤時間を表示
         var calendarEndTime = clickedElement.querySelector('.end-time').innerHTML;
@@ -71,7 +77,11 @@ document.getElementById('tmpRegister').addEventListener('click', function() {
     clickedElement.querySelector('.input-end-time').value = modalEndTime;
 
     // 仮登録した出退勤時間をカレンダーに表示
-    clickedElement.querySelector('.input-time').classList.remove('invisible');
+    clickedElement.querySelector('.tmp-shift').classList.remove('invisible', 'hidden');
+
+    // 確定済みの出退勤時間をカレンダーから非表示
+    clickedElement.querySelector('.created-shift').classList.add('hidden');
+    console.log(clickedElement.querySelector('.created-shift').classList);
 });
 
 // モーダルのキャンセルボタン
@@ -82,5 +92,5 @@ document.getElementById('modalCancel').addEventListener('click', function() {
     clickedElement.querySelector('.store_option').value = 0;
     clickedElement.classList.remove('tmp-register');
     // カレンダーから仮登録時間を削除/隠す
-    clickedElement.querySelector('.input-time').classList.add('invisible');
+    clickedElement.querySelector('.tmp-shift').classList.add('invisible');
 });
