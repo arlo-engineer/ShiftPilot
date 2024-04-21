@@ -38,24 +38,31 @@ document.getElementById('calendar-contents').addEventListener('click', function(
         // モーダルに勤務日を表示
         var calendarWorkDate = clickedElement.querySelector('.work-date').value;
         document.getElementById('modal-date').innerHTML = calendarWorkDate;
-        // モーダルに出勤時間を表示
-        var calendarStartTime = clickedElement.querySelector('.start-time').innerHTML;
-        document.getElementById('modal-start-time').value = calendarStartTime;
-        // モーダルに退勤時間を表示
-        var calendarEndTime = clickedElement.querySelector('.end-time').innerHTML;
-        document.getElementById('modal-end-time').value = calendarEndTime;
+
+        if (clickedElement.querySelector('.start-time') && clickedElement.querySelector('.end-time')) {
+            // モーダルに出勤時間を表示
+            var calendarStartTime = clickedElement.querySelector('.start-time').innerHTML;
+            document.getElementById('modal-start-time').value = calendarStartTime;
+            // モーダルに退勤時間を表示
+            var calendarEndTime = clickedElement.querySelector('.end-time').innerHTML;
+            document.getElementById('modal-end-time').value = calendarEndTime;
+        }
     }
 });
 
 // モーダルの閉じるボタン
 document.getElementById('modalClose').addEventListener('click', function() {
     modalClass.add('hidden');
+    document.getElementById('modal-start-time').value = '';
+    document.getElementById('modal-end-time').value = '';
 });
 
 // モーダル外をクリックした時にモーダルを閉じる
 document.getElementById('modal').addEventListener('click', function(event) {
     if (event.target.closest('#modal-content') === null) {
         modalClass.add('hidden');
+        document.getElementById('modal-start-time').value = '';
+        document.getElementById('modal-end-time').value = '';
     }
 });
 
@@ -80,8 +87,13 @@ document.getElementById('tmpRegister').addEventListener('click', function() {
     clickedElement.querySelector('.tmp-shift').classList.remove('invisible', 'hidden');
 
     // 確定済みの出退勤時間をカレンダーから非表示
-    clickedElement.querySelector('.created-shift').classList.add('hidden');
-    console.log(clickedElement.querySelector('.created-shift').classList);
+    if (clickedElement.querySelector('.created-shift')) {
+        clickedElement.querySelector('.created-shift').classList.add('hidden');
+    }
+
+    // モーダル内の出退勤時間を空にする
+    document.getElementById('modal-start-time').value = '';
+    document.getElementById('modal-end-time').value = '';
 });
 
 // モーダルのキャンセルボタン
