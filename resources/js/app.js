@@ -62,9 +62,6 @@ document.getElementById('tmpRegister').addEventListener('click', function() {
     clickedElement.querySelector('.store_option').value = 1;
     clickedElement.classList.add('tmp-register');
 
-    console.log(clickedElement);
-    console.log(clickedElement.querySelector('.input-start-time'));
-
     // カレンダーに出勤時間を反映
     var modalStartTime = document.getElementById('modal-start-time').value;
     clickedElement.querySelector('.input-start-time').value = modalStartTime;
@@ -74,7 +71,7 @@ document.getElementById('tmpRegister').addEventListener('click', function() {
     clickedElement.querySelector('.input-end-time').value = modalEndTime;
 
     // 仮登録した出退勤時間をカレンダーに表示
-    clickedElement.querySelector('.input-time').classList.remove('hidden');
+    clickedElement.querySelector('.input-time').classList.remove('invisible');
 });
 
 // モーダルのキャンセルボタン
@@ -85,5 +82,5 @@ document.getElementById('modalCancel').addEventListener('click', function() {
     clickedElement.querySelector('.store_option').value = 0;
     clickedElement.classList.remove('tmp-register');
     // カレンダーから仮登録時間を削除/隠す
-    clickedElement.querySelector('.input-time').classList.add('hidden');
+    clickedElement.querySelector('.input-time').classList.add('invisible');
 });

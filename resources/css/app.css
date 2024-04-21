@@ -6,6 +6,10 @@
     @apply text-white bg-purple-700;
 } */
 
-.tmp-register {
+/* .tmp-register {
     @apply text-white bg-blue-700;
+} */
+
+.input-time {
+    @apply bg-my-main-color rounded py-1
 }
