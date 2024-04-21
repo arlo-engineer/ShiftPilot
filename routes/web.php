@@ -41,7 +41,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('/profile', [ProfileOfAdminController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileOfAdminController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileOfAdminController::class, 'destroy'])->name('profile.destroy');
-        Route::get('/shift', [CreatedShiftController::class, 'create'])->name('shift.create');
+        Route::get('/shift', [CreatedShiftController::class, 'show'])->name('shift.show');
         Route::post('/shift', [CreatedShiftController::class, 'store'])->name('shift.store');
     });
 

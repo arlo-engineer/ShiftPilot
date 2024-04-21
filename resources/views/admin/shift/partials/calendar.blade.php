@@ -1,18 +1,16 @@
-{{-- <h2 class="calender-title text-center">{{ $calendarTitle }}</h2> --}}
 <h2 class="calender-title tracking-wider flex justify-center">
     <div class="inline-flex items-center border border-gray-400 rounded-full px-2 py-1">
-        <div class="w-6"><img src="{{ asset('img/calendar-left-arrow.png') }}" alt=""></div>
+        <div class="w-6"><a href="{{ url('/admin/shift?date=' . $calendar->getPreviousMonth()) }}"><img src="{{ asset('img/calendar-left-arrow.png') }}" alt=""></a></div>
         <div class="px-8">
-            {{-- 表示されているシフトの年月日を動的に表示 --}}
-            <p class="text-xs">2024年</p>
-            <p class="font-bold">5月1日(水)</p>
+            <p class="text-xs">{{ $days[0]->format('Y年') }}</p>
+            <p class="font-bold">{{ $days[0]->format('n月j日') }}</p>
         </div>
         <span>-</span>
         <div class="px-8">
-            <p class="text-xs">2024年</p>
-            <p class="font-bold">5月31日(金)</p>
+            <p class="text-xs">{{ end($days)->format('Y年') }}</p>
+            <p class="font-bold">{{ end($days)->format('n月j日') }}</p>
         </div>
-        <div class="w-6"><img src="{{ asset('img/calendar-right-arrow.png') }}" alt=""></div>
+        <div class="w-6"><a href="{{ url('/admin/shift?date=' . $calendar->getNextMonth()) }}"><img src="{{ asset('img/calendar-right-arrow.png') }}" alt=""></a></div>
     </div>
 </h2>
 

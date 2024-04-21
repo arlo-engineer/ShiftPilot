@@ -25,7 +25,7 @@
                 <!-- Navigatiton -->
                 <nav class="fixed bg-gray-700 w-48 h-full z-10">
                     <div class="hidden space-x-8 sm:-my-px sm:flex">
-                        <x-nav-link :href="route('admin.shift.create')" :active="request()->routeIs('admin.shift.create')">
+                        <x-nav-link :href="route('admin.shift.show')" :active="request()->routeIs('admin.shift.show')">
                             <div class="w-5"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
                             <p class="pl-2">シフト管理</p>
                         </x-nav-link>

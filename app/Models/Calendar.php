@@ -36,4 +36,12 @@ class Calendar extends Model
 
 		return $days;
 	}
+
+    public function getNextMonth() {
+        return $this->carbon->copy()->addMonthsNoOverflow()->format('Y-m');
+    }
+
+    public function getPreviousMonth() {
+        return $this->carbon->copy()->subMonthsNoOverflow()->format('Y-m');
+    }
 }
