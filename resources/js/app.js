@@ -6,17 +6,27 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
+let navButtonElement = document.getElementById('navButton');
+let navContentElement = document.getElementById('navContent');
+let nameColumnElements = document.getElementsByClassName('nameColumn');
+
+// ハンバーガーメニューを開いているときに、カレンダーの名前カラムが表示されないようにする
+// ＝ハンバーガーメニューが開かれているときにカレンダーの名前カラムのstickyクラスを外す
+navButtonElement.addEventListener('click', function() {
+    if (navContentElement.classList.contains('block')) {
+        for (var i = 0; i < nameColumnElements.length; i++) {
+            nameColumnElements[i].classList.remove('sticky');
+        }
+    } else {
+        for (var i = 0; i < nameColumnElements.length; i++) {
+            nameColumnElements[i].classList.add('sticky');
+        }
+    }
+})
+
 let clickedElement;
 let clickedClass;
 let modalClass = document.getElementById('modal').classList;
-
-// var is_note_msg=true;
-// window.onbeforeunload = function(event){
-//     if(is_note_msg){
-//         event = event || window.event;
-//         event.returnValue = '入力中のページから移動しますか？';
-//     }
-// }
 
 // カレンダーのセルをクリックしたときにモーダルを表示する
 document.getElementById('calendar-contents').addEventListener('click', function(event) {

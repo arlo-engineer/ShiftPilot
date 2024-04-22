@@ -18,17 +18,13 @@ class CreatedShiftController extends Controller
         $date = $request->input('date');
         if ($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)) {
             $date = $date . '-01';
+        } else if (!$date) {
+            $date = Carbon::now()->format('Y-m-d');
         } else {
             $date = null;
         }
-        if (!$date) {
-            $date = Carbon::now()->format('Y-m-d');
-        }
 
-        // $nextMonth = Carbon::now()->addMonthNoOverflow()->format('Y-m');
-        // $nextMonth = Carbon::createFromFormat('Y-m-d', $date)->addMonthNoOverflow()->format('Y-m');
         $month = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
-        // dd($request, $date, $nextMonth);
         $calendar = new Calendar($month);
         $calendarTitle = $calendar->getCalenderTitle();
         $days = $calendar->getDays();
@@ -48,14 +44,12 @@ class CreatedShiftController extends Controller
         $date = $request->input('date');
         if ($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)) {
             $date = $date . '-01';
+        } else if (!$date) {
+            $date = Carbon::now()->format('Y-m-d');
         } else {
             $date = null;
         }
-        if (!$date) {
-            $date = Carbon::now()->format('Y-m-d');
-        }
 
-        // $nextMonth = Carbon::now()->addMonthNoOverflow()->format('Y-m');
         $month = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
         $calendar = new Calendar($month);
         $days = $calendar->getDays();

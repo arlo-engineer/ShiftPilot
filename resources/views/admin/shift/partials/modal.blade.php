@@ -1,5 +1,5 @@
 <!-- Modal container -->
-<div id="modal" class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+<div id="modal" class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center z-20 hidden">
     <!-- Modal content -->
     <div id="modal-content" class="bg-white rounded-lg p-8">
         <h1 id="modal-date" class="text-2xl font-bold mb-4">日付</h1>

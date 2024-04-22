@@ -9,3 +9,7 @@
 /* .tmp-register {
     @apply text-white bg-blue-700;
 } */
+
+.shadow-custom {
+    box-shadow: 0px -2px 5px #E2E2E2 ;
+}

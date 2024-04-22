@@ -34,7 +34,7 @@
     <table id="calendar" class="w-full text-left whitespace-no-wrap border-separate border-spacing-0">
         <thead>
             <tr>
-                <th class="sticky top-0 -left-0 border border-gray-400 px-4 py-3 tracking-wider font-medium text-sm bg-gray-100 whitespace-nowrap min-w-48">名前</th>
+                <th class="nameColumn sticky top-0 -left-0 border border-gray-400 px-4 py-3 tracking-wider font-medium text-sm bg-gray-100 whitespace-nowrap sm:min-w-48">名前</th>
                 @foreach ($days as $day)
                 <th class="day-{{ $day->format("D") }} border-t border-r border-b border-gray-400 px-4 py-3 tracking-wider font-bold text-sm bg-gray-100 text-center">
                     <p class="day">{{ $day->format("j") }} ({{ $day->locale('ja')->isoFormat("ddd") }})</p>
@@ -45,14 +45,14 @@
         <tbody id="calendar-contents">
             @foreach ($employees as $employee)
             <tr>
-                <td class="sticky top-0 -left-0 px-4 py-3 bg-white border-l border-b border-r border-gray-400 whitespace-nowrap min-w-48">
+                <td class="nameColumn sticky top-0 -left-0 px-4 py-3 bg-white border-l border-b border-r border-gray-400 whitespace-nowrap sm:min-w-48">
                     <p class="font-bold">{{ $employee->name }}</p>
                     {{-- 確定シフトと下書きシフトの出退勤時間の和を動的に表示(実装予定) --}}
                     <p class="text-xs">13時間20分</p>
                 </td>
                 @foreach ($fullShifts as $fullShift)
                     @if ($fullShift['employee_id'] == $employee->id)
-                        <td class="calendar-cell-day day-{{ $day->format('D') }} border-r border-b border-gray-400 px-1 py-2 cursor-pointer text-center text-sm">
+                        <td class="calendar-cell-day day-{{ $day->format("D") }} border-r border-b border-gray-400 px-1 py-2 cursor-pointer text-center text-sm">
                             {{-- store_optionのvalueが1のときに保存する --}}
                             <input type="hidden" name="store_option[]" value="0" class="store_option">
                             <input type="hidden" name="company_membership_id[]" value="{{ $fullShift['employee_id'] }}">
@@ -76,10 +76,16 @@
                                 </div>
                             @endif
                             @if (!empty($fullShift['requested']['start_time']) || !empty($fullShift['requested']['end_time']))
-                            <div class="flex justify-center text-my-main-color border-b-4 border-my-sub-color pointer-events-none pt-2">
+                            <div class="flex justify-center text-my-main-color border-b-4 border-my-sub-color pt-2 pointer-events-none">
                                 <p class="start-time w-11">{{ $fullShift['requested']['start_time'] }}</p>
                                 <span>-</span>
                                 <p class="end-time w-11">{{ $fullShift['requested']['end_time'] }}</p>
+                            </div>
+                            @else
+                            <div class="flex justify-center text-my-main-color border-b-4 border-transparent pt-2 pointer-events-none invisible">
+                                <p class="start-time w-11"></p>
+                                <span>-</span>
+                                <p class="end-time w-11"></p>
                             </div>
                             @endif
                         </td>

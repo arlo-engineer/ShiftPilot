@@ -23,37 +23,27 @@
 
             <div class="flex pt-10">
                 <!-- Navigatiton -->
-                <nav class="fixed bg-gray-700 w-48 h-full z-10">
-                    <div class="hidden space-x-8 sm:-my-px sm:flex">
-                        <x-nav-link :href="route('admin.shift.show')" :active="request()->routeIs('admin.shift.show')">
-                            <div class="w-5"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
-                            <p class="pl-2">シフト管理</p>
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:flex">
-                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                            <div class="w-5"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
-                            <p class="pl-2">スタッフ管理</p>
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:flex">
-                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                            <div class="pl-5"></div>
-                            <p class="pl-2">協働NGリスト</p>
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:flex">
-                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                            <div class="pl-5"></div>
-                            <p class="pl-2">スタッフ管理テスト</p>
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:flex">
-                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                            <div class="w-5"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
-                            <p class="pl-2">設定</p>
-                        </x-nav-link>
-                    </div>
+                <nav class="hidden fixed bg-gray-700 w-48 h-full z-10 sm:block">
+                    <x-nav-link :href="route('admin.shift.show')" :active="request()->routeIs('admin.shift.show')">
+                        <div class="w-5"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
+                        <p class="pl-2">シフト管理</p>
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                        <div class="w-5"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
+                        <p class="pl-2">スタッフ管理</p>
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                        <div class="pl-5"></div>
+                        <p class="pl-2">協働NGリスト</p>
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                        <div class="pl-5"></div>
+                        <p class="pl-2">スタッフ管理テスト</p>
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                        <div class="w-5"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
+                        <p class="pl-2">設定</p>
+                    </x-nav-link>
                     <div class="flex justify-end w-48 pr-4 bg-gray-800 py-4 fixed -bottom-0">
                         <img class="w-6" src="{{ asset('img/nav-opened-arrow.png') }}" alt="右矢印">
                     </div>
@@ -61,7 +51,7 @@
 
             </div>
             <!-- Page Content -->
-            <main class="ml-48">
+            <main class="sm:ml-48">
                 {{ $slot }}
             </main>
         </div>
