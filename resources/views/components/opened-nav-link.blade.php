@@ -2,12 +2,8 @@
 
 @php
 $classes = ($active ?? false)
-            // 開いている時
             ? 'inline-flex items-center pl-5 py-4 bg-gray-500 text-sm font-medium leading-5 text-white w-full focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out'
             : 'inline-flex items-center pl-5 py-4 border-transparent text-sm font-medium leading-5 text-white w-full hover:bg-gray-500 focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out';
-            // 閉じている時
-            // ? 'block py-4 bg-gray-500 text-sm font-medium leading-5 text-white w-full focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out'
-            // : 'block py-4 border-transparent text-sm font-medium leading-5 text-white w-full hover:bg-gray-500 focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out';
 @endphp
 
 <a {{ $attributes->merge(['class' => $classes]) }}>

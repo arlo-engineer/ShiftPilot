@@ -7,20 +7,11 @@ window.Alpine = Alpine;
 Alpine.start();
 
 let navButtonElement = document.getElementById('navButton');
-let navContentElement = document.getElementById('navContent');
 let nameColumnElements = document.getElementsByClassName('nameColumn');
 
-// ハンバーガーメニューを開いているときに、カレンダーの名前カラムが表示されないようにする
-// ＝ハンバーガーメニューが開かれているときにカレンダーの名前カラムのstickyクラスを外す
 navButtonElement.addEventListener('click', function() {
-    if (navContentElement.classList.contains('block')) {
-        for (var i = 0; i < nameColumnElements.length; i++) {
-            nameColumnElements[i].classList.remove('sticky');
-        }
-    } else {
-        for (var i = 0; i < nameColumnElements.length; i++) {
-            nameColumnElements[i].classList.add('sticky');
-        }
+    for (var i = 0; i < nameColumnElements.length; i++) {
+        nameColumnElements[i].classList.toggle('sticky');
     }
 })
 
