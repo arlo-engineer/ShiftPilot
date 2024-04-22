@@ -47,7 +47,7 @@
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" id="navButton" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open" id="navButton" class="inline-flex items-center justify-center p-2 rounded-md text-white focus:outline-none">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -60,30 +60,28 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" id="navContent" class="hidden sm:hidden bg-white">
         <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('admin.shift.show')" :active="request()->routeIs('admin.shift.show')">
+                <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
+                <p class="pl-2">シフト管理</p>
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                {{ __('Dashboard') }}
+                <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
+                <p class="pl-2">スタッフ管理</p>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                <div class="pl-5"></div>
+                <p class="pl-2">協働NGリスト</p>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                <div class="pl-5"></div>
+                <p class="pl-2">スタッフ管理テスト</p>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
+                <p class="pl-2">設定</p>
             </x-responsive-nav-link>
         </div>
-        <x-nav-link :href="route('admin.shift.show')" :active="request()->routeIs('admin.shift.show')">
-            <div class="w-5"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
-            <p class="pl-2">シフト管理</p>
-        </x-nav-link>
-        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-            <div class="w-5"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
-            <p class="pl-2">スタッフ管理</p>
-        </x-nav-link>
-        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-            <div class="pl-5"></div>
-            <p class="pl-2">協働NGリスト</p>
-        </x-nav-link>
-        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-            <div class="pl-5"></div>
-            <p class="pl-2">スタッフ管理テスト</p>
-        </x-nav-link>
-        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-            <div class="w-5"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
-            <p class="pl-2">設定</p>
-        </x-nav-link>
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
