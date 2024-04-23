@@ -64,7 +64,7 @@
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
                 <p class="sm:pl-2">シフト管理</p>
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+            <x-responsive-nav-link :href="route('admin.employees.index')" :active="request()->routeIs('admin.employees.index')">
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
                 <p class="sm:pl-2">スタッフ管理</p>
             </x-responsive-nav-link>

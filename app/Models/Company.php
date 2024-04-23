@@ -24,7 +24,7 @@ class Company extends Model
         return $this->hasMany(CompanyMembership::class, 'company_id', 'id');
     }
 
-    public function getCompanyIdByAdminId($admin_id = 1)
+    public function getCompanyIdByAdminId($admin_id)
     {
         return Company::where('admin_id', $admin_id)->pluck('id');
     }

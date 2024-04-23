@@ -5,7 +5,7 @@
         <div class="w-5 mx-auto"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
         <p class="text-[7px]">シフト管理</p>
     </x-closed-nav-link>
-    <x-closed-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+    <x-closed-nav-link :href="route('admin.employees.index')" :active="request()->routeIs('admin.employees.index')">
         <div class="w-5 mx-auto"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
         <p class="text-[7px]">スタッフ管理</p>
     </x-closed-nav-link>
@@ -24,7 +24,7 @@
         <div class="w-5"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
         <p class="pl-2">シフト管理</p>
     </x-opened-nav-link>
-    <x-opened-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+    <x-opened-nav-link :href="route('admin.employees.index')" :active="request()->routeIs('admin.employees.index')">
         <div class="w-5"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
         <p class="pl-2">スタッフ管理</p>
     </x-opened-nav-link>

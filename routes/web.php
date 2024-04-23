@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProfileController as ProfileOfAdminController;
 use App\Http\Controllers\Admin\CreatedShiftController;
+use App\Http\Controllers\Admin\CompanyMembershipController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::delete('/profile', [ProfileOfAdminController::class, 'destroy'])->name('profile.destroy');
         Route::get('/shift', [CreatedShiftController::class, 'show'])->name('shift.show');
         Route::post('/shift', [CreatedShiftController::class, 'store'])->name('shift.store');
+        Route::get('/employees', [CompanyMembershipController::class, 'index'])->name('employees.index');
+        Route::get('/employees/create', [CompanyMembershipController::class, 'create'])->name('employees.create');
     });
 
     require __DIR__.'/admin.php';
