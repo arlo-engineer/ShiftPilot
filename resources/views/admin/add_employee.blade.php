@@ -10,6 +10,11 @@
                     @csrf
                     <div>
                         <label for="name">氏名</label>
+                        @if ($errors->has('name'))
+                            @foreach ($errors->get('name') as $message)
+                            {{ $message }}<br>
+                            @endforeach
+                        @endif
                         <input type="text" id="name" name="name" placeholder="山田 太郎">
                     </div>
                     <div>
@@ -24,6 +29,15 @@
                         <input type="submit" value="追加する" class="p-3 bg-my-main-color text-sm text-white rounded font-bold">
                     </div>
                 </form>
+                @if ($errors->any())
+                    <div>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
