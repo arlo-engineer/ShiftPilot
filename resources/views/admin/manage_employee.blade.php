@@ -2,7 +2,7 @@
     <div class="mt-12">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="font-bold tracking-wider">
-                シフト管理
+                スタッフ管理
             </h2>
             <p class="text-sm">合計: {{ count($employees) }}人</p>
 
@@ -31,7 +31,7 @@
         </div>
 
         <div class="shadow-custom bg-white flex justify-end w-full fixed -bottom-0 -left-0 py-4 pr-6 font-bold text-sm">
-            <a href="" class="text-my-main-color">
+            <a href="{{ route('admin.employees.create') }}" class="text-my-main-color">
                 <p>スタッフを追加する</p>
             </a>
         </div>

@@ -46,6 +46,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/shift', [CreatedShiftController::class, 'store'])->name('shift.store');
         Route::get('/employees', [CompanyMembershipController::class, 'index'])->name('employees.index');
         Route::get('/employees/create', [CompanyMembershipController::class, 'create'])->name('employees.create');
+        Route::post('/employees', [CompanyMembershipController::class, 'store'])->name('employees.store');
     });
 
     require __DIR__.'/admin.php';

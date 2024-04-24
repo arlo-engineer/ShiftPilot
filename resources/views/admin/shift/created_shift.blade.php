@@ -9,7 +9,7 @@
         @csrf
         <div class="pt-8">
             <div class="max-w-7xl mx-auto px-2">
-                    @include('admin.shift.partials.calendar')
+                @include('admin.shift.partials.calendar')
             </div>
         </div>
 
