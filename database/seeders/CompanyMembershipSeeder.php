@@ -17,17 +17,17 @@ class CompanyMembershipSeeder extends Seeder
             [
                 'company_id' => '1',
                 'user_id' => '1',
-                'skills' => '3',
+                'skills' => '新米',
             ],
             [
                 'company_id' => '1',
                 'user_id' => '2',
-                'skills' => '2',
+                'skills' => '中堅',
             ],
             [
                 'company_id' => '2',
                 'user_id' => '3',
-                'skills' => '1',
+                'skills' => '一人前',
             ],
         ]);
     }

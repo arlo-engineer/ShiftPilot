@@ -6,7 +6,7 @@
             </h2>
 
             <div class="mt-2">
-                <form method="POST" action="{{ route('admin.employees.store') }}">
+                <form method="POST" action="{{ route('admin.employees.update', ['id' => $employee->companyMembership->id]) }}">
                     @csrf
                     <div>
                         <label for="name">氏名</label>
@@ -15,11 +15,11 @@
                             {{ $message }}<br>
                             @endforeach
                         @endif
-                        <input type="text" id="name" name="name" placeholder="山田 太郎">
+                        <input type="text" id="name" name="name" value="{{ $employee->name }}">
                     </div>
                     <div>
                         <label for="email">メールアドレス</label>
-                        <input type="email" id="email" name="email" placeholder="test@test.com">
+                        <input type="email" id="email" name="email" value="{{ $employee->email }}">
                     </div>
 
                     <div class="flex">
@@ -37,8 +37,12 @@
                         </div>
                     </div>
 
+                    <a href="" class="text-sm text-my-main-color">スタッフを退職させる</a>
                     <div>
-                        <input type="submit" value="追加する" class="p-3 bg-my-main-color text-sm text-white rounded font-bold">
+                        <input type="submit" value="保存する" class="cursor-pointer p-3 bg-my-main-color text-sm text-white rounded font-bold">
+                    </div>
+                    <div class="mt-5">
+                        <a href="{{ route('admin.employees.index') }}" class="cursor-pointer p-3 text-sm rounded border">キャンセル</a>
                     </div>
 
                 </form>

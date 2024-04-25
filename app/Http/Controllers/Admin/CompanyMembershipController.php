@@ -20,7 +20,6 @@ class CompanyMembershipController extends Controller
         $companyId = $company->getCompanyIdByAdminId($userId);
         $user = new User;
         $employees = $user->getEmployees($companyId);
-        // dd($employees);
 
         return view('admin.manage_employee', compact('employees'));
     }
@@ -35,13 +34,11 @@ class CompanyMembershipController extends Controller
         $request->validate([
             'name' => ['required', new ExistedNameInUsers],
             'email' => ['required', new ExistedEmailInUsers, new UniqueEmailInCompanyMemberShips],
-            'skills' => ['required', 'numeric'],
+            // 'skills' => ['required'],
         ],
         [
             'name.required' => '名前は必須です。',
             'email.required' => 'メールアドレスは必須です。',
-            'skills.required' => 'スキルは必須です。',
-            'skills.numeric' => 'スキルは数字を入力してください。',
         ]);
 
         $requestUserId = User::where('email', $request->email)->pluck('id')->first();
@@ -52,6 +49,33 @@ class CompanyMembershipController extends Controller
             'user_id' => $requestUserId,
             'skills' => $request->skills,
         ]);
+
+        return to_route('admin.employees.index');
+    }
+
+    public function edit(string $id)
+    {
+        $company = new Company;
+        $userId = Auth::id();
+        $companyId = $company->getCompanyIdByAdminId($userId);
+        $user = new User;
+        $employees = $user->getEmployees($companyId);
+
+        foreach ($employees as $employee) {
+            if ($employee->CompanyMembership->id == $id) {
+                return view('admin.edit_employee', compact('employee'));
+            }
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        // $updateBook = $this->book->updateBook($request, $book);
+
+        $contact = CompanyMembership::find($id);
+
+        $contact->skills = $request->skills;
+        $contact->save();
 
         return to_route('admin.employees.index');
     }

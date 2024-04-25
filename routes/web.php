@@ -47,6 +47,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('/employees', [CompanyMembershipController::class, 'index'])->name('employees.index');
         Route::get('/employees/create', [CompanyMembershipController::class, 'create'])->name('employees.create');
         Route::post('/employees', [CompanyMembershipController::class, 'store'])->name('employees.store');
+        Route::get('/employees/{id}', [CompanyMembershipController::class, 'edit'])->name('employees.edit');
+        Route::post('/employees/{id}', [CompanyMembershipController::class, 'update'])->name('employees.update');
     });
 
     require __DIR__.'/admin.php';
