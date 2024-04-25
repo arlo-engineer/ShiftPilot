@@ -33,6 +33,11 @@
                     </div>
 
                     <div>
+                        <label for="remarks">メモ</label><br>
+                        <textarea id="remarks" name="remarks">{{ $employee->companyMembership->remarks }}</textarea>
+                    </div>
+
+                    <div>
                         <input type="submit" value="保存する" class="cursor-pointer p-3 bg-my-main-color text-sm text-white rounded font-bold">
                     </div>
                     <div class="mt-5">

@@ -38,6 +38,11 @@
                     </div>
 
                     <div>
+                        <label for="remarks">メモ</label><br>
+                        <textarea id="remarks" name="remarks"></textarea>
+                    </div>
+
+                    <div>
                         <input type="submit" value="追加する" class="p-3 bg-my-main-color text-sm text-white rounded font-bold">
                     </div>
 

@@ -48,6 +48,7 @@ class CompanyMembershipController extends Controller
             'company_id' => $requestCompanyId,
             'user_id' => $requestUserId,
             'skills' => $request->skills,
+            'remarks' => $request->remarks,
         ]);
 
         return to_route('admin.employees.index');
@@ -76,6 +77,7 @@ class CompanyMembershipController extends Controller
         $contact = CompanyMembership::find($id);
 
         $contact->skills = $request->skills;
+        $contact->remarks = $request->remarks;
         $contact->save();
 
         return to_route('admin.employees.index');

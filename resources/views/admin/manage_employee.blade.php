@@ -22,7 +22,7 @@
                             <td class="px-4 py-3 border-b border-gray-300 whitespace-nowrap"><a href="{{ route('admin.employees.edit', ['id'=>$employee->companyMembership->id]) }}" class="text-[#1558d6] hover:underline">{{ $employee->name }}</a></td>
                             <td class="px-4 py-3 border-b border-gray-300 whitespace-nowrap">{{ $employee->email }}</td>
                             <td class="px-4 py-3 border-b border-gray-300 whitespace-nowrap">{{ $employee->companyMembership->skills }}</td>
-                            <td class="px-4 py-3 border-b border-gray-300 whitespace-nowrap">testtest</td>
+                            <td class="px-4 py-3 border-b border-gray-300 whitespace-nowrap">{{ $employee->companyMembership->remarks }}</td>
                         </tr>
                         @endforeach
                     </tbody>

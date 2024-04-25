@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('company_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->text('skills'); // 従業員のスキル
+            $table->text('remarks');
             $table->timestamps();
         });
     }
