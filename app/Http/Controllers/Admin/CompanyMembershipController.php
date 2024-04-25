@@ -72,10 +72,20 @@ class CompanyMembershipController extends Controller
     {
         // $updateBook = $this->book->updateBook($request, $book);
 
+        // $contact変数名は後ほど変更
         $contact = CompanyMembership::find($id);
 
         $contact->skills = $request->skills;
         $contact->save();
+
+        return to_route('admin.employees.index');
+    }
+
+    public function destroy($id)
+    {
+        // $contact変数名は後ほど変更
+        $contact = CompanyMembership::find($id);
+        $contact->delete();
 
         return to_route('admin.employees.index');
     }

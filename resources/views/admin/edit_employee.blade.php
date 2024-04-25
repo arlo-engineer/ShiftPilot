@@ -10,16 +10,11 @@
                     @csrf
                     <div>
                         <label for="name">氏名</label>
-                        @if ($errors->has('name'))
-                            @foreach ($errors->get('name') as $message)
-                            {{ $message }}<br>
-                            @endforeach
-                        @endif
-                        <input type="text" id="name" name="name" value="{{ $employee->name }}">
+                        <input type="text" id="name" name="name" value="{{ $employee->name }}" class="pointer-events-none">
                     </div>
                     <div>
                         <label for="email">メールアドレス</label>
-                        <input type="email" id="email" name="email" value="{{ $employee->email }}">
+                        <input type="email" id="email" name="email" value="{{ $employee->email }}" class="pointer-events-none">
                     </div>
 
                     <div class="flex">
@@ -37,7 +32,6 @@
                         </div>
                     </div>
 
-                    <a href="" class="text-sm text-my-main-color">スタッフを退職させる</a>
                     <div>
                         <input type="submit" value="保存する" class="cursor-pointer p-3 bg-my-main-color text-sm text-white rounded font-bold">
                     </div>
@@ -46,15 +40,11 @@
                     </div>
 
                 </form>
-                @if ($errors->any())
-                    <div>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+
+                <form method="POST" action="{{ route('admin.employees.destroy', ['id' => $employee->companyMembership->id]) }}">
+                    @csrf
+                    <input type="submit" value="スタッフを退職させる" class="text-sm text-my-main-color cursor-pointer">
+                </form>
             </div>
         </div>
     </div>
