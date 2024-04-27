@@ -70,6 +70,6 @@ class CreatedShiftController extends Controller
             }
         }
 
-        return to_route('admin.shift.show');
+        return to_route('admin.shift.index');
     }
 }
