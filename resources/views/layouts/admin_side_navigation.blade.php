@@ -1,7 +1,7 @@
 <!-- Side Navigatiton -->
 <!-- 閉じているとき -->
 <nav id="closedSideNav" class="hidden fixed bg-gray-700 w-12 h-full z-10 text-center sm:block">
-    <x-closed-nav-link :href="route('admin.shift.show')" :active="request()->routeIs('admin.shift.show')">
+    <x-closed-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
         <div class="w-5 mx-auto"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
         <p class="text-[7px]">シフト管理</p>
     </x-closed-nav-link>
@@ -9,7 +9,7 @@
         <div class="w-5 mx-auto"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
         <p class="text-[7px]">スタッフ管理</p>
     </x-closed-nav-link>
-    <x-closed-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+    <x-closed-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
         <div class="w-5 mx-auto"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
         <p class="text-[7px]">設定</p>
     </x-closed-nav-link>
@@ -20,7 +20,7 @@
 
 <!-- 開いているとき -->
 <nav id="openedSideNav" class="hidden fixed bg-gray-700 w-48 h-full z-10 sm:hidden">
-    <x-opened-nav-link :href="route('admin.shift.show')" :active="request()->routeIs('admin.shift.show')">
+    <x-opened-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
         <div class="w-5"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
         <p class="pl-2">シフト管理</p>
     </x-opened-nav-link>
@@ -28,15 +28,15 @@
         <div class="w-5"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
         <p class="pl-2">スタッフ管理</p>
     </x-opened-nav-link>
-    <x-opened-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+    <x-opened-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
         <div class="pl-5"></div>
         <p class="pl-2">協働NGリスト</p>
     </x-opened-nav-link>
-    <x-opened-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+    <x-opened-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
         <div class="pl-5"></div>
         <p class="pl-2">スタッフ管理テスト</p>
     </x-opened-nav-link>
-    <x-opened-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+    <x-opened-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
         <div class="w-5"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
         <p class="pl-2">設定</p>
     </x-opened-nav-link>

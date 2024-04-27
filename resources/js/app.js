@@ -107,3 +107,9 @@ document.getElementById('modalCancel').addEventListener('click', function() {
     // カレンダーから仮登録時間を削除/隠す
     clickedElement.querySelector('.tmp-shift').classList.add('invisible');
 });
+
+// バリデーションエラーメッセージで"名前やメールアドレスが一致するユーザーはいません。"が2つ表示されるときに、1つのみの表示とする機能
+// var validateError = document.getElementsByClassName('validateError');
+// if (validateError[0].innerText == "名前やメールアドレスが一致するユーザーはいません。" && validateError[1].innerText == "名前やメールアドレスが一致するユーザーはいません。") {
+//     validateError[0].classList.add('hidden');
+// }

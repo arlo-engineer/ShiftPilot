@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('admin.dashboard') }}">
+                    <a href="{{ route('admin.shift.index') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
@@ -60,7 +60,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" id="navContent" class="hidden sm:hidden bg-white">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('admin.shift.show')" :active="request()->routeIs('admin.shift.show')">
+            <x-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
                 <p class="sm:pl-2">シフト管理</p>
             </x-responsive-nav-link>
@@ -68,15 +68,15 @@
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
                 <p class="sm:pl-2">スタッフ管理</p>
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+            <x-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
                 <div class="pl-5"></div>
                 <p class="sm:pl-2">協働NGリスト</p>
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+            <x-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
                 <div class="pl-5"></div>
                 <p class="sm:pl-2">スタッフ管理テスト</p>
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+            <x-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
                 <p class="sm:pl-2">設定</p>
             </x-responsive-nav-link>

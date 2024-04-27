@@ -16,7 +16,8 @@ class ExistedNameInUsers implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (!(User::where('name', $value))->exists()) {
-            $fail('名前が一致するユーザーはいません。');
+            // $fail('名前が一致するユーザーはいません。');
+            $fail('名前やメールアドレスが一致するユーザーはいません。');
         }
     }
 }

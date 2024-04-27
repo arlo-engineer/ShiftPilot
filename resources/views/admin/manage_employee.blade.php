@@ -1,6 +1,6 @@
 <x-admin-layout>
     <div class="mt-12">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-5xl mx-auto px-6">
             <h2 class="font-bold tracking-wider">
                 スタッフ管理
             </h2>

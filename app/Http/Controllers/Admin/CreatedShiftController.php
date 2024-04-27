@@ -13,7 +13,7 @@ use App\Models\CreatedShift;
 
 class CreatedShiftController extends Controller
 {
-    public function show(Request $request)
+    public function index(Request $request)
     {
         $date = $request->input('date');
         if ($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)) {
@@ -70,6 +70,6 @@ class CreatedShiftController extends Controller
             }
         }
 
-        return to_route('admin.dashboard');
+        return to_route('admin.shift.show');
     }
 }
