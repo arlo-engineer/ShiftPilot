@@ -154,3 +154,14 @@ document.getElementById("registerCancel").addEventListener("click", function() {
 // if (validateError[0].innerText == "名前やメールアドレスが一致するユーザーはいません。" && validateError[1].innerText == "名前やメールアドレスが一致するユーザーはいません。") {
 //     validateError[0].classList.add("hidden");
 // }
+
+// シフト作成において編集中であった場合にページ遷移の注意書きを表示する
+window.addEventListener('beforeunload', function (e) {
+    var storeOptions = calendar.querySelectorAll(".store_option");
+    for (var i = 0; i < storeOptions.length; i++) {
+        if (storeOptions[i].value == "1" || storeOptions[i].value == "2") {
+            e.preventDefault();
+            break;
+        }
+    }
+});

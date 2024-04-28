@@ -28,14 +28,14 @@
         <div class="w-5"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
         <p class="pl-2">スタッフ管理</p>
     </x-opened-nav-link>
-    <x-opened-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
+    {{-- <x-opened-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
         <div class="pl-5"></div>
         <p class="pl-2">協働NGリスト</p>
     </x-opened-nav-link>
     <x-opened-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
         <div class="pl-5"></div>
         <p class="pl-2">スタッフ管理テスト</p>
-    </x-opened-nav-link>
+    </x-opened-nav-link> --}}
     <x-opened-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
         <div class="w-5"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
         <p class="pl-2">設定</p>

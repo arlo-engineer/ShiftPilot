@@ -68,14 +68,14 @@
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
                 <p class="sm:pl-2">スタッフ管理</p>
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
+            {{-- <x-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
                 <div class="pl-5"></div>
                 <p class="sm:pl-2">協働NGリスト</p>
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
                 <div class="pl-5"></div>
                 <p class="sm:pl-2">スタッフ管理テスト</p>
-            </x-responsive-nav-link>
+            </x-responsive-nav-link> --}}
             <x-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
                 <p class="sm:pl-2">設定</p>
