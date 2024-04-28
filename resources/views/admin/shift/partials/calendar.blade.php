@@ -52,16 +52,16 @@
                 </td>
                 @foreach ($fullShifts as $fullShift)
                     @if ($fullShift['employee_id'] == $employee->id)
-                        <td class="calendar-cell-day day-{{ $day->format("D") }} border-r border-b border-gray-400 px-1 py-2 cursor-pointer text-center text-sm">
+                        <td class="calendar-cell-day day-{{ $day->format("D") }} border-r border-b border-gray-400 px-1 py-2 cursor-pointer text-center text-sm hover:bg-gray-100 @if(!empty($fullShift['created']['start_time']) || !empty($fullShift['created']['end_time'])) register @endif">
                             {{-- store_optionのvalueが1のときに保存する --}}
                             <input type="hidden" name="store_option[]" value="0" class="store_option">
                             <input type="hidden" name="company_membership_id[]" value="{{ $fullShift['employee_id'] }}">
                             <input type="hidden" name="work_date[]" value="{{ $fullShift['work_date'] }}" class="work-date">
                             @if (!empty($fullShift['created']['start_time']) || !empty($fullShift['created']['end_time']))
                                 <div class="hidden tmp-shift bg-my-sub-color-lighter rounded py-1 border border-my-main-color flex pointer-events-none">
-                                    <input type="text" name="start_time[]" value="" class="input-start-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-l-sm border-none cursor-pointer">
+                                    <input type="time" name="start_time[]" value="" class="calendar-time input-start-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-l-sm border-none cursor-pointer">
                                     <span class="bg-my-sub-color-lighter">-</span>
-                                    <input type="text" name="end_time[]" value="" class="input-end-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-r-sm border-none cursor-pointer">
+                                    <input type="time" name="end_time[]" value="" class="calendar-time input-end-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-r-sm border-none cursor-pointer">
                                 </div>
                                 <div class="created-shift bg-my-main-color rounded py-1 pointer-events-none text-white flex justify-center">
                                     <p class="start-time w-11">{{ $fullShift['created']['start_time'] }}</p>
@@ -70,9 +70,9 @@
                                 </div>
                             @else
                                 <div class="invisible tmp-shift bg-my-sub-color-lighter rounded py-1 border border-my-main-color flex pointer-events-none">
-                                    <input type="text" name="start_time[]" value="" class="input-start-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-l-sm border-none cursor-pointer">
+                                    <input type="time" name="start_time[]" value="" class="calendar-time input-start-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-l-sm border-none cursor-pointer">
                                     <span class="bg-my-sub-color-lighter">-</span>
-                                    <input type="text" name="end_time[]" value="" class="input-end-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-r-sm border-none cursor-pointer">
+                                    <input type="time" name="end_time[]" value="" class="calendar-time input-end-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-r-sm border-none cursor-pointer">
                                 </div>
                             @endif
                             @if (!empty($fullShift['requested']['start_time']) || !empty($fullShift['requested']['end_time']))

@@ -13,7 +13,7 @@
                             <th class="sticky top-0 -left-0 px-4 py-3 bg-gray-100 border-t border-b border-gray-300 whitespace-nowrap">氏名</th>
                             <th class="sticky top-0 -left-0 px-4 py-3 bg-gray-100 border-t border-b border-gray-300 whitespace-nowrap">メールアドレス</th>
                             <th class="sticky top-0 -left-0 px-4 py-3 bg-gray-100 border-t border-b border-gray-300 whitespace-nowrap">スキル</th>
-                            <th class="sticky top-0 -left-0 px-4 py-3 bg-gray-100 border-t border-b border-gray-300 whitespace-nowrap">メモ</th>
+                            <th class="sticky top-0 -left-0 px-4 py-3 bg-gray-100 border-t border-b border-gray-300 sm:min-w-[300px]">メモ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,7 +22,7 @@
                             <td class="px-4 py-3 border-b border-gray-300 whitespace-nowrap"><a href="{{ route('admin.employees.edit', ['id'=>$employee->companyMembership->id]) }}" class="text-[#1558d6] hover:underline">{{ $employee->name }}</a></td>
                             <td class="px-4 py-3 border-b border-gray-300 whitespace-nowrap">{{ $employee->email }}</td>
                             <td class="px-4 py-3 border-b border-gray-300 whitespace-nowrap">{{ $employee->companyMembership->skills }}</td>
-                            <td class="px-4 py-3 border-b border-gray-300 whitespace-nowrap">{{ $employee->companyMembership->remarks }}</td>
+                            <td class="px-4 py-3 border-b border-gray-300 sm:min-w-[300px]">{{ $employee->companyMembership->remarks }}</td>
                         </tr>
                         @endforeach
                     </tbody>

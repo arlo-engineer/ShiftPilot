@@ -60,13 +60,25 @@ class CreatedShiftController extends Controller
         $employees = $user->getEmployees($companyId);
 
         for($i = 0; $i < count($employees) * count($days); $i++) {
+            $existingData = CreatedShift::where('company_membership_id', $request->company_membership_id[$i])->where('work_date', $request->work_date[$i])->first();
             if ($request->store_option[$i] == "1") {
-                CreatedShift::create([
-                    'company_membership_id' => $request->company_membership_id[$i],
-                    'work_date' => $request->work_date[$i],
-                    'start_time' => $request->start_time[$i],
-                    'end_time' => $request->end_time[$i],
-                ]);
+                // created_shifts_table内にユーザーと日付が一致するデータがある場合は、上書き保存する
+                if ($existingData) {
+                    $existingData->company_membership_id = $request->company_membership_id[$i];
+                    $existingData->work_date = $request->work_date[$i];
+                    $existingData->start_time = $request->start_time[$i];
+                    $existingData->end_time = $request->end_time[$i];
+                    $existingData->save();
+                } else {
+                    CreatedShift::create([
+                        'company_membership_id' => $request->company_membership_id[$i],
+                        'work_date' => $request->work_date[$i],
+                        'start_time' => $request->start_time[$i],
+                        'end_time' => $request->end_time[$i],
+                    ]);
+                }
+            } else if ($request->store_option[$i] == "2") {
+                $existingData->delete();
             }
         }
 

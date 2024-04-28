@@ -71,23 +71,24 @@ class CompanyMembershipController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $updateBook = $this->book->updateBook($request, $book);
-
-        // $contact変数名は後ほど変更
-        $contact = CompanyMembership::find($id);
-
-        $contact->skills = $request->skills;
-        $contact->remarks = $request->remarks;
-        $contact->save();
+        $employeeInfo = CompanyMembership::find($id);
+        // dd($employeeInfo);
+        $employeeInfo->skills = $request->skills;
+        // そもそもnullを判定して条件分岐させる処理は必要なのか？(要確認)
+        if ($request->remarks == null) {
+            $employeeInfo->remarks = '';
+        } else {
+            $employeeInfo->remarks = $request->remarks;
+        }
+        $employeeInfo->save();
 
         return to_route('admin.employees.index');
     }
 
     public function destroy($id)
     {
-        // $contact変数名は後ほど変更
-        $contact = CompanyMembership::find($id);
-        $contact->delete();
+        $employeeInfo = CompanyMembership::find($id);
+        $employeeInfo->delete();
 
         return to_route('admin.employees.index');
     }

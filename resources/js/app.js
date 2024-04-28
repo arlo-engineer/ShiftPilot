@@ -29,11 +29,18 @@ document.getElementById("calendar-contents").addEventListener("click", function(
         if (clickedClass.includes("tmp-register")) {
             // キャンセルボタンの表示
             document.getElementById("tmpRegister").classList.add("hidden");
-            document.getElementById("modalCancel").classList.remove("hidden");
+            document.getElementById("tmpRegisterCancel").classList.remove("hidden");
+            document.getElementById("registerCancel").classList.add("hidden");
+        } else if (clickedClass.includes("register")) {
+            // キャンセルボタンの表示
+            document.getElementById("tmpRegister").classList.add("hidden");
+            document.getElementById("tmpRegisterCancel").classList.add("hidden");
+            document.getElementById("registerCancel").classList.remove("hidden");
         } else {
             // 仮登録ボタンの表示
             document.getElementById("tmpRegister").classList.remove("hidden");
-            document.getElementById("modalCancel").classList.add("hidden");
+            document.getElementById("tmpRegisterCancel").classList.add("hidden");
+            document.getElementById("registerCancel").classList.add("hidden");
         }
         // モーダルを表示する＝hiddenを削除
         modalClass.remove("hidden");
@@ -111,18 +118,17 @@ document.getElementById("tmpRegister").addEventListener("click", function() {
     // 仮登録した出退勤時間をカレンダーに表示
     clickedElement.querySelector(".tmp-shift").classList.remove("invisible", "hidden");
 
-    // 確定済みの出退勤時間をカレンダーから非表示
-    if (clickedElement.querySelector(".created-shift")) {
-        clickedElement.querySelector(".created-shift").classList.add("hidden");
-    }
-
     // モーダル内の出退勤時間を空にする
     document.getElementById("modal-start-time").value = "";
     document.getElementById("modal-end-time").value = "";
+
+    if (clickedElement.querySelector(".created-shift")) {
+        clickedElement.querySelector(".created-shift").classList.add("hidden");
+    }
 });
 
-// モーダルのキャンセルボタン
-document.getElementById("modalCancel").addEventListener("click", function() {
+// モーダルの仮登録キャンセルボタン
+document.getElementById("tmpRegisterCancel").addEventListener("click", function() {
     // モーダルを閉じる
     modalClass.add("hidden");
     // store_optionを0に変更する->DBに登録されないようにする
@@ -130,6 +136,17 @@ document.getElementById("modalCancel").addEventListener("click", function() {
     clickedElement.classList.remove("tmp-register");
     // カレンダーから仮登録時間を削除/隠す
     clickedElement.querySelector(".tmp-shift").classList.add("invisible");
+});
+
+// モーダルの登録キャンセルボタン
+document.getElementById("registerCancel").addEventListener("click", function() {
+    // モーダルを閉じる
+    modalClass.add("hidden");
+    // store_optionを2に変更する->DBから削除されるようにする
+    clickedElement.querySelector(".store_option").value = 2;
+    clickedElement.classList.remove("register");
+    // カレンダーから仮登録時間を削除/隠す
+    clickedElement.querySelector(".created-shift").classList.add("invisible");
 });
 
 // バリデーションエラーメッセージで"名前やメールアドレスが一致するユーザーはいません。"が2つ表示されるときに、1つのみの表示とする機能
