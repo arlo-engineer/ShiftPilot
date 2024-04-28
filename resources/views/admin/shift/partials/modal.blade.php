@@ -21,7 +21,7 @@
             <button id="tmpRegisterCancel" type="button" class="hidden mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base text-gray-700 whitespace-nowrap">
                 キャンセル
             </button>
-            <button id="registerCancel" type="button" class="hidden mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-my-sub-color-lighter text-base text-gray-700 whitespace-nowrap">
+            <button id="registerCancel" type="button" class="hidden mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base text-gray-700 whitespace-nowrap">
                 キャンセル
             </button>
             <button id="modalClose" type="button" class="mt-3 sm:ml-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base text-gray-700">

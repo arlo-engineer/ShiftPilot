@@ -34,7 +34,6 @@ class CompanyMembershipController extends Controller
         $request->validate([
             'name' => ['required', new ExistedNameInUsers],
             'email' => ['required', new ExistedEmailInUsers, new UniqueEmailInCompanyMemberShips],
-            // 'skills' => ['required'],
         ],
         [
             'name.required' => '名前は必須です。',
@@ -72,7 +71,6 @@ class CompanyMembershipController extends Controller
     public function update(Request $request, $id)
     {
         $employeeInfo = CompanyMembership::find($id);
-        // dd($employeeInfo);
         $employeeInfo->skills = $request->skills;
         // そもそもnullを判定して条件分岐させる処理は必要なのか？(要確認)
         if ($request->remarks == null) {

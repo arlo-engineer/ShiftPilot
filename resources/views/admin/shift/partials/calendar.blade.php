@@ -1,3 +1,4 @@
+<!-- ページネーション -->
 <h2 class="calender-title tracking-wider flex justify-center">
     <div class="inline-flex items-center border border-gray-400 rounded-full px-2 py-1">
         <div class="w-6"><a href="{{ url('/admin/shift?date=' . $calendar->getPreviousMonth()) }}"><img src="{{ asset('img/calendar-left-arrow.png') }}" alt=""></a></div>

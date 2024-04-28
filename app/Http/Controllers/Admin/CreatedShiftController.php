@@ -82,6 +82,6 @@ class CreatedShiftController extends Controller
             }
         }
 
-        return to_route('admin.shift.index');
+        return redirect(url()->previous());
     }
 }
