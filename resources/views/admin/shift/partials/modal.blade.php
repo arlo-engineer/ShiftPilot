@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row">
-            <button id="tmpRegister" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-my-main-color shadow-sm px-4 py-2 bg-my-main-color text-base text-white">
+            <button id="tmpRegister" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-my-main-color shadow-sm px-4 py-2 bg-my-main-color text-base text-white opacity-40 pointer-events-none">
                 仮登録
             </button>
             <button id="tmpRegisterCancel" type="button" class="hidden mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base text-gray-700 whitespace-nowrap">

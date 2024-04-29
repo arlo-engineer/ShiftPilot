@@ -21,12 +21,12 @@ class CompanyMembershipController extends Controller
         $user = new User;
         $employees = $user->getEmployees($companyId);
 
-        return view('admin.manage_employee', compact('employees'));
+        return view('admin.employee.manage_employee', compact('employees'));
     }
 
     public function create()
     {
-        return view('admin.add_employee');
+        return view('admin.employee.add_employee');
     }
 
     public function store(Request $request)
@@ -63,7 +63,7 @@ class CompanyMembershipController extends Controller
 
         foreach ($employees as $employee) {
             if ($employee->CompanyMembership->id == $id) {
-                return view('admin.edit_employee', compact('employee'));
+                return view('admin.employee.edit_employee', compact('employee'));
             }
         }
     }
