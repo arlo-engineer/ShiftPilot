@@ -37,7 +37,7 @@
             <tr>
                 <th class="nameColumn sticky top-0 -left-0 border border-gray-400 px-4 py-3 tracking-wider font-medium text-sm bg-gray-100 whitespace-nowrap sm:min-w-48">名前</th>
                 @foreach ($days as $day)
-                <th class="day-{{ $day->format("D") }} border-t border-r border-b border-gray-400 px-4 py-3 tracking-wider font-bold text-sm bg-gray-100 text-center">
+                <th class="day-{{ $day->format("D") }} border-t border-r border-b border-gray-400 px-4 py-3 tracking-wider font-bold text-sm bg-gray-100 text-center sm:min-w-28">
                     <p class="day">{{ $day->format("j") }} ({{ $day->locale('ja')->isoFormat("ddd") }})</p>
                 </th>
                 @endforeach
@@ -59,7 +59,7 @@
                             <input type="hidden" name="company_membership_id[]" value="{{ $fullShift['employee_id'] }}">
                             <input type="hidden" name="work_date[]" value="{{ $fullShift['work_date'] }}" class="work-date">
                             @if (!empty($fullShift['created']['start_time']) || !empty($fullShift['created']['end_time']))
-                                <div class="hidden tmp-shift bg-my-sub-color-lighter rounded py-1 border border-my-main-color flex pointer-events-none">
+                                <div class="hidden tmp-shift bg-my-sub-color-lighter rounded py-1 border border-my-main-color flex pointer-events-none justify-center">
                                     <input type="time" name="start_time[]" value="" class="calendar-time input-start-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-l-sm border-none cursor-pointer">
                                     <span class="bg-my-sub-color-lighter">-</span>
                                     <input type="time" name="end_time[]" value="" class="calendar-time input-end-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-r-sm border-none cursor-pointer">
@@ -70,7 +70,7 @@
                                     <p class="end-time w-11">{{ $fullShift['created']['end_time'] }}</p>
                                 </div>
                             @else
-                                <div class="invisible tmp-shift bg-my-sub-color-lighter rounded py-1 border border-my-main-color flex pointer-events-none">
+                                <div class="invisible tmp-shift bg-my-sub-color-lighter rounded py-1 border border-my-main-color flex pointer-events-none justify-center">
                                     <input type="time" name="start_time[]" value="" class="calendar-time input-start-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-l-sm border-none cursor-pointer">
                                     <span class="bg-my-sub-color-lighter">-</span>
                                     <input type="time" name="end_time[]" value="" class="calendar-time input-end-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-r-sm border-none cursor-pointer">

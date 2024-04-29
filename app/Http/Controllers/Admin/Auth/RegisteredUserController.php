@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Company;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -40,6 +41,12 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+        ]);
+
+        $adminId = Admin::where('email', $request->email)->pluck('id')->first();
+        Company::create([
+            'name' => $request->company_name,
+            'admin_id' => $adminId,
         ]);
 
         event(new Registered($user));
