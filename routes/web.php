@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProfileController as ProfileOfAdminController;
 use App\Http\Controllers\Admin\CreatedShiftController;
 use App\Http\Controllers\Admin\CompanyMembershipController;
+use App\Http\Controllers\Admin\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,10 +38,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/shift', [CreatedShiftController::class, 'index'])->middleware(['auth:admin', 'verified'])->name('shift.index');
 
     Route::middleware('auth:admin')->group(function () {
+        Route::post('/shift', [CreatedShiftController::class, 'store'])->name('shift.store');
         Route::get('/profile', [ProfileOfAdminController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileOfAdminController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileOfAdminController::class, 'destroy'])->name('profile.destroy');
-        Route::post('/shift', [CreatedShiftController::class, 'store'])->name('shift.store');
 
         Route::prefix('employees')->name('employees.')->group(function () {
         Route::get('/', [CompanyMembershipController::class, 'index'])->name('index');
@@ -50,6 +51,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/{id}', [CompanyMembershipController::class, 'update'])->name('update');
         Route::post('/{id}/destroy', [CompanyMembershipController::class, 'destroy'])->name('destroy');
         });
+
+        Route::get('/setting', [SettingsController::class, 'edit'])->name('setting.edit');
+        Route::post('/setting', [SettingsController::class, 'update'])->name('setting.update');
     });
 
     require __DIR__.'/admin.php';

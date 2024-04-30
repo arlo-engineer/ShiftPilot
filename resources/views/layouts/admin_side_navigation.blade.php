@@ -9,7 +9,7 @@
         <div class="w-5 mx-auto"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
         <p class="text-[7px]">スタッフ管理</p>
     </x-closed-nav-link>
-    <x-closed-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
+    <x-closed-nav-link :href="route('admin.setting.edit')" :active="request()->routeIs('admin.setting.edit')">
         <div class="w-5 mx-auto"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
         <p class="text-[7px]">設定</p>
     </x-closed-nav-link>
@@ -36,7 +36,7 @@
         <div class="pl-5"></div>
         <p class="pl-2">スタッフ管理テスト</p>
     </x-opened-nav-link> --}}
-    <x-opened-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
+    <x-opened-nav-link :href="route('admin.setting.edit')" :active="request()->routeIs('admin.setting.edit')">
         <div class="w-5"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
         <p class="pl-2">設定</p>
     </x-opened-nav-link>
