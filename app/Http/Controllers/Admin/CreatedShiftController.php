@@ -13,10 +13,19 @@ use App\Models\CreatedShift;
 
 class CreatedShiftController extends Controller
 {
-    public function create()
+    public function index(Request $request)
     {
-        $nextMonth = Carbon::now()->addMonthNoOverflow()->format('Y-m');
-        $calendar = new Calendar($nextMonth);
+        $date = $request->input('date');
+        if ($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)) {
+            $date = $date . '-01';
+        } else if (!$date) {
+            $date = Carbon::now()->format('Y-m-d');
+        } else {
+            $date = null;
+        }
+
+        $month = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
+        $calendar = new Calendar($month);
         $calendarTitle = $calendar->getCalenderTitle();
         $days = $calendar->getDays();
         $company = new Company;
@@ -25,33 +34,54 @@ class CreatedShiftController extends Controller
         $user = new User;
         $employees = $user->getEmployees($companyId);
         $requestedShift = new RequestedShift();
-        $fullRequestedShifts = $requestedShift->getFullRequestedShifts($nextMonth);
+        $fullShifts = $requestedShift->getFullShifts($month);
 
-        return view('admin.shift.created_shift', compact('calendarTitle', 'days', 'employees', 'fullRequestedShifts'));
+        return view('admin.shift.created_shift', compact('calendar','calendarTitle', 'days', 'employees', 'fullShifts'));
     }
 
     public function store(Request $request)
     {
+        $date = $request->input('date');
+        if ($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)) {
+            $date = $date . '-01';
+        } else if (!$date) {
+            $date = Carbon::now()->format('Y-m-d');
+        } else {
+            $date = null;
+        }
+
+        $month = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
+        $calendar = new Calendar($month);
+        $days = $calendar->getDays();
         $company = new Company;
         $userId = Auth::id();
         $companyId = $company->getCompanyIdByAdminId($userId);
         $user = new User;
         $employees = $user->getEmployees($companyId);
-        $nextMonth = Carbon::now()->addMonthNoOverflow()->format('Y-m');
-        $calendar = new Calendar($nextMonth);
-        $days = $calendar->getDays();
 
         for($i = 0; $i < count($employees) * count($days); $i++) {
+            $existingData = CreatedShift::where('company_membership_id', $request->company_membership_id[$i])->where('work_date', $request->work_date[$i])->first();
             if ($request->store_option[$i] == "1") {
-                CreatedShift::create([
-                    'company_membership_id' => $request->company_membership_id[$i],
-                    'work_date' => $request->work_date[$i],
-                    'start_time' => $request->start_time[$i],
-                    'end_time' => $request->end_time[$i],
-                ]);
+                // created_shifts_table内にユーザーと日付が一致するデータがある場合は、上書き保存する
+                if ($existingData) {
+                    $existingData->company_membership_id = $request->company_membership_id[$i];
+                    $existingData->work_date = $request->work_date[$i];
+                    $existingData->start_time = $request->start_time[$i];
+                    $existingData->end_time = $request->end_time[$i];
+                    $existingData->save();
+                } else {
+                    CreatedShift::create([
+                        'company_membership_id' => $request->company_membership_id[$i],
+                        'work_date' => $request->work_date[$i],
+                        'start_time' => $request->start_time[$i],
+                        'end_time' => $request->end_time[$i],
+                    ]);
+                }
+            } else if ($request->store_option[$i] == "2") {
+                $existingData->delete();
             }
         }
 
-        return to_route('admin.dashboard');
+        return redirect(url()->previous());
     }
 }

@@ -13,6 +13,7 @@ class CompanyMembership extends Model
         'company_id',
         'user_id',
         'skills',
+        'remarks',
     ];
 
     public function users()

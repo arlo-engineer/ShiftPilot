@@ -1,0 +1,10 @@
+# 画像の取得元を記載する。
+
+基本的なアイコンは以下から取得
+https://icooon-mono.com/
+https://icon-rainbow.com/
+
+
+矢印類は以下から取得
+https://www.mingcute.com/
+

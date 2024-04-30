@@ -14,28 +14,47 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        {{-- Livewire --}}
-        @livewireStyles
+        {{-- Livewire
+        @livewireStyles --}}
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen">
             @include('layouts.admin_navigation')
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
+            <div class="flex pt-10">
+                <!-- Side Navigation -->
+                @include('layouts.admin_side_navigation')
+            </div>
+            <main id="widthMain" class="sm:ml-12">
+                <!-- Page Content -->
                 {{ $slot }}
             </main>
+
         </div>
-        {{-- Livewire --}}
-        @livewireScripts
+        {{-- Livewire
+        @livewireScripts --}}
+
+        <script>
+            let closedSideNavClass = document.getElementById('closedSideNav').classList;
+            let openedSideNavClass = document.getElementById('openedSideNav').classList;
+            let widthMainClass = document.getElementById('widthMain').classList;
+            function openSideNav() {
+                openedSideNavClass.add('sm:block');
+                openedSideNavClass.remove('sm:hidden');
+                closedSideNavClass.add('sm:hidden');
+                closedSideNavClass.remove('sm:block');
+                widthMainClass.add('sm:ml-48');
+                widthMainClass.remove('sm:ml-12');
+            }
+            function closeSideNav() {
+                openedSideNavClass.add('sm:hidden');
+                openedSideNavClass.remove('sm:block');
+                closedSideNavClass.remove('sm:hidden');
+                closedSideNavClass.add('sm:block');
+                widthMainClass.add('sm:ml-12');
+                widthMainClass.remove('sm:ml-48');
+            }
+        </script>
+
     </body>
 </html>
