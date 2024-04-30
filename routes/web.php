@@ -52,8 +52,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/{id}/destroy', [CompanyMembershipController::class, 'destroy'])->name('destroy');
         });
 
-        Route::get('/setting', [SettingsController::class, 'edit'])->name('setting.edit');
-        Route::post('/setting', [SettingsController::class, 'update'])->name('setting.update');
+        Route::get('/settings', [SettingsController::class, 'edit'])->name('setting.edit');
+        Route::post('/settings', [SettingsController::class, 'update'])->name('setting.update');
     });
 
     require __DIR__.'/admin.php';
