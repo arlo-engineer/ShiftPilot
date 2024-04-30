@@ -26,7 +26,6 @@ class CreatedShiftController extends Controller
 
         $month = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
         $calendar = new Calendar($month);
-        $calendarTitle = $calendar->getCalenderTitle();
         $days = $calendar->getDays();
         $company = new Company;
         $adminId = Auth::id();
@@ -36,7 +35,7 @@ class CreatedShiftController extends Controller
         $requestedShift = new RequestedShift();
         $fullShifts = $requestedShift->getFullShifts($month, $employees);
 
-        return view('admin.shift.created_shift', compact('calendar','calendarTitle', 'days', 'employees', 'fullShifts'));
+        return view('admin.shift.created_shift', compact('calendar', 'days', 'employees', 'fullShifts'));
     }
 
     public function store(Request $request)

@@ -1,10 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            マネージャーにより作成されたシフトです。
-        </h2>
-    </x-slot>
-
     <div class="pt-8">
         <div class="max-w-7xl mx-auto px-2">
             <!-- ページネーション -->
@@ -23,22 +17,6 @@
                     <div class="w-6"><a href="{{ url('/shift?date=' . $calendar->getNextMonth()) }}"><img src="{{ asset('img/calendar-right-arrow.png') }}" alt=""></a></div>
                 </div>
             </h2>
-
-            {{-- <div class="pt-8 flex text-xs items-center justify-end">
-                <p>凡例</p>
-                <div class="flex items-center pl-4">
-                    <div class="h-4 w-7 rounded bg-my-main-color"></div>
-                    <p class="pl-1.5">確定シフト</p>
-                </div>
-                <div class="flex items-center pl-4">
-                    <div class="h-4 w-7 rounded bg-my-sub-color-lighter border border-my-main-color"></div>
-                    <p class="pl-1.5">下書きシフト</p>
-                </div>
-                <div class="flex items-center pl-4">
-                    <div border-my-sub-colorv class="h-4 w-7 border-b-4 border-my-sub-color"></div>
-                    <p class="pl-1.5">希望シフト</p>
-                </div>
-            </div> --}}
 
             <div class="pt-6 w-full mx-auto overflow-auto text-my-text-color">
                 <table id="calendar" class="w-full text-left whitespace-no-wrap border-separate border-spacing-0">
@@ -62,11 +40,6 @@
                                 @if ($fullShift['employee_id'] == $employee->id)
                                     <td class="calendar-cell-day day-{{ $day->format("D") }} border-r border-b border-gray-400 px-1 py-2 text-center text-sm @if($employee->id === $userId) bg-my-sub-color-lighter @else bg-white @endif">
                                         @if (!empty($fullShift['created']['start_time']) || !empty($fullShift['created']['end_time']))
-                                            {{-- <div class="hidden tmp-shift bg-my-sub-color-lighter rounded py-1 border border-my-main-color flex pointer-events-none justify-center">
-                                                <input type="time" name="start_time[]" value="" class="calendar-time input-start-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-l-sm border-none">
-                                                <span class="bg-my-sub-color-lighter">-</span>
-                                                <input type="time" name="end_time[]" value="" class="calendar-time input-end-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-r-sm border-none">
-                                            </div> --}}
                                             <div class="created-shift bg-my-main-color rounded py-1 text-white flex flex-col items-center justify-center">
                                                 <p class="start-time">{{ $fullShift['created']['start_time'] }}</p>
                                                 <p class="h-1 border-l"></p>

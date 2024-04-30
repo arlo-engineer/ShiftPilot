@@ -26,7 +26,6 @@ class ConfirmShiftController extends Controller
 
         $month = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
         $calendar = new Calendar($month);
-        $calendarTitle = $calendar->getCalenderTitle();
         $days = $calendar->getDays();
         $companyMembership = new CompanyMembership();
         $userId = Auth::id();
@@ -36,6 +35,6 @@ class ConfirmShiftController extends Controller
         $requestedShift = new RequestedShift();
         $fullShifts = $requestedShift->getFullShifts($month, $employees);
 
-        return view('confirm_shift', compact('calendar','calendarTitle', 'days', 'employees', 'fullShifts', 'userId'));
+        return view('confirm_shift', compact('calendar', 'days', 'employees', 'fullShifts', 'userId'));
     }
 }

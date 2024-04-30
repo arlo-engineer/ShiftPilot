@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/shift', [ConfirmShiftController::class, 'index'])->name('shift.index');
+    Route::get('/submit-shift', [RequestedShiftController::class, 'index'])->name('submit-shift.index');
 });
 
 require __DIR__.'/auth.php';

@@ -5,7 +5,7 @@
         <div class="w-5 mx-auto"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
         <p class="text-[7px]">シフト確認</p>
     </x-closed-nav-link>
-    <x-closed-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+    <x-closed-nav-link :href="route('submit-shift.index')" :active="request()->routeIs('submit-shift.index')">
         <div class="w-5 mx-auto"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
         <p class="text-[7px]">シフト提出</p>
     </x-closed-nav-link>
@@ -20,7 +20,7 @@
         <div class="w-5"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
         <p class="pl-2">シフト確認</p>
     </x-opened-nav-link>
-    <x-opened-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+    <x-opened-nav-link :href="route('submit-shift.index')" :active="request()->routeIs('submit-shift.index')">
         <div class="w-5"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
         <p class="pl-2">シフト提出</p>
     </x-opened-nav-link>

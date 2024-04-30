@@ -64,7 +64,7 @@
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
                 <p class="sm:pl-2">シフト確認</p>
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('submit-shift.index')" :active="request()->routeIs('submit-shift.index')">
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
                 <p class="sm:pl-2">シフト提出</p>
             </x-responsive-nav-link>
