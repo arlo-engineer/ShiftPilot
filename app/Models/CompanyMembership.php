@@ -35,4 +35,9 @@ class CompanyMembership extends Model
     {
         return $this->belongsTo(Company::class, 'id', 'company_id');
     }
+
+    public function getCompanyIdByUserId($user_id)
+    {
+        return CompanyMembership::where('user_id', $user_id)->pluck('company_id')->first();
+    }
 }

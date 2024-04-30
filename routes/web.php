@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProfileController as ProfileOfAdminController;
+use App\Http\Controllers\ConfirmShiftController;
+use App\Http\Controllers\RequestedShiftController;
 use App\Http\Controllers\Admin\CreatedShiftController;
 use App\Http\Controllers\Admin\CompanyMembershipController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -22,6 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// スタッフ側ルート情報
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -30,10 +33,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/shift', [ConfirmShiftController::class, 'index'])->name('shift.index');
 });
 
 require __DIR__.'/auth.php';
 
+// 管理者側ルート情報
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/shift', [CreatedShiftController::class, 'index'])->middleware(['auth:admin', 'verified'])->name('shift.index');
 

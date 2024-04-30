@@ -60,7 +60,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" id="navContent" class="hidden sm:hidden bg-white">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('shift.index')" :active="request()->routeIs('shift.index')">
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
                 <p class="sm:pl-2">シフト確認</p>
             </x-responsive-nav-link>

@@ -29,12 +29,12 @@ class CreatedShiftController extends Controller
         $calendarTitle = $calendar->getCalenderTitle();
         $days = $calendar->getDays();
         $company = new Company;
-        $userId = Auth::id();
-        $companyId = $company->getCompanyIdByAdminId($userId);
+        $adminId = Auth::id();
+        $companyId = $company->getCompanyIdByAdminId($adminId);
         $user = new User;
         $employees = $user->getEmployees($companyId);
         $requestedShift = new RequestedShift();
-        $fullShifts = $requestedShift->getFullShifts($month);
+        $fullShifts = $requestedShift->getFullShifts($month, $employees);
 
         return view('admin.shift.created_shift', compact('calendar','calendarTitle', 'days', 'employees', 'fullShifts'));
     }
@@ -54,8 +54,8 @@ class CreatedShiftController extends Controller
         $calendar = new Calendar($month);
         $days = $calendar->getDays();
         $company = new Company;
-        $userId = Auth::id();
-        $companyId = $company->getCompanyIdByAdminId($userId);
+        $adminId = Auth::id();
+        $companyId = $company->getCompanyIdByAdminId($adminId);
         $user = new User;
         $employees = $user->getEmployees($companyId);
 

@@ -25,14 +25,8 @@ class RequestedShift extends Model
     }
 
     // requested_shiftsテーブルに存在しない日付を補完したデータを取得
-    public function getFullShifts($month)
+    public function getFullShifts($month, $employees)
     {
-        $company = new Company;
-        $userId = Auth::id();
-        $companyId = $company->getCompanyIdByAdminId($userId);
-        $user = new User;
-        $employees = $user->getEmployees($companyId);
-
         $calendar = new Calendar($month);
         $days = $calendar->getDays();
 
