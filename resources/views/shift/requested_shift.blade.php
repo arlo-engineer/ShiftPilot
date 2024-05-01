@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <div class="py-">
+        <div>
             @include('shift.partials.modal')
         </div>
 
@@ -20,4 +20,19 @@
             <input type="submit" id="shiftDetermine" onclick="window.removeEventListener('beforeunload', leavePageConfirm);" class="bg-my-main-color text-white px-4 py-3 rounded" value="希望シフトを提出する">
         </div>
     </form>
+
+    <script>
+        // ページの読み込みを許可するかどうかを確認するポップアウトを表示する
+        const leavePageConfirm = function(event) {
+            var storeOptions = calendar.querySelectorAll(".store_option");
+            for (var i = 0; i < storeOptions.length; i++) {
+                if (storeOptions[i].value == "1" || storeOptions[i].value == "2") {
+                    event.preventDefault();
+                    break;
+                }
+            }
+        }
+
+        window.addEventListener('beforeunload', leavePageConfirm);
+    </script>
 </x-app-layout>

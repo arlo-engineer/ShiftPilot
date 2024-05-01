@@ -241,7 +241,8 @@ if (document.getElementById("required-shift-contents")) {
 
         // store_optionを1に変更する->DBに登録できるようにする
         clickedElement.querySelector(".store_option").value = 1;
-        clickedElement.classList.add("tmp-register");
+        clickedElement.classList.add("tmp-register", "bg-stripe");
+        clickedElement.querySelector(".input-start-time").classList.add("bg-transparent");
 
         // カレンダーに出勤時間を反映
         var modalStartTime = document.getElementById("modal-start-time").value;
@@ -265,12 +266,12 @@ if (document.getElementById("required-shift-contents")) {
         modalClass.add("hidden");
         // store_optionを0に変更する->DBに登録されないようにする
         clickedElement.querySelector(".store_option").value = 0;
-        clickedElement.classList.remove("tmp-register");
+        clickedElement.classList.remove("tmp-register", "bg-stripe");
         // カレンダーから仮登録時間を削除/隠す
         clickedElement.querySelector(".tmp-shift").classList.add("invisible");
         // モーダル内の出退勤時間を空にする
-        clickedElement.querySelector(".input-start-time").value = "";
-        clickedElement.querySelector(".input-end-time").value = "";
+        clickedElement.querySelector(".input-start-time").value = ""; // 設定で値を変更する？(要検討)
+        clickedElement.querySelector(".input-end-time").value = ""; // 設定で値を変更する？(要検討)
     });
 
     // モーダルの登録キャンセルボタン
@@ -286,8 +287,6 @@ if (document.getElementById("required-shift-contents")) {
         // カレンダーから仮登録時間を削除/隠す
         clickedElement.querySelector(".required-shift").classList.add("invisible", "tmp-shift");
         clickedElement.querySelector(".required-shift").classList.remove("required-shift");
-        clickedElement.querySelector(".input-start-time").classList.remove("bg-my-accent-color-lighter");
-        clickedElement.querySelector(".input-end-time").classList.remove("bg-my-accent-color-lighter");
         // カレンダーセルの背景色を白にする
         // clickedClass.remove('bg-my-accent-color-lighter');
         clickedElement.classList.add('bg-white');

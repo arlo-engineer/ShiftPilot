@@ -7,7 +7,7 @@
             </div>
         </div>
 
-        <div class="py20">
+        <div>
             @include('admin.shift.partials.modal')
         </div>
 

@@ -90,7 +90,7 @@ class Calendar extends Model
 		return $weeks;
 	}
 
-    // 半月分でシフトを提出するときに使用(後ほど実装予定)
+    // 半月分でシフトを提出するときに使用(今後実装予定)
     // function getFirstHalfWeeks() {
 	// 	$weeks = [];
     //     $days = [];

@@ -11,7 +11,7 @@
             <p class="text-xs">{{ end($days)->format('Y年') }}</p>
             <p class="font-bold">{{ end($days)->format('n月j日') }}</p>
         </div>
+        {{-- <div>{{ $calendar->getCalendarTitle() }} シフト提出</div> --}}
         <div class="w-6"><a href="{{ url('/submit-shift?date=' . $calendar->getNextMonth()) }}"><img src="{{ asset('img/calendar-right-arrow.png') }}" alt=""></a></div>
     </div>
 </h2>
-<h2>{{ $calendar->getCalendarTitle() }} シフト提出</h2>
