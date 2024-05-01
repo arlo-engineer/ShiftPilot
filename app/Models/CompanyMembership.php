@@ -44,6 +44,7 @@ class CompanyMembership extends Model
 
     public function getCompanyMembershipIdByUserId()
     {
+        // 会社ごとに表示切り替えを行えるようにするためには、この箇所を変更する可能性が高いと考える(要検討)
         $userId = Auth::id();
         $companyMembershipIdByUserId = CompanyMembership::where('user_id', $userId)->first()->id;
         return $companyMembershipIdByUserId;

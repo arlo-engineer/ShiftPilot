@@ -16,6 +16,23 @@ navButtonElement.addEventListener("click", function() {
     }
 })
 
+// Y-m-d形式の年月日をY年m月n日と変換する関数
+function formatDate(dateString) {
+    const dateParts = dateString.split('-');
+    const year = dateParts[0];
+    const month = dateParts[1];
+    const day = dateParts[2];
+
+    // 月の数字から月の名前に変換するための配列
+    const monthNames = [
+        "1月", "2月", "3月", "4月", "5月", "6月",
+        "7月", "8月", "9月", "10月", "11月", "12月"
+    ];
+
+    // 日付をフォーマットして返す
+    return year + "年" + monthNames[parseInt(month) - 1] + day + "日";
+}
+
 // シフト作成ページ用
 let clickedElement;
 let clickedClass;
@@ -48,7 +65,8 @@ if (document.getElementById("calendar-contents")) {
             modalClass.remove("hidden");
             // モーダルに勤務日を表示
             var calendarWorkDate = clickedElement.querySelector(".work-date").value;
-            document.getElementById("modal-date").innerHTML = calendarWorkDate;
+            var formatCalendarWorkDate = formatDate(calendarWorkDate);
+            document.getElementById("modal-date").innerHTML = formatCalendarWorkDate;
 
             if (clickedElement.querySelector(".start-time") && clickedElement.querySelector(".end-time")) {
                 // モーダルに出勤時間を表示
@@ -182,7 +200,8 @@ if (document.getElementById("required-shift-contents")) {
 
             // モーダルに勤務日を表示
             var calendarWorkDate = clickedElement.querySelector(".work-date").value;
-            document.getElementById("modal-date").innerHTML = calendarWorkDate;
+            var formatCalendarWorkDate = formatDate(calendarWorkDate);
+            document.getElementById("modal-date").innerHTML = formatCalendarWorkDate;
 
             if (clickedElement.querySelector(".input-start-time") && clickedElement.querySelector(".input-end-time")) {
                 // モーダルに出勤時間を表示

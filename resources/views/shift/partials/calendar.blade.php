@@ -19,8 +19,8 @@
                         <p class="sm:text-sm text-xs">{{ $fullRequestedShiftPerEmployee[$i]['day']->format('j') }}</p>
                         <input type="hidden" name="store_option[]" value="0" class="store_option">
                         <input type="hidden" name="company_membership_id[]" value="{{ $companyMembership->getCompanyMembershipIdByUserId() }}">
-                        <input type="hidden" name="work_date[]" value="{{ $fullRequestedShiftPerEmployee[$i]['day']->format('Y-m-d') }}" class="work-date">
-                        {{-- 後ほど実装予定 --}}
+                        <input type="hidden" name="work_date[]" value="{{ $fullRequestedShiftPerEmployee[$i]['day']->format('Y-n-j') }}" class="work-date">
+                        {{-- 備考欄は後ほど実装予定 --}}
                         {{-- <input type="hidden" name="notes[]" value="" class="notes"> --}}
                         @if ($fullRequestedShiftPerEmployee[$i]['requested'] && $fullRequestedShiftPerEmployee[$i]['day']->format('m') == $days[0]->format('m'))
                             <div class="required-shift flex flex-col items-center justify-center text-sm pointer-events-none">

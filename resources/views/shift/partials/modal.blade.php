@@ -2,7 +2,7 @@
 <div id="modal" class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center z-20 hidden">
     <!-- Modal content -->
     <div id="modal-content" class="bg-white rounded-lg px-16 py-8">
-        <h1 id="modal-date" class="text-2xl font-bold mb-4">日付</h1>
+        <h1 id="modal-date" class="text-2xl font-bold mb-4"></h1>
         <div class="bg-whit pt-5 pb-4 sm:pt-5 sm:pb-4">
             <div class="relative">
                 <label for="modal-start-time" class="pr-2">出勤時間</label>
