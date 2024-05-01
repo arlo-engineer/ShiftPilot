@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/shift', [ConfirmShiftController::class, 'index'])->name('shift.index');
     Route::get('/submit-shift', [RequestedShiftController::class, 'index'])->name('submit-shift.index');
+    Route::post('/submit-shift', [RequestedShiftController::class, 'store'])->name('submit-shift.store');
 });
 
 require __DIR__.'/auth.php';
