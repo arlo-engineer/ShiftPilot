@@ -24,7 +24,42 @@ class RequestedShift extends Model
         return $this->belongsTo(CompanyMembership::class);
     }
 
-    // requested_shiftsテーブルに存在しない日付を補完したデータを取得
+    // シフト提出ページ用
+    // requested_shiftsテーブルに存在しない日付を保管したデータの取得
+    public function getRequestedShiftsPerEmployee($month)
+    {
+        $companyMembership = new CompanyMembership();
+        $companyMembershipIdByUserId = $companyMembership->getCompanyMembershipIdByUserId();
+        $requestedShiftsPerEmployee = RequestedShift::where('company_membership_id', $companyMembershipIdByUserId)->get();
+
+        $calendar = new Calendar($month);
+        $weeks = $calendar->getWeeks();
+
+        $requestedWorkDays = [];
+        foreach ($requestedShiftsPerEmployee as $requestedShiftPerEmployee) {
+            $requestedWorkDays[] = $requestedShiftPerEmployee->work_date;
+        }
+
+        foreach ($weeks as $week) {
+            for ($i = 0; $i < 7; $i++) {
+                if (in_array($week[$i]->format('Y-m-d'), $requestedWorkDays)) {
+                    $requestedStartTime = $requestedShiftsPerEmployee->where('work_date', $week[$i]->format('Y-m-d'))->first()->start_time;
+                    $requestedEndTime = $requestedShiftsPerEmployee->where('work_date', $week[$i]->format('Y-m-d'))->first()->end_time;
+                    $fullRequestedShiftsPerEmployee[] = ['day'=>$week[$i], 'requested'=>['start_time'=>$requestedStartTime, 'end_time'=>$requestedEndTime]];
+                } else {
+                    $fullRequestedShiftsPerEmployee[] = ['day'=>$week[$i], 'requested'=>null];
+                }
+            }
+        }
+
+        $fullRequestedShiftsPerEmployee = array_chunk($fullRequestedShiftsPerEmployee, 7);
+
+        return $fullRequestedShiftsPerEmployee;
+    }
+
+
+    // シフト作成ページ兼シフト確認ページ用
+    // requested_shiftsテーブルとcreated_shiftsテーブルを結合したデータの取得
     public function getFullShifts($month, $employees)
     {
         $calendar = new Calendar($month);
@@ -72,21 +107,5 @@ class RequestedShift extends Model
             }
             return $fullShifts;
         }
-    }
-
-
-    // この下のところで、nextMonth、nextMonthDatesArrayを取得する
-    public function getNextMonth() {
-        return Carbon::now()->addMonthNoOverflow()->format('Y-m');
-    }
-
-    public function getNextMonthDatesArray() {
-        $nextMonthFirstDate = Carbon::now()->copy()->addMonthNoOverflow()->startOfMonth();
-        $nextMonthDays = Carbon::now()->addMonthNoOverflow()->daysInMonth;
-        $nextMonthDatesArray = [];
-        for ($day = 1; $day <= $nextMonthDays; $day++) {
-            $nextMonthDatesArray[] = $nextMonthFirstDate->copy()->addDays($day - 1)->format('Y-m-d');
-        }
-        return $nextMonthDatesArray;
     }
 }

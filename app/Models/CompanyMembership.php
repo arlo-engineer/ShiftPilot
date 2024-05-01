@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyMembership extends Model
 {
@@ -39,5 +40,12 @@ class CompanyMembership extends Model
     public function getCompanyIdByUserId($user_id)
     {
         return CompanyMembership::where('user_id', $user_id)->pluck('company_id')->first();
+    }
+
+    public function getCompanyMembershipIdByUserId()
+    {
+        $userId = Auth::id();
+        $companyMembershipIdByUserId = CompanyMembership::where('user_id', $userId)->first()->id;
+        return $companyMembershipIdByUserId;
     }
 }

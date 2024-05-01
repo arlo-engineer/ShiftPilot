@@ -89,4 +89,56 @@ class Calendar extends Model
 
 		return $weeks;
 	}
+
+    // 半月分でシフトを提出するときに使用(後ほど実装予定)
+    // function getFirstHalfWeeks() {
+	// 	$weeks = [];
+    //     $days = [];
+
+	// 	// 今月初日を取得
+	// 	$firstDay = $this->carbon->copy()->firstOfMonth();
+
+    //     // 今月15日を取得
+    //     $fifteenthDay = $firstDay->copy()->addDays(14);
+
+    //     // 今月16日を取得
+    //     $sixteenthDay = $firstDay->copy()->addDays(15);
+
+	// 	// 今月末を取得
+	// 	$lastDay = $this->carbon->copy()->lastOfMonth();
+
+    //     // 先月末を取得
+    //     $lastDayOfLastMonth = $this->carbon->copy()->subMonthNoOverflow()->endOfMonth();
+
+    //     // 来月初日を取得
+    //     $firstDayOfNextMonth = $this->carbon->copy()->addMonthNoOverflow()->firstOfMonth();
+
+    //     // 前月の月曜日から今月初日以前まで
+    //     $tmpLastDayOfLastMonth = $lastDayOfLastMonth->subDay($firstDay->format('w') - 1);
+    //     for ($i = 0; $i < $firstDay->format('w'); $i++) {
+    //         $days[] = $tmpLastDayOfLastMonth->copy();
+    //         $tmpLastDayOfLastMonth->addDay(1);
+    //     }
+
+    //     // 今月初日から15日まで
+    //     $tmpDay = $firstDay->copy();
+    //     while ($tmpDay->lte($fifteenthDay)) {
+	// 		//今月
+	// 		$day = $this->__construct($tmpDay->copy());
+	// 		$days[] = $day;
+	// 		//翌日に移動
+	// 		$tmpDay->addDay(1);
+	// 	}
+
+    //     // 今月の15日以降からその週の日曜日まで
+    //     $tmpSixteenthDay = $sixteenthDay->copy();
+    //     for ($i = 0; $i < 6 - ($fifteenthDay->format('w')); $i++) {
+    //         $days[] = $tmpSixteenthDay->copy();
+    //         $tmpSixteenthDay->addDay(1);
+    //     }
+
+    //     $weeks = array_chunk($days, 7);
+
+	// 	return $weeks;
+	// }
 }
