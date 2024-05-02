@@ -28,7 +28,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            マイページ
+                            設定
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -79,7 +79,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    <p class="sm:pl-2">マイページ</p>
+                    <p class="sm:pl-2">設定</p>
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
