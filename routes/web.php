@@ -6,7 +6,7 @@ use App\Http\Controllers\ConfirmShiftController;
 use App\Http\Controllers\RequestedShiftController;
 use App\Http\Controllers\Admin\CreatedShiftController;
 use App\Http\Controllers\Admin\CompanyMembershipController;
-use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\UpdateCompanyNameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +50,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('/profile', [ProfileOfAdminController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileOfAdminController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileOfAdminController::class, 'destroy'])->name('profile.destroy');
+        Route::post('/company-name', [UpdateCompanyNameController::class, 'update'])->name('company-name.update');
 
         Route::prefix('employees')->name('employees.')->group(function () {
         Route::get('/', [CompanyMembershipController::class, 'index'])->name('index');
@@ -60,8 +61,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/{id}/destroy', [CompanyMembershipController::class, 'destroy'])->name('destroy');
         });
 
-        Route::get('/settings', [SettingsController::class, 'edit'])->name('setting.edit');
-        Route::post('/settings', [SettingsController::class, 'update'])->name('setting.update');
+        // Route::get('/settings', [SettingsController::class, 'edit'])->name('setting.edit');
+        // Route::post('/settings', [SettingsController::class, 'update'])->name('setting.update');
     });
 
     require __DIR__.'/admin.php';

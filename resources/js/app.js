@@ -36,7 +36,10 @@ function formatDate(dateString) {
 // シフト作成ページ用
 let clickedElement;
 let clickedClass;
-let modalClass = document.getElementById("modal").classList;
+let modalClass
+if (document.getElementById("modal")) {
+    modalClass = document.getElementById("modal").classList;
+}
 
 // カレンダーのセルをクリックしたときにモーダルを表示する
 if (document.getElementById("calendar-contents")) {
