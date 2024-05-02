@@ -21,7 +21,6 @@
                     <x-slot name="trigger">
                         <button class="bg-my-main-color inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-white">
                             <div class="w-4"><img src="{{ asset('img/nav-user-icon.png') }}" alt="人のアイコン"></div>
-
                             <div>{{ Auth::user()->name }}</div>
 
                             {{-- <div class="ml-1">

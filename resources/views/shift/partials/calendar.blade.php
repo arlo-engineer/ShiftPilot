@@ -16,7 +16,7 @@
             <tr>
                 @for ($i = 0; $i < 7; $i++)
                     <td class="required-shift-cell border border-gray-400 p-1 sm:p-3 sm:pt-1 day-{{ $fullRequestedShiftPerEmployee[$i]['day']->format('D') }} @if ($fullRequestedShiftPerEmployee[$i]['requested'] && $fullRequestedShiftPerEmployee[$i]['day']->format('m') == $days[0]->format('m')) bg-my-accent-color-lighter cursor-pointer register @elseif($fullRequestedShiftPerEmployee[$i]['day']->format('m') == $days[0]->format('m')) bg-white cursor-pointer  @else bg-gray-200  pointer-events-none @endif">
-                        <p class="sm:text-sm text-xs">{{ $fullRequestedShiftPerEmployee[$i]['day']->format('j') }}</p>
+                        <p class="sm:text-sm text-xs pointer-events-none">{{ $fullRequestedShiftPerEmployee[$i]['day']->format('j') }}</p>
                         <input type="hidden" name="store_option[]" value="0" class="store_option">
                         <input type="hidden" name="company_membership_id[]" value="{{ $companyMembership->getCompanyMembershipIdByUserId() }}">
                         <input type="hidden" name="work_date[]" value="{{ $fullRequestedShiftPerEmployee[$i]['day']->format('Y-n-j') }}" class="work-date">
