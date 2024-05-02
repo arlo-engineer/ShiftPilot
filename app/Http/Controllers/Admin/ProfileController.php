@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Company;
 
 class ProfileController extends Controller
 {
@@ -16,8 +17,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $userId = Auth::id();
+        $company = Company::where('admin_id', $userId)->first();
+
         return view('admin.profile.edit', [
             'user' => $request->user(),
+            'company' => $company,
         ]);
     }
 

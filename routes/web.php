@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProfileController as ProfileOfAdminController;
+use App\Http\Controllers\ConfirmShiftController;
+use App\Http\Controllers\RequestedShiftController;
 use App\Http\Controllers\Admin\CreatedShiftController;
 use App\Http\Controllers\Admin\CompanyMembershipController;
-use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\UpdateCompanyNameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// スタッフ側ルート情報
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -30,10 +33,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/shift', [ConfirmShiftController::class, 'index'])->name('shift.index');
+    Route::get('/submit-shift', [RequestedShiftController::class, 'index'])->name('submit-shift.index');
+    Route::post('/submit-shift', [RequestedShiftController::class, 'store'])->name('submit-shift.store');
 });
 
 require __DIR__.'/auth.php';
 
+// 管理者側ルート情報
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/shift', [CreatedShiftController::class, 'index'])->middleware(['auth:admin', 'verified'])->name('shift.index');
 
@@ -42,6 +50,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('/profile', [ProfileOfAdminController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileOfAdminController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileOfAdminController::class, 'destroy'])->name('profile.destroy');
+        Route::post('/company-name', [UpdateCompanyNameController::class, 'update'])->name('company-name.update');
 
         Route::prefix('employees')->name('employees.')->group(function () {
         Route::get('/', [CompanyMembershipController::class, 'index'])->name('index');
@@ -52,8 +61,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/{id}/destroy', [CompanyMembershipController::class, 'destroy'])->name('destroy');
         });
 
-        Route::get('/setting', [SettingsController::class, 'edit'])->name('setting.edit');
-        Route::post('/setting', [SettingsController::class, 'update'])->name('setting.update');
+        // Route::get('/settings', [SettingsController::class, 'edit'])->name('setting.edit');
+        // Route::post('/settings', [SettingsController::class, 'update'])->name('setting.update');
     });
 
     require __DIR__.'/admin.php';

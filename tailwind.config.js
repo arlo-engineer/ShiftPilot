@@ -20,6 +20,7 @@ export default {
                 "my-sub-color": "#8CD8F4",
                 "my-sub-color-lighter": "#E5F6FF",
                 "my-accent-color": "#F55854",
+                "my-accent-color-lighter": "#FFA2A2",
                 "my-text-color": "#555555"
             },
         },

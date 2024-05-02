@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 use App\Models\Calendar;
-use App\Models\Company;
-use App\Models\User;
+use App\Models\CompanyMembership;
 use App\Models\RequestedShift;
-use App\Models\CreatedShift;
+use Carbon\Carbon;
 
-class CreatedShiftController extends Controller
+class RequestedShiftController extends Controller
 {
     public function index(Request $request)
     {
@@ -19,23 +16,21 @@ class CreatedShiftController extends Controller
         if ($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)) {
             $date = $date . '-01';
         } else if (!$date) {
-            $date = Carbon::now()->format('Y-m-d');
+            $date = Carbon::now()->addMonthNoOverflow()->format('Y-m-d');
         } else {
             $date = null;
         }
 
-        $month = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
-        $calendar = new Calendar($month);
-        $days = $calendar->getDays();
-        $company = new Company;
-        $adminId = Auth::id();
-        $companyId = $company->getCompanyIdByAdminId($adminId);
-        $user = new User;
-        $employees = $user->getEmployees($companyId);
-        $requestedShift = new RequestedShift();
-        $fullShifts = $requestedShift->getFullShifts($month, $employees);
+        $companyMembership = new CompanyMembership();
 
-        return view('admin.shift.created_shift', compact('calendar', 'days', 'employees', 'fullShifts'));
+        $nextMonth = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
+        $calendar = new Calendar($nextMonth);
+        $days = $calendar->getDays();
+
+        $requestedShifts = new RequestedShift();
+        $fullRequestedShiftsPerEmployee = $requestedShifts->getRequestedShiftsPerEmployee($nextMonth);
+
+        return view('shift.requested_shift', compact('calendar', 'days', 'companyMembership', 'fullRequestedShiftsPerEmployee'));
     }
 
     public function store(Request $request)
@@ -49,19 +44,15 @@ class CreatedShiftController extends Controller
             $date = null;
         }
 
-        $month = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
-        $calendar = new Calendar($month);
-        $days = $calendar->getDays();
-        $company = new Company;
-        $adminId = Auth::id();
-        $companyId = $company->getCompanyIdByAdminId($adminId);
-        $user = new User;
-        $employees = $user->getEmployees($companyId);
+        $nextMonth = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
+        $requestedShifts = new RequestedShift();
+        $fullRequestedShiftsPerEmployee = $requestedShifts->getRequestedShiftsPerEmployee($nextMonth);
+        $flattenedArray = array_merge(...$fullRequestedShiftsPerEmployee);
 
-        for($i = 0; $i < count($employees) * count($days); $i++) {
-            $existingData = CreatedShift::where('company_membership_id', $request->company_membership_id[$i])->where('work_date', $request->work_date[$i])->first();
+        for($i = 0; $i < count($flattenedArray); $i++) {
+            $existingData = RequestedShift::where('company_membership_id', $request->company_membership_id[$i])->where('work_date', $request->work_date[$i])->first();
             if ($request->store_option[$i] == "1") {
-                // created_shifts_table内にユーザーと日付が一致するデータがある場合は、上書き保存する
+                // requested_shifts_table内にユーザーと日付が一致するデータがある場合は、上書き保存する
                 if ($existingData) {
                     $existingData->company_membership_id = $request->company_membership_id[$i];
                     $existingData->work_date = $request->work_date[$i];
@@ -69,11 +60,13 @@ class CreatedShiftController extends Controller
                     $existingData->end_time = $request->end_time[$i];
                     $existingData->save();
                 } else {
-                    CreatedShift::create([
+                    RequestedShift::create([
                         'company_membership_id' => $request->company_membership_id[$i],
                         'work_date' => $request->work_date[$i],
                         'start_time' => $request->start_time[$i],
                         'end_time' => $request->end_time[$i],
+                        // 後ほど実装予定
+                        'notes' => '',
                     ]);
                 }
             } else if ($request->store_option[$i] == "2") {

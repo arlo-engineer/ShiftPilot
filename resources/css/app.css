@@ -17,3 +17,13 @@
 .calendar-time[type="time"]::-webkit-calendar-picker-indicator {
     display: none;
 }
+
+.bg-stripe {
+    background:repeating-linear-gradient(
+    -45deg,
+    #FFA2A2,
+    #FFA2A2 1px,
+    #fff 0,
+    #fff 5px
+    );
+}
