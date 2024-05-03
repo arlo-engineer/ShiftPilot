@@ -30,7 +30,14 @@ class RequestedShiftController extends Controller
         $requestedShifts = new RequestedShift();
         $fullRequestedShiftsPerEmployee = $requestedShifts->getRequestedShiftsPerEmployee($nextMonth);
 
-        return view('shift.requested_shift', compact('calendar', 'days', 'companyMembership', 'fullRequestedShiftsPerEmployee'));
+        $companyMembership = new CompanyMembership();
+        $companyMembershipIdByUserId = $companyMembership->getCompanyMembershipIdByUserId();
+
+        if (!empty($companyMembershipIdByUserId)) {
+            return view('shift.requested_shift', compact('calendar', 'days', 'companyMembership', 'fullRequestedShiftsPerEmployee'));
+        } else {
+            return view('no-company');
+        }
     }
 
     public function store(Request $request)
