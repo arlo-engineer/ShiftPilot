@@ -17,12 +17,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        $userId = Auth::id();
-        $defaultTime = CompanyMembership::where('user_id', $userId)->first();
+        $companyMembership = new CompanyMembership;
+        $defaultTime = $companyMembership->getDefaultTime();
 
         return view('profile.edit', [
             'user' => $request->user(),
-            'default_time' => $defaultTime,
+            'defaultTime' => $defaultTime,
         ]);
     }
 

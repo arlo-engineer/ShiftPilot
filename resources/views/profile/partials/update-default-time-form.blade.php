@@ -18,13 +18,13 @@
 
         <div>
             <x-input-label for="default_start_time" :value="__('出勤時間')" />
-            <x-text-input id="default_start_time" name="default_start_time" type="time" class="mt-1 block w-full" :value="old('default_start_time', $default_time->default_start_time)" required autofocus autocomplete="name" />
+            <x-text-input id="default_start_time" name="default_start_time" type="time" class="mt-1 block w-full" :value="old('default_start_time', $defaultTime->default_start_time)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
             <x-input-label for="default_end_time" :value="__('退勤時間')" />
-            <x-text-input id="default_end_time" name="default_end_time" type="time" class="mt-1 block w-full" :value="old('default_end_time', $default_time->default_end_time)" required autofocus autocomplete="name" />
+            <x-text-input id="default_end_time" name="default_end_time" type="time" class="mt-1 block w-full" :value="old('default_end_time', $defaultTime->default_end_time)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 

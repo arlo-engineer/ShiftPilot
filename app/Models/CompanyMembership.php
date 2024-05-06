@@ -54,4 +54,11 @@ class CompanyMembership extends Model
             return $companyMembershipIdByUserId;
         }
     }
+
+    public function getDefaultTime()
+    {
+        $userId = Auth::id();
+        $defaultTime = CompanyMembership::where('user_id', $userId)->select('default_start_time', 'default_end_time')->first();
+        return $defaultTime;
+    }
 }
