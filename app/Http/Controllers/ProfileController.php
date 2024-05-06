@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\CompanyMembership;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $userId = Auth::id();
+        $defaultTime = CompanyMembership::where('user_id', $userId)->first();
+
         return view('profile.edit', [
             'user' => $request->user(),
+            'default_time' => $defaultTime,
         ]);
     }
 

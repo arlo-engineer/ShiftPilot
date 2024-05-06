@@ -7,6 +7,7 @@ use App\Models\Calendar;
 use App\Models\CompanyMembership;
 use App\Models\RequestedShift;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class RequestedShiftController extends Controller
 {
@@ -33,8 +34,11 @@ class RequestedShiftController extends Controller
         $companyMembership = new CompanyMembership();
         $companyMembershipIdByUserId = $companyMembership->getCompanyMembershipIdByUserId();
 
+        $userId = Auth::id();
+        $defaultTime = CompanyMembership::where('user_id', $userId)->first();
+
         if (!empty($companyMembershipIdByUserId)) {
-            return view('shift.requested_shift', compact('calendar', 'days', 'companyMembership', 'fullRequestedShiftsPerEmployee'));
+            return view('shift.requested_shift', compact('calendar', 'days', 'companyMembership', 'fullRequestedShiftsPerEmployee', 'defaultTime'));
         } else {
             return view('no-company');
         }

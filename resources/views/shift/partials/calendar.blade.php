@@ -31,10 +31,10 @@
                         @else
                             <div class="invisible tmp-shift flex flex-col items-center justify-center text-sm pointer-events-none">
                                 {{-- 設定でvalueの値を設定する？(要検討) --}}
-                                <input type="time" name="start_time[]" value="" class="input-start-time calendar-time p-0 border-none text-sm sm:text-base bg-transparent">
+                                <input type="time" name="start_time[]" value="{{ $defaultTime->default_start_time }}" class="input-start-time calendar-time p-0 border-none text-sm sm:text-base bg-transparent">
                                 <p class="h-1 border-l border-my-text-color"></p>
                                 {{-- 設定でvalueの値を設定する？(要検討) --}}
-                                <input type="time" name="end_time[]" value="" class="input-end-time calendar-time p-0 border-none text-sm sm:text-base bg-transparent">
+                                <input type="time" name="end_time[]" value="{{ $defaultTime->default_end_time }}" class="input-end-time calendar-time p-0 border-none text-sm sm:text-base bg-transparent">
                             </div>
                         @endif
                     </td>

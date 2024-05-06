@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->text('skills');
             $table->text('remarks')->nullable();
+            $table->time('default_start_time')->nullable();
+            $table->time('default_end_time')->nullable();
             $table->timestamps();
         });
     }
