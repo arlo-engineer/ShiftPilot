@@ -11,6 +11,9 @@ use App\Models\User;
 use App\Models\RequestedShift;
 use App\Models\CreatedShift;
 
+
+use App\Models\CompanyMembership;
+
 class CreatedShiftController extends Controller
 {
     public function index(Request $request)
