@@ -72,12 +72,7 @@ class CompanyMembershipController extends Controller
     {
         $employeeInfo = CompanyMembership::find($id);
         $employeeInfo->skills = $request->skills;
-        // そもそもnullを判定して条件分岐させる処理は必要なのか？(要確認)
-        if ($request->remarks == null) {
-            $employeeInfo->remarks = '';
-        } else {
-            $employeeInfo->remarks = $request->remarks;
-        }
+        $employeeInfo->remarks = $request->remarks;
         $employeeInfo->save();
 
         return to_route('admin.employees.index');

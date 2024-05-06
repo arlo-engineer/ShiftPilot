@@ -65,7 +65,7 @@ class RequestedShift extends Model
         $calendar = new Calendar($month);
         $days = $calendar->getDays();
 
-        if ($employees) {
+        if (!empty($employees)) {
             foreach ($employees as $employee) {
                 $RequestShiftWithMemberships = RequestedShift::with('companyMembership')->where('company_membership_id', $employee->id)->get();
 

@@ -28,10 +28,6 @@ Route::get('/', function () {
 Route::get('/shift', [ConfirmShiftController::class, 'index'])->middleware(['auth', 'verified'])->name('shift.index');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/no-company', function() {
-        return view('no-company');
-    })->name('no-company');
-
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
