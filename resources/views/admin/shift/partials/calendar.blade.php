@@ -52,7 +52,7 @@
                     <p class="text-xs">13時間20分</p>
                 </td>
                 @foreach ($fullShifts as $fullShift)
-                    @if ($fullShift['employee_name'] == $employee->name)
+                    @if ($fullShift['employee_id'] == $employee->id)
                         <td class="calendar-cell-day day-{{ $fullShift['work_date']->format("D") }} border-r border-b border-gray-400 px-1 py-2 cursor-pointer text-center text-sm hover:bg-gray-100 @if(!empty($fullShift['created']['start_time']) || !empty($fullShift['created']['end_time'])) register @endif">
                             {{-- store_optionのvalueが1のときに保存する --}}
                             <input type="hidden" name="store_option[]" value="0" class="store_option">
