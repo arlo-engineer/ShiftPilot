@@ -35,6 +35,10 @@ class ConfirmShiftController extends Controller
         $requestedShift = new RequestedShift();
         $fullShifts = $requestedShift->getFullShifts($month, $employees);
 
-        return view('confirm_shift', compact('calendar', 'days', 'employees', 'fullShifts', 'userId'));
+        if (!empty($employees)) {
+            return view('confirm_shift', compact('calendar', 'days', 'employees', 'fullShifts', 'userId'));
+        } else {
+            return view('no-company');
+        }
     }
 }

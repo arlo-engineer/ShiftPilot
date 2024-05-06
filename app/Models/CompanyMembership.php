@@ -46,7 +46,20 @@ class CompanyMembership extends Model
     {
         // 会社ごとに表示切り替えを行えるようにするためには、この箇所を変更する可能性が高いと考える(要検討)
         $userId = Auth::id();
-        $companyMembershipIdByUserId = CompanyMembership::where('user_id', $userId)->first()->id;
-        return $companyMembershipIdByUserId;
+        if (!empty(CompanyMembership::where('user_id', $userId)->first())) {
+            $companyMembershipIdByUserId = CompanyMembership::where('user_id', $userId)->first()->id;
+            return $companyMembershipIdByUserId;
+        } else {
+            $companyMembershipIdByUserId = "";
+            return $companyMembershipIdByUserId;
+        }
+    }
+
+    // スタッフがシフト提出する際に、デフォルト/初期値として表示される時間
+    public function getDefaultTime()
+    {
+        $userId = Auth::id();
+        $defaultTime = CompanyMembership::where('user_id', $userId)->select('default_start_time', 'default_end_time')->first();
+        return $defaultTime;
     }
 }

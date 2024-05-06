@@ -26,10 +26,7 @@
                 <!-- Page Content -->
                 {{ $slot }}
             </main>
-
         </div>
-        {{-- Livewire
-        @livewireScripts --}}
 
         <script>
             let closedSideNavClass = document.getElementById('closedSideNav').classList;

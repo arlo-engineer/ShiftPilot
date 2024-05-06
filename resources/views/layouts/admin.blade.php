@@ -14,8 +14,6 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        {{-- Livewire
-        @livewireStyles --}}
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen">
@@ -29,10 +27,7 @@
                 <!-- Page Content -->
                 {{ $slot }}
             </main>
-
         </div>
-        {{-- Livewire
-        @livewireScripts --}}
 
         <script>
             let closedSideNavClass = document.getElementById('closedSideNav').classList;
