@@ -55,6 +55,7 @@ class CompanyMembership extends Model
         }
     }
 
+    // スタッフがシフト提出する際に、デフォルト/初期値として表示される時間
     public function getDefaultTime()
     {
         $userId = Auth::id();
