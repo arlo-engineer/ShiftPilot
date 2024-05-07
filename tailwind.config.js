@@ -16,9 +16,9 @@ export default {
             },
 
             colors: {
-                "my-main-color": "#2DAFE3",
-                "my-sub-color": "#8CD8F4",
-                "my-sub-color-lighter": "#E5F6FF",
+                "my-main-color": "#02ADB0",
+                "my-sub-color": "#89DEE0",
+                "my-sub-color-lighter": "#DAEFE9",
                 "my-accent-color": "#F55854",
                 "my-accent-color-lighter": "#FFA2A2",
                 "my-text-color": "#555555"
