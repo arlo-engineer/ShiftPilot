@@ -27,7 +27,8 @@
 
         <!-- Login -->
         <div class="mt-4 text-center">
-            <x-admin-primary-button>{{ __('Log in') }}</x-admin-primary-button>
+            <x-admin-login-button>{{ __('Log in') }}</x-admin-login-button>
+            <button class=""></button>
         </div>
 
         <!-- Remember Me -->
