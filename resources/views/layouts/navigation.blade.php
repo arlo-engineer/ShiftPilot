@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-my-main-color border-b border-gray-100 w-full fixed z-10">
+<nav x-data="{ open: false }" class="bg-user-main-color border-b border-gray-100 w-full fixed z-10">
     <!-- Primary Navigation Menu -->
     <div class="mx-auto px-4 sm:px-6 lg:px-6">
         <div class="flex justify-between h-10">
@@ -16,7 +16,7 @@
                 <x-company-name />
                 <x-dropdown align="right" width="auto">
                     <x-slot name="trigger">
-                        <button class="bg-my-main-color inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-white">
+                        <button class="bg-user-main-color inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-white">
                             <div class="w-4"><img src="{{ asset('img/nav-user-icon.png') }}" alt="人のアイコン"></div>
                             <div>{{ Auth::user()->name }}</div>
 

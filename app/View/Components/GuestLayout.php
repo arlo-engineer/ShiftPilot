@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class GuestLayout extends Component
 {
@@ -12,6 +13,13 @@ class GuestLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.guest');
+        $currentUrl = url()->current();
+        if (Str::contains($currentUrl, '/admin/')) {
+            $bgColor = "bg-admin-sub-color-lighter";
+        } else {
+            $bgColor = "bg-user-sub-color-lighter";
+        }
+
+        return view('layouts.guest', compact('bgColor'));
     }
 }

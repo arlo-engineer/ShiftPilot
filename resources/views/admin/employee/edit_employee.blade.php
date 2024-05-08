@@ -56,7 +56,7 @@
 
                     <div class="flex flex-row-reverse items-center mt-5">
                             <div class="flex ml-auto">
-                                <input type="submit" value="保存する" class="cursor-pointer p-3 bg-my-main-color text-sm text-white rounded font-bold">
+                                <input type="submit" value="保存する" class="cursor-pointer p-3 bg-admin-main-color text-sm text-white rounded font-bold">
                                 <a href="{{ route('admin.employees.index') }}" class="ml-5 cursor-pointer p-3 text-sm rounded border">キャンセル</a>
                             </div>
 
@@ -64,7 +64,7 @@
 
                         <form method="POST" action="{{ route('admin.employees.destroy', ['id' => $employee->companyMembership->id]) }}">
                             @csrf
-                            <input type="submit" value="スタッフを退職させる" class="text-sm text-my-main-color cursor-pointer flex justify-end">
+                            <input type="submit" value="スタッフを退職させる" class="text-sm text-admin-main-color cursor-pointer flex justify-end">
                         </form>
                     </div>
             </div>

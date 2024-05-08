@@ -14,7 +14,7 @@
 @if (!empty($companyNames))
 <x-dropdown align="right" width="auto">
     <x-slot name="trigger">
-        <button class="bg-my-main-color inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-white">
+        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-white">
             <div class="font-bold text-white text-sm flex items-center">
                 <div class="w-4"><img src="{{ asset('img/nav-building-icon.png') }}" alt="ビルのアイコン"></div>
                 <div>{{ $companyNames[0]->name }}</div>

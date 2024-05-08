@@ -16,9 +16,13 @@ export default {
             },
 
             colors: {
-                "my-main-color": "#02ADB0",
-                "my-sub-color": "#89DEE0",
-                "my-sub-color-lighter": "#DAEFE9",
+                // adminを変更する
+                "admin-main-color": "#0068B6",
+                "user-main-color": "#02ADB0",
+                "admin-sub-color": "#87BCE3",
+                "user-sub-color": "#89DEE0",
+                "admin-sub-color-lighter": "#E7F1FA",
+                "user-sub-color-lighter": "#DAEFE9",
                 "my-accent-color": "#F55854",
                 "my-accent-color-lighter": "#FFA2A2",
                 "my-text-color": "#555555"

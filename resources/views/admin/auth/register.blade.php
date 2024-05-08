@@ -51,9 +51,9 @@
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ml-4">
+            <x-admin-primary-button class="ml-4">
                 {{ __('Register') }}
-            </x-primary-button>
+            </x-admin-primary-button>
         </div>
     </form>
 </x-guest-layout>
