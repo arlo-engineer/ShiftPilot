@@ -141,4 +141,21 @@ class Calendar extends Model
 
 	// 	return $weeks;
 	// }
+
+    /**
+     * 年月(Y-m)の形式を年月日(Y-m-d)の形式へ変換する
+     *
+     * @param string $date 年月(Y-m)形式の値
+     * @return string|null Y-mの形式をY-m-dの形式に変換した値を返す。引数が存在しない場合は今日の年月日を返す。上記以外はnullを返す。
+     */
+    public static function convertYearMonthToYearMonthDay($date) {
+        if($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)) {
+            $date = $date . '-01';
+        } else if (!$date) {
+            $date = Carbon::now()->format('Y-m-d');
+        } else {
+            $date = null;
+        }
+        return $date;
+    }
 }
