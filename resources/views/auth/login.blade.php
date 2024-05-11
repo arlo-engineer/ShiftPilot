@@ -34,7 +34,7 @@
         <div class="mt-4 text-center">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('ログイン状態を保存する（30日間）') }}</span>
+                <span class="ms-2 text-sm text-gray-600">{{ __('ログイン状態を保存する') }}</span>
             </label>
         </div>
 

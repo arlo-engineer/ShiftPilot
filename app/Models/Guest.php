@@ -42,22 +42,22 @@ class Guest extends Model
     {
         switch (true) {
             case Str::contains($this->url, '/admin/') && Str::contains($this->url, '/register'):
-                $html[] = '<div class="text-admin-main-color my-6 text-sm hover:underline">';
+                $html[] = '<div class="text-admin-main-color mt-6 text-sm hover:underline">';
                 $html[] = '<a href="' . route('admin.login') . '">ログインはこちら</a>';
                 $html[] = '</div>';
                 break;
             case Str::contains($this->url, '/admin/') && Str::contains($this->url, '/login'):
-                $html[] = '<div class="text-admin-main-color my-6 text-sm hover:underline">';
+                $html[] = '<div class="text-admin-main-color mt-6 text-sm hover:underline">';
                 $html[] = '<a href="' . route('admin.register') . '">新しくアカウントを作る</a>';
                 $html[] = '</div>';
                 break;
             case Str::contains($this->url, '/register'):
-                $html[] = '<div class="text-user-main-color my-6 text-sm hover:underline">';
+                $html[] = '<div class="text-user-main-color mt-6 text-sm hover:underline">';
                 $html[] = '<a href="' . route('login') . '">ログインはこちら</a>';
                 $html[] = '</div>';
                 break;
             case Str::contains($this->url, '/login'):
-                $html[] = '<div class="text-user-main-color my-6 text-sm hover:underline">';
+                $html[] = '<div class="text-user-main-color mt-6 text-sm hover:underline">';
                 $html[] = '<a href="' . route('register') . '">新しくアカウントを作る</a>';
                 $html[] = '</div>';
                 break;
