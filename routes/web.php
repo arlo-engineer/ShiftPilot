@@ -21,10 +21,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// スタッフ側トップページ
 Route::get('/', function () {
     return view('top');
 })->name('top');
 
+// 管理者側トップページ
 Route::get('/admin', function () {
     return view('admin.top');
 })->name('admin.top');

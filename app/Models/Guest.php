@@ -17,9 +17,23 @@ class Guest extends Model
 	}
 
     /**
+    * 動的にトップページの遷移リンクを取得する
+    *
+    * @return string トップページのURL。現在のページが管理者向けページの際は管理者向けトップページのURLを返す。現在のページがスタッフ向けのページの際はスタッフ向けトップページのURLを返す。
+    */
+    public function getTopUrl()
+    {
+        if (Str::contains($this->url, '/admin/')) {
+            $topUrl = route('admin.top');
+        } else {
+            $topUrl = route('top');
+        }
+        return $topUrl;
+    }
+
+    /**
     * ゲストページにおける背景色の切り替え
     *
-    * @param string $url ページのurl
     * @return string 背景色を表すクラス名
     */
     public function getBgColor()
@@ -35,7 +49,6 @@ class Guest extends Model
     /**
     * ゲストページにおける文言(ログインはこちら、新しくアカウントを作るなど)の切り替え
     *
-    * @param string $url ページのurl
     * @return string ゲストページに表示する文言。URLに/registerが含まれるときは「ログインはこちら」、URLに/loginが含まれる時は「新しくアカウントを作る」を返す。
     */
     public function switchGuestPagePhrase()

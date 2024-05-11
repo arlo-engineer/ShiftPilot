@@ -17,8 +17,7 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 {{ $guest->getBgColor() }}">
             <div>
-                <a href="/">
-                    {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
+                <a href="{{ $guest->getTopUrl() }}">
                     <div class="w-48 fill-current"><img src="{{ asset('img/ShiftPilot-logo.png') }}" alt=""></div>
                 </a>
             </div>
