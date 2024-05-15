@@ -4,7 +4,7 @@
 
     <form method="POST" action="{{ route('admin.login') }}">
         @csrf
-        <div class="text-center text-lg font-bold text-my-text-color">{{ __('管理者用ログイン') }}</div>
+        <div class="text-center text-lg font-bold text-my-text-color">{{ __('ログイン') }}</div>
 
         <!-- Email Address -->
         <div class="mt-4">

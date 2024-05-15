@@ -63,7 +63,7 @@
 
 
         <div class="h-screen w-screen flex justify-center items-center">
-            <p class="text-lg">※後ほど作成するページです。</p>
+            <p class="text-lg">※今後作成予定のページです。</p>
         </div>
 
     </body>
