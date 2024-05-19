@@ -21,20 +21,18 @@
                         <input type="hidden" name="company_membership_id[]" value="{{ $companyMembership->getCompanyMembershipIdByUserId() }}">
                         <input type="hidden" name="work_date[]" value="{{ $fullRequestedShiftPerEmployee[$i]['day']->format('Y-n-j') }}" class="work-date">
                         {{-- 備考欄は後ほど実装予定 --}}
-                        {{-- <input type="hidden" name="notes[]" value="" class="notes"> --}}
+                        <input type="hidden" name="notes[]" value="" class="notes">
                         @if ($fullRequestedShiftPerEmployee[$i]['requested'] && $fullRequestedShiftPerEmployee[$i]['day']->format('m') == $days[0]->format('m'))
                             <div class="required-shift flex flex-col items-center justify-center text-sm pointer-events-none">
-                                <input type="time" name="start_time[]" value="{{ $fullRequestedShiftPerEmployee[$i]['requested']['start_time'] }}" class="calendar-time input-start-time p-0 border-none bg-transparent text-sm sm:text-base">
+                                <input type="time" name="start_time[]" value="{{ $fullRequestedShiftPerEmployee[$i]['requested']['start_time'] }}" class="calendar-time input-start-time p-0 border-none bg-transparent text-sm sm:text-lg">
                                 <p class="h-1 border-l border-my-text-color"></p>
-                                <input type="time" name="end_time[]" value="{{ $fullRequestedShiftPerEmployee[$i]['requested']['end_time'] }}" class="calendar-time input-end-time p-0 border-none bg-transparent text-sm sm:text-base">
+                                <input type="time" name="end_time[]" value="{{ $fullRequestedShiftPerEmployee[$i]['requested']['end_time'] }}" class="calendar-time input-end-time p-0 border-none bg-transparent text-sm sm:text-lg">
                             </div>
                         @else
                             <div class="invisible tmp-shift flex flex-col items-center justify-center text-sm pointer-events-none">
-                                {{-- 設定でvalueの値を設定する？(要検討) --}}
-                                <input type="time" name="start_time[]" value="{{ $defaultTime->default_start_time }}" class="input-start-time calendar-time p-0 border-none text-sm sm:text-base bg-transparent">
+                                <input type="time" name="start_time[]" value="{{ $defaultTime->default_start_time }}" class="input-start-time calendar-time p-0 border-none text-sm sm:text-lg bg-transparent">
                                 <p class="h-1 border-l border-my-text-color"></p>
-                                {{-- 設定でvalueの値を設定する？(要検討) --}}
-                                <input type="time" name="end_time[]" value="{{ $defaultTime->default_end_time }}" class="input-end-time calendar-time p-0 border-none text-sm sm:text-base bg-transparent">
+                                <input type="time" name="end_time[]" value="{{ $defaultTime->default_end_time }}" class="input-end-time calendar-time p-0 border-none text-sm sm:text-lg bg-transparent">
                             </div>
                         @endif
                     </td>

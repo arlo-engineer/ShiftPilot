@@ -20,4 +20,23 @@ class CreatedShift extends Model
     {
         return $this->belongsTo(CompanyMembership::class);
     }
+
+    /**
+     * 遷移前のページのクエリーパラメーターの値を取得する
+     *
+     * @param string $key クエリーパラメーターのキー
+     * @return string|null キーに対応するクエリーパラメーターの値。キーが存在しない場合はnullを返す
+     */
+    public static function getPreviousPageQueryValue($key)
+    {
+        $previousUrl = url()->previous();
+        $queryKey = '?' . $key . '=';
+        if (strpos($previousUrl, $queryKey)) {
+            $queryValue = substr($previousUrl, strpos($previousUrl, $queryKey) + mb_strlen($queryKey));
+        } else {
+            $queryValue = '';
+        }
+
+        return $queryValue;
+    }
 }

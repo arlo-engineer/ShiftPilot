@@ -21,9 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// スタッフ側トップページ
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('top');
+})->name('top');
+
+// 管理者側トップページ
+Route::get('/admin', function () {
+    return view('admin.top');
+})->name('admin.top');
 
 // スタッフ側ルート情報
 Route::get('/shift', [ConfirmShiftController::class, 'index'])->middleware(['auth', 'verified'])->name('shift.index');

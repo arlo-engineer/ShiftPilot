@@ -33,14 +33,14 @@
                     <tbody id="calendar-contents">
                         @foreach ($employees as $employee)
                         <tr>
-                            <td class="nameColumn sticky top-0 -left-0 px-4 py-3 border-l border-b border-r border-gray-400 whitespace-nowrap sm:min-w-48 @if($employee->id === $userId) bg-my-sub-color-lighter @else bg-white @endif">
+                            <td class="nameColumn sticky top-0 -left-0 px-4 py-3 border-l border-b border-r border-gray-400 whitespace-nowrap sm:min-w-48 @if($employee->id === $userId) bg-user-sub-color-lighter @else bg-white @endif">
                                 <p class="font-bold">{{ $employee->name }}</p>
                             </td>
                             @foreach ($fullShifts as $fullShift)
                                 @if ($fullShift['employee_id'] == $employee->id)
-                                    <td class="calendar-cell-day day-{{ $day->format("D") }} border-r border-b border-gray-400 px-1 py-2 text-center text-sm @if($employee->id === $userId) bg-my-sub-color-lighter @else bg-white @endif">
+                                    <td class="calendar-cell-day day-{{ $day->format("D") }} border-r border-b border-gray-400 px-1 py-2 text-center text-sm @if($employee->id === $userId) bg-user-sub-color-lighter @else bg-white @endif">
                                         @if (!empty($fullShift['created']['start_time']) || !empty($fullShift['created']['end_time']))
-                                            <div class="created-shift bg-my-main-color rounded py-1 text-white flex flex-col items-center justify-center">
+                                            <div class="created-shift bg-user-main-color rounded py-1 text-white flex flex-col items-center justify-center">
                                                 <p class="start-time">{{ $fullShift['created']['start_time'] }}</p>
                                                 <p class="h-1 border-l"></p>
                                                 <p class="end-time">{{ $fullShift['created']['end_time'] }}</p>

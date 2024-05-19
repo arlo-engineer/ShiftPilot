@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-my-main-color border-b border-gray-100 w-full fixed">
+<nav x-data="{ open: false }" class="bg-admin-main-color border-b border-gray-100 w-full fixed z-10">
     <!-- Primary Navigation Menu -->
     <div class="mx-auto px-4 sm:px-6 lg:px-6">
         <div class="flex justify-between h-10">
@@ -19,7 +19,7 @@
                 </div>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="bg-my-main-color inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-white">
+                        <button class="bg-admin-main-color inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-white">
                             <div class="w-4"><img src="{{ asset('img/nav-user-icon.png') }}" alt="人のアイコン"></div>
                             <div>{{ Auth::user()->name }}</div>
 
@@ -60,26 +60,26 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" id="navContent" class="hidden sm:hidden bg-white">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
+            <x-admin-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
                 <p class="sm:pl-2">シフト管理</p>
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.employees.index')" :active="request()->routeIs('admin.employees.index', 'admin.employees.create')">
+            </x-admin-responsive-nav-link>
+            <x-admin-responsive-nav-link :href="route('admin.employees.index')" :active="request()->routeIs('admin.employees.index', 'admin.employees.create')">
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
                 <p class="sm:pl-2">スタッフ管理</p>
-            </x-responsive-nav-link>
-            {{-- <x-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
+            </x-admin-responsive-nav-link>
+            {{-- <x-admin-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
                 <div class="pl-5"></div>
                 <p class="sm:pl-2">協働NGリスト</p>
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
+            </x-admin-responsive-nav-link>
+            <x-admin-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
                 <div class="pl-5"></div>
                 <p class="sm:pl-2">スタッフ管理テスト</p>
-            </x-responsive-nav-link> --}}
-            <x-responsive-nav-link :href="route('admin.profile.edit')" :active="request()->routeIs('admin.profile.edit')">
+            </x-admin-responsive-nav-link> --}}
+            <x-admin-responsive-nav-link :href="route('admin.profile.edit')" :active="request()->routeIs('admin.profile.edit')">
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
                 <p class="sm:pl-2">設定</p>
-            </x-responsive-nav-link>
+            </x-admin-responsive-nav-link>
         </div>
 
 
@@ -91,19 +91,19 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('admin.profile.edit')">
+                <x-admin-responsive-nav-link :href="route('admin.profile.edit')">
                     <p class="sm:pl-2">設定</p>
-                </x-responsive-nav-link>
+                </x-admin-responsive-nav-link>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('admin.logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('admin.logout')"
+                    <x-admin-responsive-nav-link :href="route('admin.logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         <p class="sm:pl-2">ログアウト</p>
-                    </x-responsive-nav-link>
+                    </x-admin-responsive-nav-link>
                 </form>
             </div>
         </div>

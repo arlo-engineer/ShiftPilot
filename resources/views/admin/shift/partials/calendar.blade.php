@@ -18,15 +18,15 @@
 <div class="pt-8 flex text-xs items-center justify-end">
     <p>凡例</p>
     <div class="flex items-center pl-4">
-        <div class="h-4 w-7 rounded bg-my-main-color"></div>
+        <div class="h-4 w-7 rounded bg-admin-main-color"></div>
         <p class="pl-1.5">確定シフト</p>
     </div>
     <div class="flex items-center pl-4">
-        <div class="h-4 w-7 rounded bg-my-sub-color-lighter border border-my-main-color"></div>
+        <div class="h-4 w-7 rounded bg-admin-sub-color-lighter border border-admin-main-color"></div>
         <p class="pl-1.5">下書きシフト</p>
     </div>
     <div class="flex items-center pl-4">
-        <div border-my-sub-colorv class="h-4 w-7 border-b-4 border-my-sub-color"></div>
+        <div border-admin-sub-colorv class="h-4 w-7 border-b-4 border-admin-sub-color"></div>
         <p class="pl-1.5">希望シフト</p>
     </div>
 </div>
@@ -59,31 +59,31 @@
                             <input type="hidden" name="company_membership_id[]" value="{{ $fullShift['company_membership_id'] }}">
                             <input type="hidden" name="work_date[]" value="{{ $fullShift['work_date']->format('Y-n-j') }}" class="work-date">
                             @if (!empty($fullShift['created']['start_time']) || !empty($fullShift['created']['end_time']))
-                                <div class="hidden tmp-shift bg-my-sub-color-lighter rounded py-1 border border-my-main-color flex pointer-events-none justify-center">
-                                    <input type="time" name="start_time[]" value="" class="calendar-time input-start-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-l-sm border-none cursor-pointer">
-                                    <span class="bg-my-sub-color-lighter">-</span>
-                                    <input type="time" name="end_time[]" value="" class="calendar-time input-end-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-r-sm border-none cursor-pointer">
+                                <div class="hidden tmp-shift bg-admin-sub-color-lighter rounded py-1 border border-admin-main-color flex pointer-events-none justify-center">
+                                    <input type="time" name="start_time[]" value="" class="calendar-time input-start-time w-11 p-0 text-center text-sm bg-admin-sub-color-lighter rounded-l-sm border-none cursor-pointer">
+                                    <span class="bg-admin-sub-color-lighter">-</span>
+                                    <input type="time" name="end_time[]" value="" class="calendar-time input-end-time w-11 p-0 text-center text-sm bg-admin-sub-color-lighter rounded-r-sm border-none cursor-pointer">
                                 </div>
-                                <div class="created-shift bg-my-main-color rounded py-1 pointer-events-none text-white flex justify-center">
+                                <div class="created-shift bg-admin-main-color rounded py-1 pointer-events-none text-white flex justify-center">
                                     <p class="start-time w-11">{{ $fullShift['created']['start_time'] }}</p>
                                     <span>-</span>
                                     <p class="end-time w-11">{{ $fullShift['created']['end_time'] }}</p>
                                 </div>
                             @else
-                                <div class="invisible tmp-shift bg-my-sub-color-lighter rounded py-1 border border-my-main-color flex pointer-events-none justify-center">
-                                    <input type="time" name="start_time[]" value="" class="calendar-time input-start-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-l-sm border-none cursor-pointer">
-                                    <span class="bg-my-sub-color-lighter">-</span>
-                                    <input type="time" name="end_time[]" value="" class="calendar-time input-end-time w-11 p-0 text-center text-sm bg-my-sub-color-lighter rounded-r-sm border-none cursor-pointer">
+                                <div class="invisible tmp-shift bg-admin-sub-color-lighter rounded py-1 border border-admin-main-color flex pointer-events-none justify-center">
+                                    <input type="time" name="start_time[]" value="" class="calendar-time input-start-time w-11 p-0 text-center text-sm bg-admin-sub-color-lighter rounded-l-sm border-none cursor-pointer">
+                                    <span class="bg-admin-sub-color-lighter">-</span>
+                                    <input type="time" name="end_time[]" value="" class="calendar-time input-end-time w-11 p-0 text-center text-sm bg-admin-sub-color-lighter rounded-r-sm border-none cursor-pointer">
                                 </div>
                             @endif
                             @if (!empty($fullShift['requested']['start_time']) || !empty($fullShift['requested']['end_time']))
-                            <div class="flex justify-center text-my-main-color border-b-4 border-my-sub-color pt-2 pointer-events-none">
+                            <div class="flex justify-center text-admin-main-color border-b-4 border-admin-sub-color pt-2 pointer-events-none">
                                 <p class="start-time w-11">{{ $fullShift['requested']['start_time'] }}</p>
                                 <span>-</span>
                                 <p class="end-time w-11">{{ $fullShift['requested']['end_time'] }}</p>
                             </div>
                             @else
-                            <div class="flex justify-center text-my-main-color border-b-4 border-transparent pt-2 pointer-events-none invisible">
+                            <div class="flex justify-center text-admin-main-color border-b-4 border-transparent pt-2 pointer-events-none invisible">
                                 <p class="start-time w-11"></p>
                                 <span>-</span>
                                 <p class="end-time w-11"></p>

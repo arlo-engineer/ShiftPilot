@@ -4,7 +4,7 @@
             <div>
                 <a href="{{ route('admin.employees.index') }}" class="flex">
                     <img src="{{ asset('img/calendar-left-arrow.png') }}" alt="" class="w-3.5">
-                    <p class="text-sm text-my-main-color pl-1">戻る</p>
+                    <p class="text-sm text-admin-main-color pl-1">戻る</p>
                 </a>
             </div>
             <h2 class="font-bold tracking-wider mt-8">
@@ -55,7 +55,7 @@
                     </div>
 
                     <div>
-                        <input type="submit" value="追加する" class="p-3 bg-my-main-color text-sm text-white rounded font-bold cursor-pointer mt-5">
+                        <input type="submit" value="追加する" class="p-3 bg-admin-main-color text-sm text-white rounded font-bold cursor-pointer mt-5">
                     </div>
 
                     @if ($errors->any())

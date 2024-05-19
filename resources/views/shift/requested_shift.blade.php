@@ -17,7 +17,7 @@
         <div class="h-24"></div>
 
         <div class="shadow-custom bg-white flex justify-end w-full fixed -bottom-0 -right-0 py-4 pr-6 font-bold text-sm">
-            <input type="submit" id="shiftDetermine" onclick="window.removeEventListener('beforeunload', leavePageConfirm);" class="bg-my-main-color text-white px-4 py-3 rounded" value="希望シフトを提出する">
+            <input type="submit" id="shiftDetermine" onclick="window.removeEventListener('beforeunload', leavePageConfirm);" class="bg-user-main-color text-white px-4 py-3 rounded" value="希望シフトを提出する">
         </div>
     </form>
 

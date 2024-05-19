@@ -4,9 +4,10 @@
 
     <form method="POST" action="{{ route('admin.login') }}">
         @csrf
+        <div class="text-center text-lg font-bold text-my-text-color">{{ __('ログイン') }}</div>
 
         <!-- Email Address -->
-        <div>
+        <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -24,24 +25,25 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
+        <!-- Login -->
+        <div class="mt-4 text-center">
+            <x-admin-login-button>{{ __('Log in') }}</x-admin-login-button>
+        </div>
+
         <!-- Remember Me -->
-        <div class="block mt-4">
+        <div class="mt-4 text-center">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                <span class="ml-2 text-sm text-gray-600">{{ __('ログイン状態を保存する') }}</span>
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="text-center mt-4">
             @if (Route::has('admin.password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('admin.password.request') }}">
-                    {{ __('Forgot your password?') }}
+                    {{ __('パスワードをお忘れですか？') }}
                 </a>
             @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
         </div>
     </form>
 </x-guest-layout>

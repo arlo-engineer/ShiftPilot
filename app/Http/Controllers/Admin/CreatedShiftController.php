@@ -16,14 +16,7 @@ class CreatedShiftController extends Controller
     public function index(Request $request)
     {
         $date = $request->input('date');
-        if ($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)) {
-            $date = $date . '-01';
-        } else if (!$date) {
-            $date = Carbon::now()->format('Y-m-d');
-        } else {
-            $date = null;
-        }
-
+        $date = Calendar::convertYearMonthToYearMonthDay($date);
         $month = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
         $calendar = new Calendar($month);
         $days = $calendar->getDays();
@@ -40,15 +33,8 @@ class CreatedShiftController extends Controller
 
     public function store(Request $request)
     {
-        $date = $request->input('date');
-        if ($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)) {
-            $date = $date . '-01';
-        } else if (!$date) {
-            $date = Carbon::now()->format('Y-m-d');
-        } else {
-            $date = null;
-        }
-
+        $date = CreatedShift::getPreviousPageQueryValue('date');
+        $date = Calendar::convertYearMonthToYearMonthDay($date);
         $month = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
         $calendar = new Calendar($month);
         $days = $calendar->getDays();
@@ -59,10 +45,10 @@ class CreatedShiftController extends Controller
         $employees = $user->getEmployees($companyId);
 
         for($i = 0; $i < count($employees) * count($days); $i++) {
-            $existingData = CreatedShift::where('company_membership_id', $request->company_membership_id[$i])->where('work_date', $request->work_date[$i])->first();
             if ($request->store_option[$i] == "1") {
+                $existingData = CreatedShift::where('company_membership_id', $request->company_membership_id[$i])->where('work_date', $request->work_date[$i])->first();
                 // created_shifts_table内にユーザーと日付が一致するデータがある場合は、上書き保存する
-                if ($existingData) {
+                if (!empty($existingData)) {
                     $existingData->company_membership_id = $request->company_membership_id[$i];
                     $existingData->work_date = $request->work_date[$i];
                     $existingData->start_time = $request->start_time[$i];
@@ -77,6 +63,7 @@ class CreatedShiftController extends Controller
                     ]);
                 }
             } else if ($request->store_option[$i] == "2") {
+                $existingData = CreatedShift::where('company_membership_id', $request->company_membership_id[$i])->where('work_date', $request->work_date[$i])->first();
                 $existingData->delete();
             }
         }

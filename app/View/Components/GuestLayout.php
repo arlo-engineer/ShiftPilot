@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
+use App\Models\Guest;
 
 class GuestLayout extends Component
 {
@@ -12,6 +13,9 @@ class GuestLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.guest');
+        $currentUrl = url()->current();
+        $guest = new Guest($currentUrl);
+
+        return view('layouts.guest', compact('guest'));
     }
 }
