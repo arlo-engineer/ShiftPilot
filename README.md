@@ -11,7 +11,7 @@ http://3.95.233.245/ <br >
 # 使用技術
 - PHP 8.2.0
 - Laravel 10
-- MySQL 5.7?
+- MySQL 8.0
 - Apache
 - AWS
   - VPC
