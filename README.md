@@ -19,6 +19,9 @@ http://3.95.233.245/ <br >
   - RDS
 - Docker/Docker-compose
 
+
+
+※以下、要更新
 # AWS構成図
 <!-- <img width="995" alt="スクリーンショット 2020-05-07 11 14 01" src="https://user-images.githubusercontent.com/60876388/81247155-3ccde300-9054-11ea-91eb-d06eb38a63b3.png"> -->
 
