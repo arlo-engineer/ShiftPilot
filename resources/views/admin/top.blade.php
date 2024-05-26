@@ -225,7 +225,6 @@
                     <div class="w-full md:w-1/4 mb-6 md:mb-0">
                         <h5 class="text-xl font-bold mb-4">ソーシャルメディア</h5>
                         <ul class="flex space-x-4">
-                            <li><a href="#" class="hover:text-white"><i class="fab fa-facebook"></i> Facebook</a></li>
                             <li><a href="#" class="hover:text-white"><i class="fab fa-twitter"></i> Twitter</a></li>
                         </ul>
                     </div>
