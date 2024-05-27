@@ -29,7 +29,7 @@ class ConfirmShiftController extends Controller
         $days = $calendar->getDays();
         $companyMembership = new CompanyMembership();
         $userId = Auth::id();
-        $companyId = $companyMembership->getCompanyIdByUserId($userId);
+        $companyId = $companyMembership->getCompanyIdByUserId();
         $user = new User;
         $employees = $user->getEmployees($companyId);
         $requestedShift = new RequestedShift();

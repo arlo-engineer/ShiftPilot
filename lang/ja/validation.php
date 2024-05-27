@@ -190,6 +190,7 @@ return [
         'available' => '利用可能',
         'birthday' => '誕生日',
         'body' => '本文',
+        'category' => 'カテゴリ',
         'city' => '市',
         'content' => 'コンテンツ',
         'country' => '国',

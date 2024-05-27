@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\CreatedShiftController;
 use App\Http\Controllers\Admin\CompanyMembershipController;
 use App\Http\Controllers\Admin\UpdateCompanyNameController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Admin\ContactController as ContactOfAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +28,6 @@ Route::get('/', function () {
     return view('top');
 })->name('top');
 
-// 管理者側トップページ
-Route::get('/admin', function () {
-    return view('admin.top');
-})->name('admin.top');
-
 // スタッフ側ルート情報
 Route::get('/shift', [ConfirmShiftController::class, 'index'])->middleware(['auth', 'verified'])->name('shift.index');
 
@@ -44,9 +41,18 @@ Route::middleware('auth')->group(function () {
     // シフト提出画面
     Route::get('/submit-shift', [RequestedShiftController::class, 'index'])->name('submit-shift.index');
     Route::post('/submit-shift', [RequestedShiftController::class, 'store'])->name('submit-shift.store');
+
+    // お問い合わせ画面
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 });
 
 require __DIR__.'/auth.php';
+
+// 管理者側トップページ
+Route::get('/admin', function () {
+    return view('admin.top');
+})->name('admin.top');
 
 // 管理者側ルート情報
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -70,6 +76,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/{id}', [CompanyMembershipController::class, 'update'])->name('update');
         Route::post('/{id}/destroy', [CompanyMembershipController::class, 'destroy'])->name('destroy');
         });
+
+        // お問い合わせ画面
+        Route::get('/contact', [ContactOfAdminController::class, 'index'])->name('contact');
+        Route::post('/contact', [ContactOfAdminController::class, 'store'])->name('contact.store');
     });
 
     require __DIR__.'/admin.php';
