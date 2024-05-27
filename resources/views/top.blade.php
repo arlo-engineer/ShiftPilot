@@ -14,7 +14,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="antialiased">
-        <nav x-data="{ open: false }" class="w-full fixed z-10">
+        <header x-data="{ open: false }" class="bg-white w-full fixed z-10" style="box-shadow: 0px 10px 10px -3px rgba(0, 0, 0, 0.1);">
             <div class="mx-auto sm:px-6 lg:px-6">
                 <div class="flex justify-between sm:h-16 h-10 items-center">
                     <!-- Logo -->
@@ -59,12 +59,7 @@
                     </div>
                 </div>
             </div>
-        </nav>
-
-
-        <div class="h-screen w-screen flex justify-center items-center">
-            <p class="text-lg">※今後作成予定のページです。</p>
-        </div>
+        </header>
 
     </body>
 </html>

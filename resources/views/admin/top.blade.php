@@ -10,11 +10,14 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+        <!-- fontawesome -->
+        <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="antialiased">
-        <nav x-data="{ open: false }" class="w-full fixed z-10">
+        <nav x-data="{ open: false }" class="bg-white w-full fixed z-10" style="box-shadow: 0px 10px 10px -3px rgba(0, 0, 0, 0.1);">
             <div class="mx-auto sm:px-6 lg:px-6">
                 <div class="flex justify-between sm:h-16 h-10 items-center">
                     <!-- Logo -->
@@ -61,10 +64,177 @@
             </div>
         </nav>
 
+        <div class="sm:pt-16 pt-10">
+            <div class="relative w-full h-[540px]">
+                <!-- Background Image -->
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url({{ asset('img/top.jpg') }});"></div>
 
-        <div class="h-screen w-screen flex justify-center items-center">
-            <p class="text-lg">※今後作成予定のページです。</p>
+                <!-- Gray Overlay -->
+                <div class="absolute inset-0 bg-admin-main-color opacity-20"></div>
+
+                <!-- App Name -->
+                <div class="absolute sm:left-24 left-10 top-1/2 transform -translate-y-1/2 text-white text-4xl">
+                    <p class="text-3xl font-bold">シフト管理をスマートに</p>
+                    <h1 class="text-6xl font-bold">ShiftPilot</h1>
+                </div>
+            </div>
         </div>
+
+        <section id="flow" class="bg-gray-50">
+            <div class="py-16 max-w-5xl mx-auto px-2">
+                <h2 class="text-center text-admin-main-color text-3xl font-bold">ShiftPilotでのシフト管理の流れ</h2>
+                <ul class="pt-12 md:flex items-center justify-between">
+                    <li class="text-center">
+                        <div class="mx-auto flex items-center justify-center bg-white border-[0.5px] border-gray-300 rounded-full w-56 h-56 lg:w-72 lg:h-72 overflow-hidden">
+                            <img src="{{ asset('img/top-shift-collect.png') }}" alt="希望シフトの収集" class="w-full px-5 object-cover">
+                        </div>
+                        <div class="text-admin-main-color text-lg pt-5">1. 希望シフトの収集</div>
+                    </li>
+                    <li class="md:block hidden w-12 pb-12">
+                        <img src="{{ asset('img/top-right-arrow.png') }}" alt=">>">
+                    </li>
+                    <li class="text-center pt-8 md:pt-0">
+                        <div class="mx-auto flex items-center justify-center bg-white border-[0.5px] border-gray-300 rounded-full w-56 h-56 lg:w-72 lg:h-72 overflow-hidden">
+                            <img src="{{ asset('img/top-shift-create.png') }}" alt="シフト表の作成" class="w-full pt-8 px-8 object-cover">
+                        </div>
+                        <div class="text-admin-main-color text-lg pt-5">2. シフト表の作成</div>
+                    </li>
+                    <li class="md:block hidden w-12 pb-12">
+                        <img src="{{ asset('img/top-right-arrow.png') }}" alt=">>">
+                    </li>
+                    <li class="text-center pt-8 md:pt-0">
+                        <div class="mx-auto flex items-center justify-center bg-white border-[0.5px] border-gray-300 rounded-full w-56 h-56 lg:w-72 lg:h-72 overflow-hidden">
+                            <img src="{{ asset('img/top-shift-share.png') }}" alt="スタッフとの共有" class="w-full px-5 object-cover">
+                        </div>
+                        <div class="text-admin-main-color text-lg pt-5">3. スタッフとの共有</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="function" class="py-16 max-w-5xl mx-auto px-2">
+            <h2 class="text-center text-admin-main-color text-3xl font-bold">ShiftPilotの機能一覧</h2>
+            <ul class="flex flex-wrap pt-8">
+                <li class="xl:w-1/3 md:w-1/2 p-4">
+                    <div class="rounded-lg" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
+                        <div class="w-full inline-flex items-center justify-center">
+                            <img src="{{ asset('img/top-function-1.png') }}" alt="シフト提出" class="">
+                        </div>
+                    </div>
+                    <h3 class="text-md font-medium title-font mb-2 text-center pt-5">シフト提出</h3>
+                    <p class="leading-relaxed text-sm text-gray-500">スタッフが期限までにシフトを提出します。希望日時をクリックするだけで簡単に入力/提出できます。</p>
+                </li>
+                <li class="xl:w-1/3 md:w-1/2 p-4">
+                    <div class="rounded-lg" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
+                        <div class="w-full inline-flex items-center justify-center">
+                            <img src="{{ asset('img/top-function-1.png') }}" alt="シフト提出" class="">
+                        </div>
+                    </div>
+                    <h3 class="text-md font-medium title-font mb-2 text-center pt-5">シフト作成機能</h3>
+                    <p class="leading-relaxed text-sm text-gray-500">スタッフからの希望シフトを元にシフトを作成できます。常にスタッフが提出した希望シフトが表示されており、転記によるミスがなくなります。</p>
+                </li>
+                <li class="xl:w-1/3 md:w-1/2 p-4">
+                    <div class="rounded-lg" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
+                        <div class="w-full inline-flex items-center justify-center">
+                            <img src="{{ asset('img/top-function-1.png') }}" alt="シフト提出" class="">
+                        </div>
+                    </div>
+                    <h3 class="text-md font-medium title-font mb-2 text-center pt-5">自動シフト作成機能</h3>
+                    <p class="leading-relaxed text-sm text-gray-500">必要なスタッフの人数を入力するだけで、スタッフの希望シフトを元に自動でシフトを作成します。</p>
+                </li>
+                <li class="xl:w-1/3 md:w-1/2 p-4">
+                    <div class="rounded-lg" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
+                        <div class="w-full inline-flex items-center justify-center">
+                            <img src="{{ asset('img/top-function-1.png') }}" alt="シフト提出" class="">
+                        </div>
+                    </div>
+                    <h3 class="text-md font-medium title-font mb-2 text-center pt-5">リマインド通知機能</h3>
+                    <p class="leading-relaxed text-sm text-gray-500">シフト提出の締め切りに近づいたタイミングでスタッフに通知を送ります。シフトの提出忘れを防止することができます。</p>
+                </li>
+                <li class="xl:w-1/3 md:w-1/2 p-4">
+                    <div class="rounded-lg" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
+                        <div class="w-full inline-flex items-center justify-center">
+                            <img src="{{ asset('img/top-function-1.png') }}" alt="シフト提出" class="">
+                        </div>
+                    </div>
+                    <h3 class="text-md font-medium title-font mb-2 text-center pt-5">デフォルト時間機能</h3>
+                    <p class="leading-relaxed text-sm text-gray-500">スタッフはデフォルトとなる出退勤時間を登録できます。デフォルト時間を登録することで、希望シフトの提出がより簡単に入力できます。</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="start" class="bg-gray-50">
+            <ul class="py-16 max-w-5xl mx-auto px-2">
+                <h2 class="text-center text-admin-main-color text-3xl font-bold">利用開始までの流れ</h2>
+                <div class="pt-12">
+                    <li class="flex justify-center items-center">
+                        <div class="flex items-center justify-center bg-white border-[0.5px] border-gray-300 rounded-full w-56 h-56 sm:w-72 sm:h-72 overflow-hidden">
+                            <img src="{{ asset('img/top-register.png') }}" alt="アカウント発行" class="w-full px-5 object-cover">
+                        </div>
+                        <div class="border-t border-b py-10 pl-12 w-1/2 border-gray-300">
+                            <h3 class="text-admin-main-color text-lg">1. アカウント発行</h3>
+                            <p class="pt-8">管理者とスタッフのアカウントを発行する。<br>管理者は会社名/店舗名を入力する。</p>
+                        </div>
+                    </li>
+                    <li class="flex justify-center items-center pt-8">
+                        <div class="flex items-center justify-center bg-white border-[0.5px] border-gray-300 rounded-full w-56 h-56 sm:w-72 sm:h-72 overflow-hidden">
+                            <img src="{{ asset('img/top-add-employee.png') }}" alt="スタッフの追加" class="w-full object-cover">
+                        </div>
+                        <div class="border-t border-b py-10 pl-12 w-1/2 border-gray-300">
+                            <h3 class="text-admin-main-color text-lg">2. スタッフの追加</h3>
+                            <p class="pt-8">管理者が会社/店舗にスタッフを登録する。</p>
+                        </div>
+                    </li>
+                </div>
+                <div class="flex justify-center pt-16">
+                    @if (Route::has('admin.login'))
+                        <a href="{{ route('admin.login') }}" class="w-80 text-center bg-admin-main-color border border-transparent rounded-md py-5 font-semibold text-lg text-white uppercase tracking-widest hover:opacity-70 transition ease-in-out duration-150">ログイン</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('admin.register') }}" class="ml-5 w-80 text-center py-5 border border-admin-main-color rounded-md font-semibold text-lg text-admin-main-color uppercase tracking-widest hover:opacity-70 transition ease-in-out duration-150">アカウント登録</a>
+                        @endif
+                    @endif
+                </div>
+            </ul>
+        </section>
+
+        <footer class="bg-gray-800 text-gray-200 py-8">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-wrap justify-between">
+                    <!-- Company Information -->
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h5 class="text-xl font-bold mb-4">ShiftPilot</h5>
+                        <p class="text-sm">
+                            シフト管理をスマートに。<br>
+                            ShiftPilotは効率的なシフト管理を提供します。
+                        </p>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h5 class="text-xl font-bold mb-4">ナビゲーション</h5>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:underline">ホーム</a></li>
+                            <li><a href="#flow" class="hover:underline">シフト管理の流れ</a></li>
+                            <li><a href="#function" class="hover:underline">機能一覧</a></li>
+                            <li><a href="#start" class="hover:underline">利用開始までの流れ</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h5 class="text-xl font-bold mb-4">ソーシャルメディア</h5>
+                        <ul class="flex space-x-4">
+                            <li><a href="#" class="hover:text-white"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <p class="text-sm">&copy; 2024 ShiftPilot. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
 
     </body>
 </html>
