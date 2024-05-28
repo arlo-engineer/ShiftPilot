@@ -202,6 +202,7 @@ return [
         'day' => '日',
         'deleted_at' => '削除日',
         'description' => '説明',
+        'detail' => 'お問い合わせ内容',
         'district' => '地区',
         'duration' => '期間',
         'email' => 'メールアドレス',

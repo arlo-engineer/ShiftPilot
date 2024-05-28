@@ -1,4 +1,3 @@
-<h1 class="text-2xl font-bold mb-4">お問い合わせ</h1>
 @if(session('success'))
     <div class="bg-green-500 text-white p-2 rounded mb-4">
         {{ session('success') }}
@@ -51,7 +50,7 @@
     <div>
         <label for="detail" class="block text-sm font-medium text-gray-700 required">お問い合わせ内容</label>
         <textarea id="detail" name="detail" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm resize-none" rows="4">{{ old('detail') }}</textarea>
-        @error('message')
+        @error('detail')
             <span class="text-red-500 text-sm">{{ $message }}</span>
         @enderror
     </div>

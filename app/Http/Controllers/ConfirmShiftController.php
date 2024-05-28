@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Calendar;
-use App\Models\Company;
 use App\Models\CompanyMembership;
 use App\Models\User;
 use App\Models\RequestedShift;

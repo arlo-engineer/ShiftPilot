@@ -8,7 +8,6 @@ use App\Models\CompanyMembership;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactSendmail;
 
-
 class ContactController extends Controller
 {
     public function index()
@@ -39,6 +38,15 @@ class ContactController extends Controller
 
         $request->session()->regenerateToken();
 
-        return back()->with('success', 'お問い合わせありがとうございます。ご回答まで数日ほどお待ちください。');
+        $targetUrl = back()->getTargetUrl();
+
+        // 送信後お問い合わせフォームが表示される
+        if (str_ends_with($targetUrl, '/')) {
+            return redirect($targetUrl . "#contact")->with('success', 'お問い合わせありがとうございます。ご回答まで数日ほどお待ちください。');
+        } else if (str_ends_with($targetUrl, '/admin')) {
+            return redirect($targetUrl . "#contact")->with('success', 'お問い合わせありがとうございます。ご回答まで数日ほどお待ちください。');
+        } else {
+            return back()->with('success', 'お問い合わせありがとうございます。ご回答まで数日ほどお待ちください。');
+        }
     }
 }

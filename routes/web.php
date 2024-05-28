@@ -23,6 +23,9 @@ use App\Http\Controllers\Admin\ContactController as ContactOfAdminController;
 |
 */
 
+// お問い合わせデータの保存とメール自動送信
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
 // スタッフ側トップページ
 Route::get('/', function () {
     return view('top');
@@ -43,8 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/submit-shift', [RequestedShiftController::class, 'store'])->name('submit-shift.store');
 
     // お問い合わせ画面
-    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 });
 
 require __DIR__.'/auth.php';
@@ -78,8 +80,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         });
 
         // お問い合わせ画面
-        Route::get('/contact', [ContactOfAdminController::class, 'index'])->name('contact');
-        Route::post('/contact', [ContactOfAdminController::class, 'store'])->name('contact.store');
+        Route::get('/contact', [ContactOfAdminController::class, 'index'])->name('contact.index');
     });
 
     require __DIR__.'/admin.php';
