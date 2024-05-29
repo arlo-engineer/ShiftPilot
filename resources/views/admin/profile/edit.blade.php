@@ -10,7 +10,19 @@
 
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
-                    @include('admin.profile.partials.update_company_name_form')
+                    @include('admin.profile.partials.update-company-name-form')
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('admin.profile.partials.shift-interval-setting')
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('admin.profile.partials.notification-deadline-setting')
                 </div>
             </div>
 

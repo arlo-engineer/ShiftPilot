@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('admin_id')->constrained()->cascadeOnDelete(); // 作成者(管理者)のID
+            $table->string('shift_interval');
+            $table->int('notification_days');
             $table->timestamps();
         });
     }
