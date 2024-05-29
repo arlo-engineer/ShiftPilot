@@ -14,7 +14,7 @@ class ContactController extends Controller
     {
         $companyMembership = new CompanyMembership();
         $companyName = $companyMembership->getCompanyNameByUserId();
-        return view('contact', compact('companyName'));
+        return view('contact.contact', compact('companyName'));
     }
 
     public function store(Request $request)
