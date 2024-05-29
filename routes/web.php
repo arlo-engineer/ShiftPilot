@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UpdateCompanyNameController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\ContactController as ContactOfAdminController;
+use App\Http\Controllers\Admin\ShiftIntervalSettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::patch('/profile', [ProfileOfAdminController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileOfAdminController::class, 'destroy'])->name('profile.destroy');
         Route::post('/company-name', [UpdateCompanyNameController::class, 'update'])->name('company-name.update');
+        Route::post('/shift-interval', [ShiftIntervalSettingController::class, 'update'])->name('shift-interval.update');
 
         // スタッフ管理画面
         Route::prefix('employees')->name('employees.')->group(function () {
