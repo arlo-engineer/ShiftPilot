@@ -315,3 +315,28 @@ if (document.getElementById("required-shift-contents")) {
     });
 }
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    toggleShiftInterval();
+});
+document.getElementById("radioOneMonth").addEventListener("click", (event) => {
+    toggleShiftInterval();
+});
+document.getElementById("radioHalfMonth").addEventListener("click", (event) => {
+    toggleShiftInterval();
+});
+
+function toggleShiftInterval() {
+    var radioOneMonth = document.getElementById('radioOneMonth');
+    var radioHalfMonth = document.getElementById('radioHalfMonth');
+    var oneMonthDiv = document.getElementById('oneMonth');
+    var halfMonthDiv = document.getElementById('halfMonth');
+
+    if (radioOneMonth.checked) {
+        oneMonthDiv.classList.remove("hidden");
+        halfMonthDiv.classList.add("hidden");
+    } else if (radioHalfMonth.checked) {
+        oneMonthDiv.classList.add("hidden");
+        halfMonthDiv.classList.remove("hidden");
+    }
+}
+

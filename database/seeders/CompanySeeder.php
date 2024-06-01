@@ -15,7 +15,7 @@ class CompanySeeder extends Seeder
     {
         DB::table('companies')->insert([
             [
-                'name' => '日本料理 おお津',
+                'name' => 'はなまるコンビニ',
                 'admin_id' => '1',
             ],
             [
