@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        if (request()->is('admin/*') || str_contains(request()->headers->get('referer'), '/admin')) {
+            config(['session.cookie' => config('session.cookie_admin')]);
+        }
     }
 }
