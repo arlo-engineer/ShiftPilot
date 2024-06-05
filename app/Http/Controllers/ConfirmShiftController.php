@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Calendar;
-use App\Models\Company;
 use App\Models\CompanyMembership;
 use App\Models\User;
 use App\Models\RequestedShift;
@@ -29,7 +28,7 @@ class ConfirmShiftController extends Controller
         $days = $calendar->getDays();
         $companyMembership = new CompanyMembership();
         $userId = Auth::id();
-        $companyId = $companyMembership->getCompanyIdByUserId($userId);
+        $companyId = $companyMembership->getCompanyIdByUserId();
         $user = new User;
         $employees = $user->getEmployees($companyId);
         $requestedShift = new RequestedShift();

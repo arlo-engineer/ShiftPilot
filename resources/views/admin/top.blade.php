@@ -198,6 +198,13 @@
             </ul>
         </section>
 
+        <section id="contact" class="py-16 max-w-5xl mx-auto px-2">
+            <h2 class="text-center text-admin-main-color text-3xl font-bold">お問い合わせ</h2>
+            <div class="pt-8">
+                @include('layouts.contact-form')
+            </div>
+        </section>
+
         <footer class="bg-gray-800 text-gray-200 py-8">
             <div class="container mx-auto px-4">
                 <div class="flex flex-wrap justify-between">
@@ -218,6 +225,7 @@
                             <li><a href="#flow" class="hover:underline">シフト管理の流れ</a></li>
                             <li><a href="#function" class="hover:underline">機能一覧</a></li>
                             <li><a href="#start" class="hover:underline">利用開始までの流れ</a></li>
+                            <li><a href="#contact" class="hover:underline">お問い合わせ</a></li>
                         </ul>
                     </div>
 

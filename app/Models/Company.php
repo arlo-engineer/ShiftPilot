@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Company extends Model
 {
@@ -27,5 +28,11 @@ class Company extends Model
     public function getCompanyIdByAdminId($admin_id)
     {
         return Company::where('admin_id', $admin_id)->pluck('id');
+    }
+
+    public function getCompanyNameByAdminId()
+    {
+        $admin_id = Auth::id();
+        return Company::where('admin_id', $admin_id)->pluck('name')->first();
     }
 }

@@ -65,6 +65,10 @@
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-submit-shift.png') }}" alt="シフト提出"></div>
                 <p class="sm:pl-2">シフト提出</p>
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.index')">
+                <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-contact.png') }}" alt="お問い合わせ"></div>
+                <p class="sm:pl-2">お問い合わせ</p>
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

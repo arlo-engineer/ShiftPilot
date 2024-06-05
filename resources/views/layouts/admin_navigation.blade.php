@@ -61,11 +61,11 @@
     <div :class="{'block': open, 'hidden': ! open}" id="navContent" class="hidden sm:hidden bg-white">
         <div class="pt-2 pb-3 space-y-1">
             <x-admin-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
-                <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-calendar.png') }}" alt="カレンダーのアイコン"></div>
+                <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-calendar.png') }}" alt="シフト管理"></div>
                 <p class="sm:pl-2">シフト管理</p>
             </x-admin-responsive-nav-link>
             <x-admin-responsive-nav-link :href="route('admin.employees.index')" :active="request()->routeIs('admin.employees.index', 'admin.employees.create')">
-                <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフのアイコン"></div>
+                <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフ管理"></div>
                 <p class="sm:pl-2">スタッフ管理</p>
             </x-admin-responsive-nav-link>
             {{-- <x-admin-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
@@ -77,8 +77,12 @@
                 <p class="sm:pl-2">スタッフ管理テスト</p>
             </x-admin-responsive-nav-link> --}}
             <x-admin-responsive-nav-link :href="route('admin.profile.edit')" :active="request()->routeIs('admin.profile.edit')">
-                <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-setting.png') }}" alt="歯車のアイコン"></div>
+                <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-setting.png') }}" alt="設定"></div>
                 <p class="sm:pl-2">設定</p>
+            </x-admin-responsive-nav-link>
+            <x-admin-responsive-nav-link :href="route('admin.contact.index')" :active="request()->routeIs('admin.contact.index')">
+                <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-contact.png') }}" alt="お問い合わせ"></div>
+                <p class="sm:pl-2">お問い合わせ</p>
             </x-admin-responsive-nav-link>
         </div>
 

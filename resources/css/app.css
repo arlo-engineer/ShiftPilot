@@ -27,3 +27,19 @@
     #fff 5px
     );
 }
+
+.required {
+    display: flex;
+    align-items: center;
+}
+
+.required:after {
+    content: "必須";
+    background: #F55854;
+    color: #fff;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
