@@ -2,7 +2,7 @@
     <form method="POST" action="{{ route('admin.shift.store') }}">
         @csrf
         <div class="pt-8">
-            <div class="max-w-7xl mx-auto px-2">
+            <div class="max-full mx-auto px-2">
                 @include('admin.shift.partials.calendar')
             </div>
         </div>

@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-admin-main-color border-b border-gray-100 w-full fixed z-10">
+<nav x-data="{ open: false }" class="bg-admin-main-color border-b border-gray-100 w-full fixed z-10" style="box-shadow: 0px 10px 10px -3px rgba(0, 0, 0, 0.1);">
     <!-- Primary Navigation Menu -->
     <div class="mx-auto px-4 sm:px-6 lg:px-6">
         <div class="flex justify-between h-10">
@@ -68,14 +68,6 @@
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフ管理"></div>
                 <p class="sm:pl-2">スタッフ管理</p>
             </x-admin-responsive-nav-link>
-            {{-- <x-admin-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
-                <div class="pl-5"></div>
-                <p class="sm:pl-2">協働NGリスト</p>
-            </x-admin-responsive-nav-link>
-            <x-admin-responsive-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
-                <div class="pl-5"></div>
-                <p class="sm:pl-2">スタッフ管理テスト</p>
-            </x-admin-responsive-nav-link> --}}
             <x-admin-responsive-nav-link :href="route('admin.profile.edit')" :active="request()->routeIs('admin.profile.edit')">
                 <div class="w-5 sm:block hidden"><img src="{{ asset('img/nav-setting.png') }}" alt="設定"></div>
                 <p class="sm:pl-2">設定</p>

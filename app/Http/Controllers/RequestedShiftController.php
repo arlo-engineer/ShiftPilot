@@ -43,13 +43,15 @@ class RequestedShiftController extends Controller
 
     public function store(Request $request)
     {
-        $date = $request->input('date');
-        if ($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)) {
-            $date = $date . '-01';
-        } else if (!$date) {
-            $date = Carbon::now()->format('Y-m-d');
+        $previousUrl = url()->previous();
+        $previousQuery = parse_url($previousUrl, PHP_URL_QUERY);
+        if ($previousQuery) {
+            // クエリ文字列を配列に変換
+            parse_str($previousQuery, $queryParams);
+            $dateValue = $queryParams['date'];
+            $date = $dateValue . '-01';
         } else {
-            $date = null;
+            $date = Carbon::now()->addMonthsNoOverflow()->format('Y-m-d');
         }
 
         $nextMonth = Carbon::createFromFormat('Y-m-d', $date)->format('Y-m');
@@ -82,6 +84,6 @@ class RequestedShiftController extends Controller
             }
         }
 
-        return redirect(url()->previous());
+        return back();
     }
 }
