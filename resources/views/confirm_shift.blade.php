@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="pt-8">
+    <div x-data="{ isAllSelected: true }" class="pt-8">
         <div class="max-w-7xl mx-auto px-2">
             <!-- ページネーション -->
             <h2 class="calender-title tracking-wider flex justify-center">
@@ -18,7 +18,17 @@
                 </div>
             </h2>
 
-            <div class="pt-6 w-full mx-auto overflow-auto text-my-text-color">
+            <!-- スイッチ -->
+            <div class="flex mx-auto mt-2 sm:mt-0">
+                <button :class="isAllSelected ? 'bg-user-main-color text-white' : 'bg-transparent text-gray'" class="border-user-main-color border py-1 px-4" @click="isAllSelected = true">
+                    全体
+                </button>
+                <button :class="!isAllSelected ? 'bg-user-main-color text-white' : 'bg-transparent text-gray'" class="border-user-main-color border py-1 px-4" @click="isAllSelected = false">
+                    個人
+                </button>
+            </div>
+
+            <div :class="isAllSelected ? 'block' : 'hidden'" class="pt-2 sm:pt-6 w-full mx-auto overflow-auto text-my-text-color" @click="isAllSelected = true">
                 <table id="calendar" class="w-full text-left whitespace-no-wrap border-separate border-spacing-0">
                     <thead>
                         <tr>
@@ -57,6 +67,49 @@
                 </table>
             </div>
         </div>
+
+        <div :class="!isAllSelected ? 'block' : 'hidden'" class="max-w-5xl mx-auto px-2" @click="isAllSelected = false">
+            <div class="pt-2 sm:pt-6 mx-auto text-my-text-color">
+                <table class="w-full table-fixed text-left whitespace-no-wrap border border-gray-400 text-sm">
+                    <thead>
+                        <tr class="text-center bg-gray-100 font-bold">
+                            <td class="border border-gray-400 day-Sun">日</td>
+                            <td class="border border-gray-400 day-Mon">月</td>
+                            <td class="border border-gray-400 day-Tue">火</td>
+                            <td class="border border-gray-400 day-Wed">水</td>
+                            <td class="border border-gray-400 day-The">木</td>
+                            <td class="border border-gray-400 day-Fri">金</td>
+                            <td class="border border-gray-400 day-Sat">土</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($fullCreatedShiftsPerEmployee as $fullCreatedShiftPerEmployee)
+                            <tr>
+                                @for ($i = 0; $i < 7; $i++)
+                                    <td class="required-shift-cell border border-gray-400 p-1 sm:p-3 sm:pt-1 day-{{ $fullCreatedShiftPerEmployee[$i]['day']->format('D') }} @if ($fullCreatedShiftPerEmployee[$i]['created'] && $fullCreatedShiftPerEmployee[$i]['day']->format('m') == $days[0]->format('m')) bg-user-main-color text-white @elseif($fullCreatedShiftPerEmployee[$i]['day']->format('m') == $days[0]->format('m')) bg-white @else bg-gray-200 @endif">
+                                        <p class="sm:text-sm text-xs">{{ $fullCreatedShiftPerEmployee[$i]['day']->format('j') }}</p>
+                                        @if ($fullCreatedShiftPerEmployee[$i]['created'] && $fullCreatedShiftPerEmployee[$i]['day']->format('m') == $days[0]->format('m'))
+                                            <div class="flex flex-col items-center justify-center text-sm">
+                                                <input type="time" name="start_time[]" value="{{ $fullCreatedShiftPerEmployee[$i]['created']['start_time'] }}" class="calendar-time input-start-time p-0 border-none bg-transparent text-sm sm:text-lg">
+                                                <p class="h-1 border-l border-white"></p>
+                                                <input type="time" name="end_time[]" value="{{ $fullCreatedShiftPerEmployee[$i]['created']['end_time'] }}" class="calendar-time input-end-time p-0 border-none bg-transparent text-sm sm:text-lg">
+                                            </div>
+                                        @else
+                                            <div class="invisible tmp-shift flex flex-col items-center justify-center text-sm">
+                                                <input type="time" name="start_time[]" value="00:00" class="p-0 border-none text-sm sm:text-lg bg-transparent">
+                                                <p class="h-1 border-l border-white"></p>
+                                                <input type="time" name="end_time[]" value="00:00" class="p-0 border-none text-sm sm:text-lg bg-transparent">
+                                            </div>
+                                        @endif
+                                    </td>
+                                @endfor
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 
 </x-app-layout>
