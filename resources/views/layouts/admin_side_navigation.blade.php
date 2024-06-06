@@ -32,14 +32,6 @@
         <div class="w-5"><img src="{{ asset('img/nav-employee.png') }}" alt="スタッフ管理"></div>
         <p class="pl-2">スタッフ管理</p>
     </x-opened-nav-link>
-    {{-- <x-opened-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
-        <div class="pl-5"></div>
-        <p class="pl-2">協働NGリスト</p>
-    </x-opened-nav-link>
-    <x-opened-nav-link :href="route('admin.shift.index')" :active="request()->routeIs('admin.shift.index')">
-        <div class="pl-5"></div>
-        <p class="pl-2">スタッフ管理テスト</p>
-    </x-opened-nav-link> --}}
     <x-opened-nav-link :href="route('admin.profile.edit')" :active="request()->routeIs('admin.profile.edit')">
         <div class="w-5"><img src="{{ asset('img/nav-setting.png') }}" alt="設定"></div>
         <p class="pl-2">設定</p>

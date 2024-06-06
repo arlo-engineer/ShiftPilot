@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Calendar;
 use App\Models\CompanyMembership;
+use App\Models\CreatedShift;
 use App\Models\User;
 use App\Models\RequestedShift;
 
@@ -33,9 +34,11 @@ class ConfirmShiftController extends Controller
         $employees = $user->getEmployees($companyId);
         $requestedShift = new RequestedShift();
         $fullShifts = $requestedShift->getFullShifts($month, $employees);
+        $createdShifts = new CreatedShift();
+        $fullCreatedShiftsPerEmployee = $createdShifts->getCreatedShiftsPerEmployee($month);
 
         if (!empty($employees)) {
-            return view('confirm_shift', compact('calendar', 'days', 'employees', 'fullShifts', 'userId'));
+            return view('confirm_shift', compact('calendar', 'days', 'employees', 'fullShifts', 'userId', 'fullCreatedShiftsPerEmployee'));
         } else {
             return view('no-company');
         }
