@@ -116,51 +116,58 @@
             <h2 class="text-center text-admin-main-color text-3xl font-bold">ShiftPilotの機能一覧</h2>
             <ul class="flex flex-wrap pt-8">
                 <li class="xl:w-1/3 md:w-1/2 sm:sm:p-4 p-10 p-10">
-                    <div class="rounded-lg" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
-                        <div class="w-full inline-flex items-center justify-center">
-                            <img src="{{ asset('img/top-function-1.png') }}" alt="シフト提出" class="">
+                    <div class="rounded-md py-5 px-3" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
+                        <div class="w-full inline items-center justify-center">
+                            <p class="text-center border-admin-main-color border-b-2 pb-1">シフト提出</p>
+                            <p class="leading-relaxed text-sm text-gray-500 pt-5">スタッフが期限までにシフトを提出します。希望日時をクリックするだけで簡単に入力や提出ができます。</p>
                         </div>
                     </div>
-                    <h3 class="text-md font-medium title-font mb-2 text-center pt-5">シフト提出</h3>
-                    <p class="leading-relaxed text-sm text-gray-500">スタッフが期限までにシフトを提出します。希望日時をクリックするだけで簡単に入力/提出できます。</p>
                 </li>
-                <li class="xl:w-1/3 md:w-1/2 sm:p-4 p-10">
-                    <div class="rounded-lg" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
-                        <div class="w-full inline-flex items-center justify-center">
-                            <img src="{{ asset('img/top-function-1.png') }}" alt="シフト提出" class="">
+                <li class="xl:w-1/3 md:w-1/2 sm:sm:p-4 p-10 p-10">
+                    <div class="rounded-md py-5 px-3" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
+                        <div class="w-full inline items-center justify-center">
+                            <p class="text-center border-admin-main-color border-b-2 pb-1">シフト作成</p>
+                            <p class="leading-relaxed text-sm text-gray-500 pt-5">スタッフからの希望シフトを元にシフトを作成できます。常にスタッフが提出した希望シフトが表示されており、転記によるミスがなくなります。</p>
                         </div>
                     </div>
-                    <h3 class="text-md font-medium title-font mb-2 text-center pt-5">シフト作成機能</h3>
-                    <p class="leading-relaxed text-sm text-gray-500">スタッフからの希望シフトを元にシフトを作成できます。常にスタッフが提出した希望シフトが表示されており、転記によるミスがなくなります。</p>
                 </li>
-                <li class="xl:w-1/3 md:w-1/2 sm:p-4 p-10">
-                    <div class="rounded-lg" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
-                        <div class="w-full inline-flex items-center justify-center">
-                            <img src="{{ asset('img/top-function-1.png') }}" alt="シフト提出" class="">
+                <li class="xl:w-1/3 md:w-1/2 sm:sm:p-4 p-10 p-10">
+                    <div class="rounded-md py-5 px-3" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
+                        <div class="w-full inline items-center justify-center">
+                            <p class="text-center border-admin-main-color border-b-2 pb-1">固定シフト時間設定</p>
+                            <p class="leading-relaxed text-sm text-gray-500 pt-5">普段固定化されている出退勤時間を設定することで、スタッフのシフト提出が簡単になります。</p>
                         </div>
                     </div>
-                    <h3 class="text-md font-medium title-font mb-2 text-center pt-5">デフォルト時間機能</h3>
-                    <p class="leading-relaxed text-sm text-gray-500">スタッフはデフォルトとなる出退勤時間を登録できます。デフォルト時間を登録することで、希望シフトの提出がより簡単に入力できます。</p>
                 </li>
-                <li class="xl:w-1/3 md:w-1/2 sm:p-4 p-10">
-                    <div class="rounded-lg" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
-                        <div class="w-full inline-flex items-center justify-center relative">
-                            <img src="{{ asset('img/top-function-1.png') }}" alt="シフト提出" class="opacity-0">
-                            <p class="absolute text-xl">comming soon</p>
+                <li class="xl:w-1/3 md:w-1/2 sm:sm:p-4 p-10 p-10">
+                    <div class="rounded-md py-5 px-3" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
+                        <div class="w-full inline items-center justify-center">
+                            <p class="text-center border-admin-main-color border-b-2 pb-1">お問い合わせ機能</p>
+                            <p class="leading-relaxed text-sm text-gray-500 pt-5">アプリの使い方や追加機能の希望、バグの修正などをお知らせください。2~3日以内にご返信やご対応いたします。</p>
                         </div>
                     </div>
-                    <h3 class="text-md font-medium title-font mb-2 text-center pt-5">リマインド通知機能</h3>
-                    <p class="leading-relaxed text-sm text-gray-500">シフト提出の締め切りに近づいたタイミングでスタッフに通知を送ります。シフトの提出忘れを防止することができます。</p>
                 </li>
-                <li class="xl:w-1/3 md:w-1/2 sm:p-4 p-10">
-                    <div class="rounded-lg" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
-                        <div class="w-full inline-flex items-center justify-center relative">
-                            <img src="{{ asset('img/top-function-1.png') }}" alt="シフト提出" class="opacity-0">
-                            <p class="absolute text-xl">comming soon</p>
+                <li class="xl:w-1/3 md:w-1/2 sm:sm:p-4 p-10 p-10">
+                    <div class="rounded-md py-5 px-3" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
+                        <div class="w-full inline items-center justify-center relative">
+                            <p class="text-center border-admin-main-color border-b-2 pb-1">リマインド通知機能</p>
+                            <p class="leading-relaxed text-sm text-gray-500 pt-5">シフト提出の締め切りに近づいたタイミングでスタッフに通知を送ります。シフトの提出忘れを防止することができます。</p>
+                            <div class= "w-full h-full bg-white bg-opacity-80 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                <p class="w-fll h-full flex items-center justify-center text-xl">comming soon</p>
+                            </div>
                         </div>
                     </div>
-                    <h3 class="text-md font-medium title-font mb-2 text-center pt-5">自動シフト作成機能</h3>
-                    <p class="leading-relaxed text-sm text-gray-500">必要なスタッフの人数を入力するだけで、スタッフの希望シフトを元に自動でシフトを作成します。</p>
+                </li>
+                <li class="xl:w-1/3 md:w-1/2 sm:sm:p-4 p-10 p-10">
+                    <div class="rounded-md py-5 px-3" style="box-shadow: 0 0px 15px 0px rgba(0, 0, 0, 0.1)">
+                        <div class="w-full inline items-center justify-center relative">
+                            <p class="text-center border-admin-main-color border-b-2 pb-1">自動シフト作成機能</p>
+                            <p class="leading-relaxed text-sm text-gray-500 pt-5">必要なスタッフの人数を入力するだけで、スタッフの希望シフトを元に自動でシフトを作成します。</p>
+                            <div class= "w-full h-full bg-white bg-opacity-80 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                <p class="w-fll h-full flex items-center justify-center text-xl">comming soon</p>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </section>
@@ -235,7 +242,7 @@
                     <div class="w-full md:w-1/4 mb-6 md:mb-0">
                         <h5 class="text-xl font-bold mb-4">ソーシャルメディア</h5>
                         <ul class="flex space-x-4">
-                            <li><a href="#" class="hover:text-white"><i class="fab fa-twitter"></i> Twitter</a></li>
+                            <li><a href="https://x.com/fire_arlo" class="hover:text-white block w-4"><img src="{{ asset('img/logo-x.png') }}" alt="X"></a></li>
                         </ul>
                     </div>
                 </div>
