@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('デフォルト時間') }}
+            {{ __('固定シフト時間') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __('デフォルトとなる希望出退勤時間を設定できます') }}
+            {{ __('固定化されている出退勤時間を設定することで、シフト提出が楽になります') }}
         </p>
     </header>
 
