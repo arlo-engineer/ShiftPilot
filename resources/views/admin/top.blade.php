@@ -240,9 +240,10 @@
 
                     <!-- Social Media Links -->
                     <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                        <h5 class="text-xl font-bold mb-4">ソーシャルメディア</h5>
+                        <h5 class="text-xl font-bold mb-4 items-center">ソーシャルメディア</h5>
                         <ul class="flex space-x-4">
                             <li><a href="https://x.com/fire_arlo" class="hover:text-white block w-4"><img src="{{ asset('img/logo-x.png') }}" alt="X"></a></li>
+                            <li><a href="https://github.com/arlo-engineer" class="hover:text-white block w-5"><img src="{{ asset('img/logo-github.png') }}" alt="GitHub"></a></li>
                         </ul>
                     </div>
                 </div>
