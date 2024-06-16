@@ -15,7 +15,8 @@ http://shiftpilot-1391980858.us-east-1.elb.amazonaws.com/ <br >
 - Apache
 - AWS
   - VPC
-  - ECR on Fargate
+  - ECR
+  - ECS on Fargate
   - RDS
 - Docker/Docker-compose
 
