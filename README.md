@@ -20,10 +20,11 @@ http://shiftpilot-1391980858.us-east-1.elb.amazonaws.com/ <br >
   - RDS
 - Docker/Docker-compose
 
+# AWS構成図
+<img width="600" alt="AWS構成図" src="https://github.com/arlo-engineer/ShiftPilot/assets/134134014/a2499a49-dcdb-4c24-b53c-4a3fd221393b">
+
 <!--
 ※以下、要更新
-# AWS構成図
-<img width="995" alt="スクリーンショット 2020-05-07 11 14 01" src="https://user-images.githubusercontent.com/60876388/81247155-3ccde300-9054-11ea-91eb-d06eb38a63b3.png">
 
 ## CircleCi CI/CD
 - Githubへのpush時に、RspecとRubocopが自動で実行されます。
