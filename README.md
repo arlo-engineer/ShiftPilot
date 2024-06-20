@@ -21,7 +21,7 @@ http://shiftpilot-1391980858.us-east-1.elb.amazonaws.com/ <br >
 - Docker/Docker-compose
 
 # AWS構成図
-<img width="600" alt="AWS構成図" src="https://github.com/arlo-engineer/ShiftPilot/assets/134134014/a2499a49-dcdb-4c24-b53c-4a3fd221393b">
+<img width="600" alt="AWS構成図" src="https://github.com/arlo-engineer/ShiftPilot/assets/134134014/c2a2e1f1-ed33-4d40-919e-dec567a47dd4">
 
 <!--
 ※以下、要更新
