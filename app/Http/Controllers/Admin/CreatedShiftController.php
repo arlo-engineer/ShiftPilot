@@ -10,6 +10,7 @@ use App\Models\Company;
 use App\Models\User;
 use App\Models\RequestedShift;
 use App\Models\CreatedShift;
+use Illuminate\Support\Facades\Log;
 
 class CreatedShiftController extends Controller
 {
@@ -45,29 +46,28 @@ class CreatedShiftController extends Controller
         $employees = $user->getEmployees($companyId);
 
         for($i = 0; $i < count($employees) * count($days); $i++) {
-            if ($request->store_option[$i] == "1") {
-                $existingData = CreatedShift::where('company_membership_id', $request->company_membership_id[$i])->where('work_date', $request->work_date[$i])->first();
-                // created_shifts_table内にユーザーと日付が一致するデータがある場合は、上書き保存する
+            $test = $request->data['data'][$i];
+            if ($test['store_option'] == "1") {
+                $existingData = CreatedShift::where('company_membership_id', $test['company_membership_id'])->where('work_date', $test['work_date'])->first();
                 if (!empty($existingData)) {
-                    $existingData->company_membership_id = $request->company_membership_id[$i];
-                    $existingData->work_date = $request->work_date[$i];
-                    $existingData->start_time = $request->start_time[$i];
-                    $existingData->end_time = $request->end_time[$i];
+                    $existingData->company_membership_id = $test['company_membership_id'];
+                    $existingData->work_date = $test['work_date'];
+                    $existingData->start_time = $test['start_time'];
+                    $existingData->end_time = $test['end_time'];
                     $existingData->save();
                 } else {
                     CreatedShift::create([
-                        'company_membership_id' => $request->company_membership_id[$i],
-                        'work_date' => $request->work_date[$i],
-                        'start_time' => $request->start_time[$i],
-                        'end_time' => $request->end_time[$i],
+                        'company_membership_id' => $test['company_membership_id'],
+                        'work_date' => $test['work_date'],
+                        'start_time' => $test['start_time'],
+                        'end_time' => $test['end_time'],
                     ]);
                 }
-            } else if ($request->store_option[$i] == "2") {
-                $existingData = CreatedShift::where('company_membership_id', $request->company_membership_id[$i])->where('work_date', $request->work_date[$i])->first();
+            } else if ($test['store_option'] == "2") {
+                $existingData = CreatedShift::where('company_membership_id', $test['company_membership_id'])->where('work_date', $test['work_date'])->first();
                 $existingData->delete();
             }
         }
-
-        return redirect(url()->previous());
+        return back();
     }
 }

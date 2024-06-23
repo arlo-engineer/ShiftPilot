@@ -17,7 +17,7 @@ class CreatedShiftSeeder extends Seeder
         DB::table('created_shifts')->insert([
             [
                 'company_membership_id' => '1',
-                'work_date' => '2024-05-01',
+                'work_date' => '2024-06-01',
                 'start_time' => '17:00',
                 'end_time' => '22:00',
                 'created_at' => now(),
