@@ -2,9 +2,9 @@ services:
     laravel.test:
         build:
             # 開発用
-            context: ./vendor/laravel/sail/runtimes/8.3
+            # context: ./vendor/laravel/sail/runtimes/8.3
             # デプロイ用
-            # context: ./docker/8.3
+            context: ./docker/8.3
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -41,9 +41,9 @@ services:
         volumes:
             - 'sail-mysql:/var/lib/mysql'
             # 開発用
-            - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+            # - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
             # デプロイ用
-            # - './docker/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+            - './docker/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
             - sail
         healthcheck:

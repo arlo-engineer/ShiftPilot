@@ -52,7 +52,7 @@
                 <td class="nameColumn sticky top-0 -left-0 px-4 py-3 bg-white border-l border-b border-r border-gray-400 whitespace-nowrap sm:min-w-48">
                     <p class="font-bold">{{ $employee->name }}</p>
                     {{-- 確定シフトと下書きシフトの出退勤時間の和を動的に表示(実装予定) --}}
-                    <p class="text-xs">13時間20分</p>
+                    {{-- <p class="text-xs">13時間20分</p> --}}
                 </td>
                 @foreach ($fullShifts as $fullShift)
                     @if ($fullShift['employee_id'] == $employee->id)
