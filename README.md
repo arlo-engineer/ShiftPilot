@@ -12,6 +12,9 @@
 ・Zenn: https://zenn.dev/fire_arlo/articles/f81aad5a69a3e3
 
 # 使用技術
+- HTML5
+- CSS(Tailwind CSS)
+- Alpine.js
 - PHP 8.2.0
 - Laravel 10
 - MySQL 8.0
