@@ -8,7 +8,7 @@
 # URL
 ・アプリ: http://shiftpilot-1391980858.us-east-1.elb.amazonaws.com/ <br >
 
-より詳細な説明については、以下Zennにて記事を投稿しています。 <br >
+より詳細な説明については、以下Zennにて記事を投稿しています。 ぜひ、ご覧ください。<br >
 ・Zenn: https://zenn.dev/fire_arlo/articles/f81aad5a69a3e3
 
 # 使用技術
