@@ -25,7 +25,7 @@
   - ECR
   - ECS on Fargate
   - RDS
-- Docker/Docker-compose
+- Docker
 
 # AWS構成図
 <img width="600" alt="AWS構成図" src="https://github.com/arlo-engineer/ShiftPilot/assets/134134014/c2a2e1f1-ed33-4d40-919e-dec567a47dd4">
